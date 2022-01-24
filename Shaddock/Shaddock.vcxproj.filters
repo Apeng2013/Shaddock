@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Shaddock">
+      <UniqueIdentifier>{06B04244-F27C-9D4F-1B96-8BF707C2D2DD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaddock\Events">
+      <UniqueIdentifier>{2A595D3D-96E4-CA01-9FF5-4DF60B002702}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Shaddock.h" />
+    <ClInclude Include="src\Shaddock\Application.h">
+      <Filter>Shaddock</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shaddock\Core.h">
+      <Filter>Shaddock</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shaddock\EntryPoint.h">
+      <Filter>Shaddock</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shaddock\Events\ApplicationEvent.h">
+      <Filter>Shaddock\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shaddock\Events\Event.h">
+      <Filter>Shaddock\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shaddock\Events\KeyEvent.h">
+      <Filter>Shaddock\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shaddock\Events\MouseEvent.h">
+      <Filter>Shaddock\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shaddock\Log.h">
+      <Filter>Shaddock</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Shaddock\Application.cpp">
+      <Filter>Shaddock</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shaddock\Log.cpp">
+      <Filter>Shaddock</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

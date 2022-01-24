@@ -1,0 +1,3 @@
+[submodule "Shaddock/vendor/spdlog"]
+	path = Shaddock/vendor/spdlog
+	url = https://github.com/gabime/spdlog
