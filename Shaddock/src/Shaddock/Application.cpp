@@ -1,3 +1,4 @@
+#include "sdpch.h"
 #include "Application.h"
 
 #include "Shaddock/Events/ApplicationEvent.h"

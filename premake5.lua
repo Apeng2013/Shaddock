@@ -18,6 +18,9 @@ project "Shaddock"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "sdpch.h"
+	pchsource "Shaddock/src/sdpch.cpp"
+
 	files
 	{
 		"%{prj.name}/src/**.h",

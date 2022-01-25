@@ -3,8 +3,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace Shaddock {
 	class SHADDOCK_API WindowResizeEvent :public Event
 	{
