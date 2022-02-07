@@ -12,6 +12,8 @@
 #include <unordered_map>
 #include <unordered_set>
 
+#include "Shaddock/Log.h"
+
 #ifdef SD_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif

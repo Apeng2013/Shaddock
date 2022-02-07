@@ -10,6 +10,14 @@ workspace "Shaddock"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder (solution directory)
+
+IncludeDir = {}
+IncludeDir["GLFW"] = "Shaddock/vendor/GLFW/include"
+
+-- Copy the GLFW premake file content to here
+include "Shaddock/vendor/GLFW"
+
 project "Shaddock"
 	location "Shaddock"
 	kind "SharedLib"
@@ -30,7 +38,14 @@ project "Shaddock"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
