@@ -2,6 +2,7 @@
 
 // For use by Shaddock Applications
 #include "Shaddock/Application.h"
+#include "Shaddock/Layer.h"
 #include "Shaddock/Log.h"
 
 

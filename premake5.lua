@@ -66,16 +66,19 @@ project "Shaddock"
 
 	filter "configurations:Debug"
 		defines "SD_DEBUG"
+		buildoptions "/MDd"
 		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "SD_RELEASE"
+		buildoptions "/MD"
 		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "SD_DIST"
+		buildoptions "/MD"
 		runtime "Release"
 		optimize "On"
 
@@ -116,16 +119,19 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "SD_DEBUG"
+		buildoptions "/MDd"
 		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "SD_RELEASE"
+		buildoptions "/MD"
 		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "SD_DIST"
+		buildoptions "/MD"
 		runtime "Release"
 		optimize "On"
 

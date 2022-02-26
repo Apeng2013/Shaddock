@@ -40,6 +40,12 @@
     <ClInclude Include="src\Shaddock\Events\MouseEvent.h">
       <Filter>Shaddock\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Shaddock\Layer.h">
+      <Filter>Shaddock</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shaddock\LayerStack.h">
+      <Filter>Shaddock</Filter>
+    </ClInclude>
     <ClInclude Include="src\Shaddock\Log.h">
       <Filter>Shaddock</Filter>
     </ClInclude>
@@ -53,6 +59,12 @@
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Shaddock\Application.cpp">
+      <Filter>Shaddock</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shaddock\Layer.cpp">
+      <Filter>Shaddock</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shaddock\LayerStack.cpp">
       <Filter>Shaddock</Filter>
     </ClCompile>
     <ClCompile Include="src\Shaddock\Log.cpp">
