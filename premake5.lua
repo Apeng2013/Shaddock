@@ -14,9 +14,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "Shaddock/vendor/GLFW/include"
+IncludeDir["Glad"] = "Shaddock/vendor/Glad/include"
 
 -- Copy the GLFW premake file content to here
 include "Shaddock/vendor/GLFW"
+include "Shaddock/vendor/Glad"
 
 project "Shaddock"
 	location "Shaddock"
@@ -39,12 +41,14 @@ project "Shaddock"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links
 	{
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -56,7 +60,8 @@ project "Shaddock"
 		defines
 		{
 			"SD_PLATFORM_WINDOWS",
-			"SD_BUILD_DLL"
+			"SD_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands
