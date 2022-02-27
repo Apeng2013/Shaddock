@@ -10,12 +10,10 @@ public:
 	}
 	void OnUpdate() override
 	{
-		SD_INFO("ExampleLayer::Update");
 	}
 
 	void OnEvent(Shaddock::Event& event) override
 	{
-		SD_INFO("{0}", event);
 	}
 };
 
@@ -26,6 +24,7 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
+		PushOverlay(new Shaddock::ImGuiLayer());
 	}
 	~Sandbox()
 	{

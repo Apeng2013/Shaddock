@@ -53,6 +53,8 @@
       <Filter>Shaddock</Filter>
     </ClInclude>
     <ClInclude Include="src\sdpch.h" />
+    <ClInclude Include="src\Shaddock\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
@@ -71,5 +73,7 @@
       <Filter>Shaddock</Filter>
     </ClCompile>
     <ClCompile Include="src\sdpch.cpp" />
+    <ClCompile Include="src\Shaddock\ImGui\ImGuiLayer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
   </ItemGroup>
 </Project>

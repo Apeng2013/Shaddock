@@ -15,10 +15,12 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "Shaddock/vendor/GLFW/include"
 IncludeDir["Glad"] = "Shaddock/vendor/Glad/include"
+IncludeDir["ImGui"] = "Shaddock/vendor/imgui"
 
 -- Copy the GLFW premake file content to here
 include "Shaddock/vendor/GLFW"
 include "Shaddock/vendor/Glad"
+include "Shaddock/vendor/imgui"
 
 project "Shaddock"
 	location "Shaddock"
@@ -42,13 +44,15 @@ project "Shaddock"
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
-		"%{IncludeDir.Glad}"
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
 	}
 
 	links
 	{
 		"GLFW",
 		"Glad",
+		"ImGui",
 		"opengl32.lib"
 	}
 

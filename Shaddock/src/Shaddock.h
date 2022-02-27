@@ -5,6 +5,8 @@
 #include "Shaddock/Layer.h"
 #include "Shaddock/Log.h"
 
+#include "Shaddock/ImGui/ImGuiLayer.h"
+
 
 //----------------EntryPoint-------------
 #include "Shaddock/EntryPoint.h"
