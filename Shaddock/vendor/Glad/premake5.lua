@@ -21,11 +21,9 @@ project "Glad"
 		systemversion "latest"
 
 	filter "configurations:Debug"
-		buildoptions "/MDd"
 		runtime "Debug"
 		symbols "on"
 
 	filter "configurations:Release"
-		buildoptions "/MD"
 		runtime "Release"
 		optimize "on"
