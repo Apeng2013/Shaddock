@@ -3,6 +3,7 @@
 
 #include "Shaddock/Log.h"
 #include <glad/glad.h>
+#include "Input.h"
 
 
 namespace Shaddock {
