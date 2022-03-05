@@ -53,8 +53,6 @@ namespace Shaddock {
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 
-		SD_INFO("{0}", e);
-
 		for (auto iter = m_LayerStack.end(); iter != m_LayerStack.begin();)
 		{
 			(*--iter)->OnEvent(e);

@@ -5,6 +5,10 @@
 #include "Shaddock/Layer.h"
 #include "Shaddock/Log.h"
 
+#include "Shaddock/Input.h"
+#include "Shaddock/KeyCodes.h"
+#include "Shaddock/MouseButtonCodes.h"
+
 #include "Shaddock/ImGui/ImGuiLayer.h"
 
 

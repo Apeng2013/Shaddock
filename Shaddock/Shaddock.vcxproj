@@ -162,9 +162,11 @@
     <ClInclude Include="src\Shaddock\Events\MouseEvent.h" />
     <ClInclude Include="src\Shaddock\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Shaddock\Input.h" />
+    <ClInclude Include="src\Shaddock\KeyCodes.h" />
     <ClInclude Include="src\Shaddock\Layer.h" />
     <ClInclude Include="src\Shaddock\LayerStack.h" />
     <ClInclude Include="src\Shaddock\Log.h" />
+    <ClInclude Include="src\Shaddock\MouseButtonCodes.h" />
     <ClInclude Include="src\Shaddock\Window.h" />
     <ClInclude Include="src\sdpch.h" />
   </ItemGroup>
