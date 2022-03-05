@@ -17,6 +17,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Shaddock/vendor/GLFW/include"
 IncludeDir["Glad"] = "Shaddock/vendor/Glad/include"
 IncludeDir["ImGui"] = "Shaddock/vendor/imgui"
+IncludeDir["glm"] = "Shaddock/vendor/glm"
 
 -- Copy the GLFW premake file content to here
 include "Shaddock/vendor/GLFW"
@@ -38,7 +39,9 @@ project "Shaddock"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
 
 	includedirs
@@ -47,7 +50,8 @@ project "Shaddock"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -107,7 +111,8 @@ project "Sandbox"
 	includedirs
 	{
 		"Shaddock/vendor/spdlog/include",
-		"Shaddock/src"
+		"Shaddock/src",
+		"%{IncludeDir.glm}"
 	}
 
 	links
