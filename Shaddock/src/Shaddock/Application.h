@@ -6,6 +6,8 @@
 #include "Shaddock/Events/Event.h"
 #include "Shaddock/Events/ApplicationEvent.h"
 
+#include "Shaddock/ImGui/ImGuiLayer.h"
+
 namespace Shaddock {
 
 	class SHADDOCK_API Application
@@ -26,6 +28,7 @@ namespace Shaddock {
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 

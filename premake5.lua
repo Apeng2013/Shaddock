@@ -112,6 +112,7 @@ project "Sandbox"
 	{
 		"Shaddock/vendor/spdlog/include",
 		"Shaddock/src",
+		"Shaddock/vendor",
 		"%{IncludeDir.glm}"
 	}
 

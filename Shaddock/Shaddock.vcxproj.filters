@@ -45,9 +45,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h">
-      <Filter>src\Platform\OpenGL</Filter>
-    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
       <Filter>src\Platform\Windows</Filter>
     </ClInclude>
@@ -1352,9 +1349,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
-      <Filter>src\Platform\OpenGL</Filter>
-    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
@@ -1363,6 +1357,9 @@
     </ClCompile>
     <ClCompile Include="src\Shaddock\Application.cpp">
       <Filter>src\Shaddock</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shaddock\ImGui\ImGuiBuilder.cpp">
+      <Filter>src\Shaddock\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Shaddock\ImGui\ImGuiLayer.cpp">
       <Filter>src\Shaddock\ImGui</Filter>
