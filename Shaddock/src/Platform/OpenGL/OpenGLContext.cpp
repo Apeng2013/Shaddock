@@ -16,6 +16,11 @@ namespace Shaddock {
 		glfwMakeContextCurrent(m_WindowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		SD_CORE_ASSERT(status, "Failed to initialize Glad!");
+
+		SD_CORE_INFO("OpenGL Information:");
+		SD_CORE_INFO("	Vendor: {0}", glGetString(GL_VENDOR));
+		SD_CORE_INFO("	Renderer: {0}", glGetString(GL_RENDERER));
+		SD_CORE_INFO("	Version: {0}", glGetString(GL_VERSION));
 	}
 	void OpenGLContext::SwapBuffers()
 	{
