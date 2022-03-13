@@ -159,6 +159,7 @@
     <ClInclude Include="src\Shaddock\Log.h" />
     <ClInclude Include="src\Shaddock\MouseButtonCodes.h" />
     <ClInclude Include="src\Shaddock\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Shaddock\Renderer\Shader.h" />
     <ClInclude Include="src\Shaddock\Window.h" />
     <ClInclude Include="src\sdpch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
@@ -590,6 +591,7 @@
     <ClCompile Include="src\sdpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Shaddock\Renderer\Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">
