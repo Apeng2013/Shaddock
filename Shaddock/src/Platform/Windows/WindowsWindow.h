@@ -2,6 +2,7 @@
 
 
 #include "Shaddock/Window.h"
+#include "Shaddock/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
 
@@ -39,5 +40,6 @@ namespace Shaddock {
 		};
 
 		WindowData m_Data;
+		GraphicsContext* m_Context;
 	};
 }
