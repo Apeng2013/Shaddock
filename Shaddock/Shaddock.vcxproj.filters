@@ -1347,6 +1347,9 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Shaddock\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Shaddock\Renderer\Shader.h" />
+    <ClInclude Include="src\Shaddock\Renderer\Buffer.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\Shaddock\Renderer\Renderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
@@ -1378,5 +1381,8 @@
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Shaddock\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Shaddock\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\Shaddock\Renderer\Renderer.cpp" />
   </ItemGroup>
 </Project>
