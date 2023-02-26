@@ -18,6 +18,7 @@ IncludeDir["GLFW"] = "Shaddock/vendor/GLFW/include"
 IncludeDir["Glad"] = "Shaddock/vendor/Glad/include"
 IncludeDir["ImGui"] = "Shaddock/vendor/imgui"
 IncludeDir["glm"] = "Shaddock/vendor/glm"
+IncludeDir["spdlog"] = "Shaddock/vendor/spdlog/include"
 
 -- Copy the GLFW premake file content to here
 include "Shaddock/vendor/GLFW"
@@ -53,7 +54,7 @@ project "Shaddock"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.spdlog}",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
@@ -75,7 +76,7 @@ project "Shaddock"
 		{
 			"SD_PLATFORM_WINDOWS",
 			"SD_BUILD_DLL",
-			"GLFW_INCLUDE_NONE"
+			"GLFW_INCLUDE_NONE",
 		}
 
 	filter "configurations:Debug"
@@ -111,10 +112,10 @@ project "Sandbox"
 
 	includedirs
 	{
-		"Shaddock/vendor/spdlog/include",
+		"%{IncludeDir.spdlog}",
+		"%{IncludeDir.glm}",
 		"Shaddock/src",
-		"Shaddock/vendor",
-		"%{IncludeDir.glm}"
+		"Shaddock/vendor"
 	}
 
 	links

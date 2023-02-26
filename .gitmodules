@@ -4,9 +4,6 @@
 [submodule "Shaddock/vendor/GLFW"]
 	path = Shaddock/vendor/GLFW
 	url = https://github.com/Apeng2013/glfw
-[submodule "Shaddock/vendor/imgui"]
-	path = Shaddock/vendor/imgui
-	url = https://github.com/Apeng2013/imgui
 [submodule "Shaddock/vendor/glm"]
 	path = Shaddock/vendor/glm
 	url = https://github.com/g-truc/glm

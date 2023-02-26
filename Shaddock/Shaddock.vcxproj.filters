@@ -7,6 +7,9 @@
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Platform\OpenGL">
+      <UniqueIdentifier>{35A49437-A105-7245-2A73-B8F796D3A804}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Platform\Windows">
       <UniqueIdentifier>{5B054582-4794-CE4B-F0B2-E246DC20DFF1}</UniqueIdentifier>
     </Filter>
@@ -18,6 +21,9 @@
     </Filter>
     <Filter Include="src\Shaddock\ImGui">
       <UniqueIdentifier>{E7B15096-D395-11EC-3CF6-0B3F28F9FB6D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Shaddock\Renderer">
+      <UniqueIdentifier>{43A32156-AF0F-DD50-7803-75AEE42EFFB8}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
@@ -42,6 +48,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
       <Filter>src\Platform\Windows</Filter>
     </ClInclude>
@@ -92,6 +107,21 @@
     </ClInclude>
     <ClInclude Include="src\Shaddock\MouseButtonCodes.h">
       <Filter>src\Shaddock</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shaddock\Renderer\Buffer.h">
+      <Filter>src\Shaddock\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shaddock\Renderer\GraphicsContext.h">
+      <Filter>src\Shaddock\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shaddock\Renderer\Renderer.h">
+      <Filter>src\Shaddock\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shaddock\Renderer\Shader.h">
+      <Filter>src\Shaddock\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shaddock\Renderer\VertexArray.h">
+      <Filter>src\Shaddock\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Shaddock\Window.h">
       <Filter>src\Shaddock</Filter>
@@ -1344,16 +1374,17 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
-    <ClInclude Include="src\Shaddock\Renderer\GraphicsContext.h" />
-    <ClInclude Include="src\Shaddock\Renderer\Shader.h" />
-    <ClInclude Include="src\Shaddock\Renderer\Buffer.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
-    <ClInclude Include="src\Shaddock\Renderer\Renderer.h" />
-    <ClInclude Include="src\Shaddock\Renderer\VertexArray.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
@@ -1378,15 +1409,20 @@
     <ClCompile Include="src\Shaddock\Log.cpp">
       <Filter>src\Shaddock</Filter>
     </ClCompile>
+    <ClCompile Include="src\Shaddock\Renderer\Buffer.cpp">
+      <Filter>src\Shaddock\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shaddock\Renderer\Renderer.cpp">
+      <Filter>src\Shaddock\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shaddock\Renderer\Shader.cpp">
+      <Filter>src\Shaddock\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shaddock\Renderer\VertexArray.cpp">
+      <Filter>src\Shaddock\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\sdpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
-    <ClCompile Include="src\Shaddock\Renderer\Shader.cpp" />
-    <ClCompile Include="src\Shaddock\Renderer\Buffer.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
-    <ClCompile Include="src\Shaddock\Renderer\Renderer.cpp" />
-    <ClCompile Include="src\Shaddock\Renderer\VertexArray.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
   </ItemGroup>
 </Project>
