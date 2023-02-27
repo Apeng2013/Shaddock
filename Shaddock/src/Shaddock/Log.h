@@ -26,11 +26,11 @@ namespace Shaddock {
 #define SD_CORE_TRACE(...)		::Shaddock::Log().GetCoreLogger()->trace(__VA_ARGS__)
 #define SD_CORE_WARN(...)		::Shaddock::Log().GetCoreLogger()->warn(__VA_ARGS__)
 #define SD_CORE_ERROR(...)		::Shaddock::Log().GetCoreLogger()->error(__VA_ARGS__)
-#define SD_CORE_FATAL(...)		::Shaddock::Log().GetCoreLogger()->fatal(__VA_ARGS__)
+#define SD_CORE_CRITICAL(...)		::Shaddock::Log().GetCoreLogger()->critical(__VA_ARGS__)
 
 
 #define SD_INFO(...)			::Shaddock::Log().GetClientLogger()->info(__VA_ARGS__)
 #define SD_TRACE(...)			::Shaddock::Log().GetClientLogger()->trace(__VA_ARGS__)
 #define SD_WARN(...)			::Shaddock::Log().GetClientLogger()->warn(__VA_ARGS__)
 #define SD_ERROR(...)			::Shaddock::Log().GetClientLogger()->error(__VA_ARGS__)
-#define SD_FATAL(...)			::Shaddock::Log().GetClientLogger()->fatal(__VA_ARGS__)
+#define SD_CRITICAL(...)			::Shaddock::Log().GetClientLogger()->critical(__VA_ARGS__)
