@@ -163,6 +163,7 @@
     <ClInclude Include="src\Shaddock\MouseButtonCodes.h" />
     <ClInclude Include="src\Shaddock\Renderer\Buffer.h" />
     <ClInclude Include="src\Shaddock\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Shaddock\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\Shaddock\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Shaddock\Renderer\Renderer.h" />
     <ClInclude Include="src\Shaddock\Renderer\RendererAPI.h" />
@@ -600,6 +601,7 @@
     <ClCompile Include="src\Shaddock\LayerStack.cpp" />
     <ClCompile Include="src\Shaddock\Log.cpp" />
     <ClCompile Include="src\Shaddock\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Shaddock\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Shaddock\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Shaddock\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Shaddock\Renderer\RendererAPI.cpp" />

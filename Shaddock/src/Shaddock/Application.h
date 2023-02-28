@@ -11,6 +11,7 @@
 #include "Shaddock/Renderer/Shader.h"
 #include "Shaddock/Renderer/Buffer.h"
 #include "Shaddock/Renderer/VertexArray.h"
+#include "Shaddock/Renderer/OrthographicCamera.h"
 
 namespace Shaddock {
 
@@ -41,6 +42,8 @@ namespace Shaddock {
 
 		std::shared_ptr<Shader> m_BlueShader;
 		std::shared_ptr<VertexArray> m_BlueVertexArray;
+
+		OrthographicCamera m_Camera;
 
 	private:
 		static Application* s_Instance;
