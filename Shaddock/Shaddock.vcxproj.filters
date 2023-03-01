@@ -1378,6 +1378,7 @@
     <ClInclude Include="src\Shaddock\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Shaddock\Renderer\OrthographicCamera.h" />
+    <ClInclude Include="src\Shaddock\Core\Timestep.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">

@@ -9,7 +9,19 @@
 #include "Shaddock/KeyCodes.h"
 #include "Shaddock/MouseButtonCodes.h"
 
+#include "Shaddock/Core/Timestep.h"
+
 #include "Shaddock/ImGui/ImGuiLayer.h"
+
+#include "Shaddock/Renderer/Renderer.h"
+#include "Shaddock/Renderer/RenderCommand.h"
+
+#include "Shaddock/Renderer/Shader.h"
+#include "Shaddock/Renderer/VertexArray.h"
+#include "Shaddock/Renderer/Buffer.h"
+
+#include "Shaddock/Renderer/OrthographicCamera.h"
+
 
 
 //----------------EntryPoint-------------

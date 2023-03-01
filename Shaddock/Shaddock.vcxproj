@@ -149,6 +149,7 @@
     <ClInclude Include="src\Shaddock.h" />
     <ClInclude Include="src\Shaddock\Application.h" />
     <ClInclude Include="src\Shaddock\Core.h" />
+    <ClInclude Include="src\Shaddock\Core\Timestep.h" />
     <ClInclude Include="src\Shaddock\EntryPoint.h" />
     <ClInclude Include="src\Shaddock\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Shaddock\Events\Event.h" />
