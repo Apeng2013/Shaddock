@@ -67,7 +67,7 @@ public:
 			}
 		)";
 
-		m_Shader.reset(new Shaddock::Shader(vertexSrc, fragmentSrc));
+		m_Shader.reset(Shaddock::Shader::Create(vertexSrc, fragmentSrc));
 
 		// blue shader
 		m_BlueVertexArray.reset(Shaddock::VertexArray::Create());
@@ -124,7 +124,7 @@ public:
 			}
 		)";
 
-		m_BlueShader.reset(new Shaddock::Shader(blueVertexSrc, blueFragmentSrc));
+		m_BlueShader.reset(Shaddock::Shader::Create(blueVertexSrc, blueFragmentSrc));
 	}
 	void OnUpdate(Shaddock::Timestep ts) override
 	{
