@@ -15,8 +15,8 @@ namespace Shaddock {
 		unsigned int Height;
 
 		WindowProps(const std::string& title = "Shaddock Engine",
-			unsigned int width = 1280,
-			unsigned int height = 720)
+			unsigned int width = 1690,
+			unsigned int height = 960)
 			:Title(title), Width(width), Height(height)
 		{
 
