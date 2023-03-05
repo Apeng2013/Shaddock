@@ -19,6 +19,7 @@
 #include "Shaddock/Renderer/Shader.h"
 #include "Shaddock/Renderer/VertexArray.h"
 #include "Shaddock/Renderer/Buffer.h"
+#include "Shaddock/Renderer/Texture.h"
 
 #include "Shaddock/Renderer/OrthographicCamera.h"
 

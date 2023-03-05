@@ -1,6 +1,9 @@
 #include <Shaddock.h>
 
 #include "glm/gtc/matrix_transform.hpp"
+#include "glm/gtc/type_ptr.hpp"
+#include "Platform/OpenGL/OpenGLShader.h"
+#include "imgui/imgui.h"
 
 class ExampleLayer : public Shaddock::Layer
 {
@@ -69,33 +72,34 @@ public:
 
 		m_Shader.reset(Shaddock::Shader::Create(vertexSrc, fragmentSrc));
 
-		// blue shader
-		m_BlueVertexArray.reset(Shaddock::VertexArray::Create());
+		// flat color shader
+		m_SquareVA.reset(Shaddock::VertexArray::Create());
 
-		float blue_vertices[3 * 4] = {
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 -0.5f,  0.5f, 0.0f,
-			 0.5f,  0.5f, 0.0f,
+		float square_vertices[5 * 4] = {
+			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+			 -0.5f, 0.5f, 0.0f, 0.0f, 1.0f,
+			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f
 		};
 
-		std::shared_ptr<Shaddock::VertexBuffer> blueVertexBuffer;
-		blueVertexBuffer.reset(Shaddock::VertexBuffer::Create(blue_vertices, sizeof(blue_vertices)));
-		Shaddock::BufferLayout blue_layout = {
+		std::shared_ptr<Shaddock::VertexBuffer> squareVertexBuffer;
+		squareVertexBuffer.reset(Shaddock::VertexBuffer::Create(square_vertices, sizeof(square_vertices)));
+		Shaddock::BufferLayout square_layout = {
 			{Shaddock::ShaderDataType::Float3, "a_Position"},
+			{Shaddock::ShaderDataType::Float2, "a_TexCoord"},
 		};
-		blueVertexBuffer->SetLayout(blue_layout);
+		squareVertexBuffer->SetLayout(square_layout);
 
-		m_BlueVertexArray->AddVertexBuffer(blueVertexBuffer);
+		m_SquareVA->AddVertexBuffer(squareVertexBuffer);
 
-		unsigned int blue_indices[6] = { 0, 1, 2 , 3, 2, 1 };
+		unsigned int square_indices[6] = { 0, 1, 2 , 3, 2, 1 };
 
-		std::shared_ptr<Shaddock::IndexBuffer> blueIndexBuffer;
-		blueIndexBuffer.reset(Shaddock::IndexBuffer::Create(blue_indices, sizeof(blue_indices) / sizeof(uint32_t)));
+		std::shared_ptr<Shaddock::IndexBuffer> squareIndexBuffer;
+		squareIndexBuffer.reset(Shaddock::IndexBuffer::Create(square_indices, sizeof(square_indices) / sizeof(uint32_t)));
 
-		m_BlueVertexArray->SetIndexBuffer(blueIndexBuffer);
+		m_SquareVA->SetIndexBuffer(squareIndexBuffer);
 
-		std::string blueVertexSrc = R"(
+		std::string flatColorVertexSrc = R"(
 			#version 330 core
 			
 			layout(location = 0) in vec3 a_Position;
@@ -103,28 +107,65 @@ public:
 			uniform mat4 u_ViewProjectionMatrix;
 			uniform mat4 u_Transform;
 
-			out vec3 v_Position;
-
 			void main()
 			{
-				v_Position = a_Position;
 				gl_Position = u_ViewProjectionMatrix * u_Transform * vec4(a_Position, 1.0);	
 			}
 		)";
 
-		std::string blueFragmentSrc = R"(
+		std::string flatColorFragmentSrc = R"(
 			#version 330 core
 			
 			layout(location = 0) out vec4 color;
-			in vec3 v_Position;
+
+			uniform vec3 u_Color;
 
 			void main()
 			{
-				color = vec4(0.2, 0.3, 0.8, 1.0);
+				color = vec4(u_Color, 1.0);
 			}
 		)";
 
-		m_BlueShader.reset(Shaddock::Shader::Create(blueVertexSrc, blueFragmentSrc));
+		m_FlatColorShader.reset(Shaddock::Shader::Create(flatColorVertexSrc, flatColorFragmentSrc));
+
+		std::string textureVertexSrc = R"(
+			#version 330 core
+			
+			layout(location = 0) in vec3 a_Position;
+			layout(location = 1) in vec2 a_TexCoord;
+
+			uniform mat4 u_ViewProjectionMatrix;
+			uniform mat4 u_Transform;
+
+			out vec2 v_TexCoord;
+
+			void main()
+			{
+				v_TexCoord = a_TexCoord;
+				gl_Position = u_ViewProjectionMatrix * u_Transform * vec4(a_Position, 1.0);	
+			}
+		)";
+
+		std::string textureFragmentSrc = R"(
+			#version 330 core
+			
+			layout(location = 0) out vec4 color;
+
+			uniform sampler2D u_Texture;
+
+			in vec2 v_TexCoord;
+
+			void main()
+			{
+				color = texture(u_Texture, v_TexCoord);
+			}
+		)";
+		m_TextureShader.reset(Shaddock::Shader::Create(textureVertexSrc, textureFragmentSrc));
+
+		m_Texture = Shaddock::Texture2D::Create("assets/textures/letter_p.png");
+
+		m_Texture->Bind();
+		std::dynamic_pointer_cast<Shaddock::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
 	}
 	void OnUpdate(Shaddock::Timestep ts) override
 	{
@@ -151,16 +192,23 @@ public:
 		Shaddock::Renderer::BeginScene(m_Camera);
 
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
+
+		m_FlatColorShader->Bind();
+		std::dynamic_pointer_cast<Shaddock::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat3("u_Color", m_SquareColor);
+
+
 		for (int y = 0; y < 20; y++)
 		{
 			for (int x = 0; x < 20; x++)
 			{
 				glm::vec3 position(x * 0.11f, y * 0.11f, 0.0f);
 				glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * scale;
-				Shaddock::Renderer::Submit(m_BlueShader, m_BlueVertexArray, transform);
+				Shaddock::Renderer::Submit(m_FlatColorShader, m_SquareVA, transform);
 			}
 		}
-		Shaddock::Renderer::Submit(m_Shader, m_VertexArray);
+		m_Texture->Bind();
+		Shaddock::Renderer::Submit(m_TextureShader, m_SquareVA);
+		//Shaddock::Renderer::Submit(m_Shader, m_VertexArray);
 
 		Shaddock::Renderer::EndScene();
 	}
@@ -169,12 +217,24 @@ public:
 	{
 
 	}
+
+	void OnImGuiRender()
+	{
+		ImGui::Begin("Setting");
+		ImGui::ColorEdit3("Color", glm::value_ptr(m_SquareColor));
+		ImGui::End();
+	}
 private:
 	std::shared_ptr<Shaddock::Shader> m_Shader;
 	std::shared_ptr<Shaddock::VertexArray> m_VertexArray;
 
-	std::shared_ptr<Shaddock::Shader> m_BlueShader;
-	std::shared_ptr<Shaddock::VertexArray> m_BlueVertexArray;
+	std::shared_ptr<Shaddock::Shader> m_FlatColorShader;
+	std::shared_ptr<Shaddock::VertexArray> m_SquareVA;
+
+	std::shared_ptr<Shaddock::Shader> m_TextureShader;
+	Shaddock::Ref<Shaddock::Texture2D> m_Texture;
+
+	glm::vec3 m_SquareColor = { 0.2f, 0.3f, 0.8f };
 
 	Shaddock::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
