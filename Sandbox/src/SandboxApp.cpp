@@ -70,7 +70,7 @@ public:
 			}
 		)";
 
-		m_Shader.reset(Shaddock::Shader::Create(vertexSrc, fragmentSrc));
+		m_Shader = Shaddock::Shader::Create("VertexColorShader", vertexSrc, fragmentSrc);
 
 		// flat color shader
 		m_SquareVA.reset(Shaddock::VertexArray::Create());
@@ -126,13 +126,13 @@ public:
 			}
 		)";
 
-		m_FlatColorShader.reset(Shaddock::Shader::Create(flatColorVertexSrc, flatColorFragmentSrc));
+		m_FlatColorShader = Shaddock::Shader::Create("FlatColorShader", flatColorVertexSrc, flatColorFragmentSrc);
 
 		
-		m_TextureShader.reset(Shaddock::Shader::Create("assets/shaders/Texture.glsl"));
 		m_Texture = Shaddock::Texture2D::Create("assets/textures/letter_p.png");
 		m_Texture->Bind();
-		std::dynamic_pointer_cast<Shaddock::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
+		auto textureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
+		std::dynamic_pointer_cast<Shaddock::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
 	}
 	void OnUpdate(Shaddock::Timestep ts) override
 	{
@@ -174,7 +174,8 @@ public:
 			}
 		}
 		m_Texture->Bind();
-		Shaddock::Renderer::Submit(m_TextureShader, m_SquareVA);
+		auto textureShader = m_ShaderLibrary.Get("Texture");
+		Shaddock::Renderer::Submit(textureShader, m_SquareVA);
 		//Shaddock::Renderer::Submit(m_Shader, m_VertexArray);
 
 		Shaddock::Renderer::EndScene();
@@ -198,8 +199,9 @@ private:
 	std::shared_ptr<Shaddock::Shader> m_FlatColorShader;
 	std::shared_ptr<Shaddock::VertexArray> m_SquareVA;
 
-	std::shared_ptr<Shaddock::Shader> m_TextureShader;
 	Shaddock::Ref<Shaddock::Texture2D> m_Texture;
+
+	Shaddock::ShaderLibrary m_ShaderLibrary;
 
 	glm::vec3 m_SquareColor = { 0.2f, 0.3f, 0.8f };
 
