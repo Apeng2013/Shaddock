@@ -40,8 +40,11 @@ namespace Shaddock {
 			float time = (float)glfwGetTime();
 			Timestep ts = time - m_LastFrameTime;
 			m_LastFrameTime = time;
-			for (Layer* layer : m_LayerStack)
-				layer->OnUpdate(ts);
+			if (!m_Minimized)
+			{
+				for (Layer* layer : m_LayerStack)
+					layer->OnUpdate(ts);
+			}
 
 			m_ImGuiLayer->Begin();
 			for (Layer* layer : m_LayerStack)
@@ -66,6 +69,7 @@ namespace Shaddock {
 	{
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
+		dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FN(OnWindowResize));
 
 		for (auto iter = m_LayerStack.end(); iter != m_LayerStack.begin();)
 		{
@@ -79,5 +83,16 @@ namespace Shaddock {
 	{
 		m_Running = false;
 		return true;
+	}
+	bool Application::OnWindowResize(WindowResizeEvent& e)
+	{
+		if (e.GetWidth() == 0 || e.GetHeight() == 0)
+		{
+			m_Minimized = true;
+			return false;
+		}
+		m_Minimized = false;
+		Renderer::OnWindowResize(e.GetWidth(), e.GetHeight());
+		return false;
 	}
 }
