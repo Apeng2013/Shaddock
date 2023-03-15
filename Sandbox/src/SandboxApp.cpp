@@ -9,7 +9,7 @@ class ExampleLayer : public Shaddock::Layer
 {
 public:
 	ExampleLayer()
-		:Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f)
+		:Layer("Example"), m_CameraController(1280.0f / 720.f)
 	{
 		m_VertexArray.reset(Shaddock::VertexArray::Create());
 
@@ -136,27 +136,12 @@ public:
 	}
 	void OnUpdate(Shaddock::Timestep ts) override
 	{
-		if (Shaddock::Input::IsKeyPressed(SD_KEY_LEFT))
-			m_CameraPosition.x -= m_CameraMoveSpeed * ts;
-		if (Shaddock::Input::IsKeyPressed(SD_KEY_RIGHT))
-			m_CameraPosition.x += m_CameraMoveSpeed * ts;
-		if (Shaddock::Input::IsKeyPressed(SD_KEY_UP))
-			m_CameraPosition.y += m_CameraMoveSpeed * ts;
-		if (Shaddock::Input::IsKeyPressed(SD_KEY_DOWN))
-			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
-
-		if (Shaddock::Input::IsKeyPressed(SD_KEY_A))
-			m_CameraRotation += m_CameraRotateSpeed * ts;
-		if (Shaddock::Input::IsKeyPressed(SD_KEY_D))
-			m_CameraRotation -= m_CameraRotateSpeed * ts;
-
+		m_CameraController.OnUpdate(ts);
+		
 		Shaddock::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1.0f });
 		Shaddock::RenderCommand::Clear();
 
-		m_Camera.SetPosition(m_CameraPosition);
-		m_Camera.SetRotation(m_CameraRotation);
-
-		Shaddock::Renderer::BeginScene(m_Camera);
+		Shaddock::Renderer::BeginScene(m_CameraController.GetCamera());
 
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
@@ -183,7 +168,7 @@ public:
 
 	void OnEvent(Shaddock::Event& event) override
 	{
-
+		m_CameraController.OnEvent(event);
 	}
 
 	void OnImGuiRender()
@@ -205,12 +190,7 @@ private:
 
 	glm::vec3 m_SquareColor = { 0.2f, 0.3f, 0.8f };
 
-	Shaddock::OrthographicCamera m_Camera;
-	glm::vec3 m_CameraPosition;
-	float m_CameraMoveSpeed = 5.0f;
-
-	float m_CameraRotation = 0.0f;
-	float m_CameraRotateSpeed = 180.0f;
+	Shaddock::OrthographicCameraController m_CameraController;
 
 };
 

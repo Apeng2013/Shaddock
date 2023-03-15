@@ -9,6 +9,8 @@
 #include "Shaddock/KeyCodes.h"
 #include "Shaddock/MouseButtonCodes.h"
 
+#include "Shaddock/OrthographicCameraController.h"
+
 #include "Shaddock/Core/Timestep.h"
 
 #include "Shaddock/ImGui/ImGuiLayer.h"

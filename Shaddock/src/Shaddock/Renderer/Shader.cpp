@@ -32,6 +32,8 @@ namespace Shaddock {
 		SD_CORE_ASSERT(false, "Unknown RendererAPI!");
 		return nullptr;
 	}
+
+	//ShaderLibrary
 	void ShaderLibrary::Add(const std::string& name, const Ref<Shader>& shader)
 	{
 		SD_CORE_ASSERT(!Exits(name), "Shader already exit!");
