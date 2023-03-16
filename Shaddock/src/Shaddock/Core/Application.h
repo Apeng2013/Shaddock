@@ -2,7 +2,7 @@
 
 #include "Core.h"
 #include "Window.h"
-#include "Shaddock/LayerStack.h"
+#include "Shaddock/Core/LayerStack.h"
 #include "Shaddock/Events/Event.h"
 #include "Shaddock/Events/ApplicationEvent.h"
 

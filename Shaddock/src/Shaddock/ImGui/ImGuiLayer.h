@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shaddock/Layer.h"
+#include "Shaddock/Core/Layer.h"
 #include "Shaddock/Events/KeyEvent.h"
 #include "Shaddock/Events/ApplicationEvent.h"
 #include "Shaddock/Events/MouseEvent.h"

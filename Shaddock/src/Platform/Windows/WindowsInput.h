@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shaddock/Input.h"
+#include "Shaddock/Core/Input.h"
 
 
 namespace Shaddock {

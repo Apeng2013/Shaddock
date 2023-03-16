@@ -1,7 +1,7 @@
 #include "sdpch.h"
 #include "OrthographicCameraController.h"
-#include "Shaddock/Input.h"
-#include "Shaddock/KeyCodes.h"
+#include "Shaddock/Core/Input.h"
+#include "Shaddock/Core/KeyCodes.h"
 
 namespace Shaddock {
 	OrthographicCameraController::OrthographicCameraController(float aspectRatio, bool rotation)
@@ -40,7 +40,7 @@ namespace Shaddock {
 	bool OrthographicCameraController::OnMouseScrolled(MouseScrolledEvent& e)
 	{
 		m_ZoomLevel -= e.GetYOffset() * 0.25f;
-		m_ZoomLevel -= std::max(m_ZoomLevel, 0.25f);
+		m_ZoomLevel = std::max(m_ZoomLevel, 0.25f);
 		m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
 		return false;
 	}

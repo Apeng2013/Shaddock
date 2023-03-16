@@ -13,7 +13,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include "Shaddock/Log.h"
+#include "Shaddock/Core/Log.h"
 
 #ifdef SD_PLATFORM_WINDOWS
 	#include <Windows.h>

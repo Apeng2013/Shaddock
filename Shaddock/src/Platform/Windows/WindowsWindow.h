@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "Shaddock/Window.h"
+#include "Shaddock/Core/Window.h"
 #include "Shaddock/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>

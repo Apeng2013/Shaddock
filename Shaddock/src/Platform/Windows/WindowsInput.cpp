@@ -1,7 +1,7 @@
 #include "sdpch.h"
 
 #include "WindowsInput.h"
-#include "Shaddock/Application.h"
+#include "Shaddock/Core/Application.h"
 #include <GLFW/glfw3.h>
 
 namespace Shaddock {

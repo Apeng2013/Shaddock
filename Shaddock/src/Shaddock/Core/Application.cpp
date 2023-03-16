@@ -1,11 +1,11 @@
 #include "sdpch.h"
 #include "Application.h"
 
-#include "Shaddock/Log.h"
+#include "Shaddock/Core/Log.h"
 #include <glad/glad.h>
 #include "Input.h"
-#include "Renderer/Renderer.h"
-#include "Renderer/RenderCommand.h"
+#include "Shaddock/Renderer/Renderer.h"
+#include "Shaddock/Renderer/RenderCommand.h"
 #include "GLFW/glfw3.h"
 
 namespace Shaddock {

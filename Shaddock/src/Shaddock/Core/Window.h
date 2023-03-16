@@ -3,7 +3,7 @@
 
 #include "sdpch.h"
 
-#include "Shaddock/Core.h"
+#include "Shaddock/Core/Core.h"
 #include "Shaddock/Events/Event.h"
 
 namespace Shaddock {
