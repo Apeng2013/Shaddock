@@ -3,6 +3,7 @@
 #include "Renderer.h"
 #include "Platform/OpenGL/OpenGLVertexArray.h"
 
+
 namespace Shaddock {
 
 	Ref<VertexArray> VertexArray::Create()

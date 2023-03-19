@@ -16,8 +16,5 @@ public:
 private:
 	Shaddock::OrthographicCameraController m_CameraController;
 
-	Shaddock::Ref<Shaddock::VertexArray> m_SquareVA;
-	Shaddock::Ref<Shaddock::Shader> m_FlatColorShader;
-
 	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
 };

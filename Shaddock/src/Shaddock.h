@@ -16,6 +16,7 @@
 #include "Shaddock/ImGui/ImGuiLayer.h"
 
 #include "Shaddock/Renderer/Renderer.h"
+#include "Shaddock/Renderer/Renderer2D.h"
 #include "Shaddock/Renderer/RenderCommand.h"
 
 #include "Shaddock/Renderer/Shader.h"
