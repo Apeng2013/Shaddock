@@ -25,8 +25,3 @@
 
 #include "Shaddock/Renderer/OrthographicCamera.h"
 
-
-
-//----------------EntryPoint-------------
-#include "Shaddock/Core/EntryPoint.h"
-//---------------------------------------

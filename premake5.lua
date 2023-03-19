@@ -129,11 +129,6 @@ project "Sandbox"
 	filter "system:windows"
 		systemversion "latest"
 
-		defines
-		{
-			"SD_PLATFORM_WINDOWS",
-		}
-
 	filter "configurations:Debug"
 		defines "SD_DEBUG"
 		runtime "Debug"

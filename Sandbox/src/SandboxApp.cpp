@@ -1,9 +1,12 @@
 #include <Shaddock.h>
+#include <Shaddock/Core/EntryPoint.h>
 
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtc/type_ptr.hpp"
 #include "Platform/OpenGL/OpenGLShader.h"
 #include "imgui/imgui.h"
+
+#include "Sandbox2D.h"
 
 class ExampleLayer : public Shaddock::Layer
 {
@@ -11,7 +14,7 @@ public:
 	ExampleLayer()
 		:Layer("Example"), m_CameraController(1280.0f / 720.f)
 	{
-		m_VertexArray.reset(Shaddock::VertexArray::Create());
+		m_VertexArray = Shaddock::VertexArray::Create();
 
 		float vertices[3 * 7] = {
 			-0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
@@ -73,7 +76,7 @@ public:
 		m_Shader = Shaddock::Shader::Create("VertexColorShader", vertexSrc, fragmentSrc);
 
 		// flat color shader
-		m_SquareVA.reset(Shaddock::VertexArray::Create());
+		m_SquareVA = Shaddock::VertexArray::Create();
 
 		float square_vertices[5 * 4] = {
 			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
@@ -200,7 +203,8 @@ class Sandbox : public Shaddock::Application
 public:
 	Sandbox()
 	{
-		PushLayer(new ExampleLayer());
+		//PushLayer(new ExampleLayer());
+		PushLayer(new Sandbox2D());
 	}
 	~Sandbox()
 	{
