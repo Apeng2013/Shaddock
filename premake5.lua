@@ -78,7 +78,6 @@ project "Shaddock"
 
 		defines
 		{
-			"SD_PLATFORM_WINDOWS",
 			"SD_BUILD_DLL",
 			"GLFW_INCLUDE_NONE",
 		}
