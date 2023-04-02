@@ -1,10 +1,9 @@
 #include <Shaddock.h>
 #include <Shaddock/Core/EntryPoint.h>
 
-#include "glm/gtc/matrix_transform.hpp"
-#include "glm/gtc/type_ptr.hpp"
-#include "Platform/OpenGL/OpenGLShader.h"
-#include "imgui/imgui.h"
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <imgui/imgui.h>
 
 #include "Sandbox2D.h"
 
@@ -22,8 +21,7 @@ public:
 			 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f
 		};
 
-		std::shared_ptr<Shaddock::VertexBuffer> vertexBuffer;
-		vertexBuffer.reset(Shaddock::VertexBuffer::Create(vertices, sizeof(vertices)));
+		Shaddock::Ref<Shaddock::VertexBuffer> vertexBuffer = Shaddock::VertexBuffer::Create(vertices, sizeof(vertices));
 		Shaddock::BufferLayout layout = {
 			{Shaddock::ShaderDataType::Float3, "a_Position"},
 			{Shaddock::ShaderDataType::Float4, "a_Color"}
@@ -34,8 +32,7 @@ public:
 
 		unsigned int indices[3] = { 0, 1, 2 };
 
-		std::shared_ptr<Shaddock::IndexBuffer> indexBuffer;
-		indexBuffer.reset(Shaddock::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+		Shaddock::Ref<Shaddock::IndexBuffer> indexBuffer = Shaddock::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t));
 
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
@@ -85,8 +82,7 @@ public:
 			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f
 		};
 
-		std::shared_ptr<Shaddock::VertexBuffer> squareVertexBuffer;
-		squareVertexBuffer.reset(Shaddock::VertexBuffer::Create(square_vertices, sizeof(square_vertices)));
+		Shaddock::Ref<Shaddock::VertexBuffer> squareVertexBuffer = Shaddock::VertexBuffer::Create(square_vertices, sizeof(square_vertices));
 		Shaddock::BufferLayout square_layout = {
 			{Shaddock::ShaderDataType::Float3, "a_Position"},
 			{Shaddock::ShaderDataType::Float2, "a_TexCoord"},
@@ -97,8 +93,7 @@ public:
 
 		unsigned int square_indices[6] = { 0, 1, 2 , 3, 2, 1 };
 
-		std::shared_ptr<Shaddock::IndexBuffer> squareIndexBuffer;
-		squareIndexBuffer.reset(Shaddock::IndexBuffer::Create(square_indices, sizeof(square_indices) / sizeof(uint32_t)));
+		Shaddock::Ref<Shaddock::IndexBuffer> squareIndexBuffer = Shaddock::IndexBuffer::Create(square_indices, sizeof(square_indices) / sizeof(uint32_t));
 
 		m_SquareVA->SetIndexBuffer(squareIndexBuffer);
 
@@ -135,7 +130,7 @@ public:
 		m_Texture = Shaddock::Texture2D::Create("assets/textures/letter_p.png");
 		m_Texture->Bind();
 		auto textureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
-		std::dynamic_pointer_cast<Shaddock::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
+		textureShader->SetInt("u_Texture", 0);
 	}
 	void OnUpdate(Shaddock::Timestep ts) override
 	{
@@ -149,7 +144,7 @@ public:
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
 		m_FlatColorShader->Bind();
-		std::dynamic_pointer_cast<Shaddock::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat3("u_Color", m_SquareColor);
+		m_FlatColorShader->SetFloat3("u_Color", m_SquareColor);
 
 
 		for (int y = 0; y < 20; y++)

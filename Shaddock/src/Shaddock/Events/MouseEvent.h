@@ -4,7 +4,7 @@
 #include "Event.h"
 
 namespace Shaddock {
-	class SHADDOCK_API MouseMovedEvent : public Event
+	class MouseMovedEvent : public Event
 	{
 	public:
 		MouseMovedEvent(float x, float y)
@@ -26,7 +26,7 @@ namespace Shaddock {
 		float m_MouseX, m_MouseY;
 	};
 
-	class SHADDOCK_API MouseScrolledEvent :public Event
+	class MouseScrolledEvent :public Event
 	{
 	public:
 		MouseScrolledEvent(float offsetx, float offsety)
@@ -49,7 +49,7 @@ namespace Shaddock {
 		float m_OffsetX, m_OffsetY;
 	};
 
-	class SHADDOCK_API MouseButtonEvent :public Event
+	class MouseButtonEvent : public Event
 	{
 	public:
 
@@ -64,7 +64,7 @@ namespace Shaddock {
 		int m_Button;
 	};
 
-	class SHADDOCK_API MouseButtonPressedEvent :public MouseButtonEvent
+	class MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonPressedEvent(int button)
@@ -80,7 +80,7 @@ namespace Shaddock {
 		EVENT_CLASS_TYPE(MouseButtonPressed)
 	};
 
-	class SHADDOCK_API MouseButtonReleasedEvent :public MouseButtonEvent
+	class MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonReleasedEvent(int button)

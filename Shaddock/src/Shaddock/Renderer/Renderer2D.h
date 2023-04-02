@@ -1,7 +1,7 @@
 #pragma once
 
-#include "OrthographicCamera.h"
-#include "Texture.h"
+#include "Shaddock/Renderer/OrthographicCamera.h"
+#include "Shaddock/Renderer/Texture.h"
 
 namespace Shaddock {
 	class Renderer2D

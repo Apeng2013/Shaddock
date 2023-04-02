@@ -1,6 +1,6 @@
 #include "sdpch.h"
 
-#include "Texture.h"
+#include "Shaddock/Renderer/Texture.h"
 #include "Shaddock/Renderer/Renderer.h"
 #include "Platform/OpenGL/OpenGLTexture.h"
 

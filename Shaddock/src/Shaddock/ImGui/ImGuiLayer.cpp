@@ -1,11 +1,10 @@
 #include "sdpch.h"
 
-#include "ImGuiLayer.h"
+#include "Shaddock/ImGui/ImGuiLayer.h"
 
-#include "imgui.h"
-
-#include "backends/imgui_impl_opengl3.h"
-#include "backends/imgui_impl_glfw.h"
+#include <imgui.h>
+#include <backends/imgui_impl_opengl3.h>
+#include <backends/imgui_impl_glfw.h>
 
 #include "Shaddock/Core/Application.h"
 

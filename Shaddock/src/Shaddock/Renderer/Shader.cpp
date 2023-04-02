@@ -1,5 +1,5 @@
 #include "sdpch.h"
-#include "Shader.h"
+#include "Shaddock/Renderer/Shader.h"
 #include "Shaddock/Renderer/RendererAPI.h"
 #include "Shaddock/Renderer/Renderer.h"
 #include "Platform/OpenGL/OpenGLShader.h"

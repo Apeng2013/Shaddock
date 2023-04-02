@@ -1,6 +1,6 @@
 #include "sdpch.h"
-#include "OpenGLVertexArray.h"
-#include "glad/glad.h"
+#include "Platform/OpenGL/OpenGLVertexArray.h"
+#include <glad/glad.h>
 
 namespace Shaddock {
 
@@ -8,17 +8,17 @@ namespace Shaddock {
 	{
 		switch (type)
 		{
-		case Shaddock::ShaderDataType::Float:    return GL_FLOAT;
-		case Shaddock::ShaderDataType::Float2:   return GL_FLOAT;
-		case Shaddock::ShaderDataType::Float3:   return GL_FLOAT;
-		case Shaddock::ShaderDataType::Float4:   return GL_FLOAT;
-		case Shaddock::ShaderDataType::Mat3:     return GL_FLOAT;
-		case Shaddock::ShaderDataType::Mat4:     return GL_FLOAT;
-		case Shaddock::ShaderDataType::Int:      return GL_INT;
-		case Shaddock::ShaderDataType::Int2:     return GL_INT;
-		case Shaddock::ShaderDataType::Int3:     return GL_INT;
-		case Shaddock::ShaderDataType::Int4:     return GL_INT;
-		case Shaddock::ShaderDataType::Bool:     return GL_BOOL;
+		case ShaderDataType::Float:    return GL_FLOAT;
+		case ShaderDataType::Float2:   return GL_FLOAT;
+		case ShaderDataType::Float3:   return GL_FLOAT;
+		case ShaderDataType::Float4:   return GL_FLOAT;
+		case ShaderDataType::Mat3:     return GL_FLOAT;
+		case ShaderDataType::Mat4:     return GL_FLOAT;
+		case ShaderDataType::Int:      return GL_INT;
+		case ShaderDataType::Int2:     return GL_INT;
+		case ShaderDataType::Int3:     return GL_INT;
+		case ShaderDataType::Int4:     return GL_INT;
+		case ShaderDataType::Bool:     return GL_BOOL;
 		}
 
 		SD_CORE_ASSERT(false, "Unknown ShaderDataType!");
@@ -45,7 +45,7 @@ namespace Shaddock {
 		glBindVertexArray(0);
 	}
 
-	void OpenGLVertexArray::AddVertexBuffer(std::shared_ptr<VertexBuffer>& vertexBuffer)
+	void OpenGLVertexArray::AddVertexBuffer(Ref<VertexBuffer>& vertexBuffer)
 	{
 		SD_CORE_ASSERT(vertexBuffer->GetLayout().GetElements().size(), "Vertex Buffer has no layout!");
 
@@ -68,7 +68,7 @@ namespace Shaddock {
 		m_VertexBuffers.push_back(vertexBuffer);
 	}
 
-	void OpenGLVertexArray::SetIndexBuffer(std::shared_ptr<IndexBuffer>& indexBuffer)
+	void OpenGLVertexArray::SetIndexBuffer(Ref<IndexBuffer>& indexBuffer)
 	{
 		glBindVertexArray(m_RendererID);
 		indexBuffer->Bind();

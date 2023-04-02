@@ -44,20 +44,6 @@
 #endif // End of platform detection
 
 
-#ifdef SD_PLATFORM_WINDOWS
-	#ifdef SD_DYNAMIC_LINK
-		#ifdef SD_BUILD_DLL
-			#define SHADDOCK_API __declspec(dllexport)
-		#else
-			#define SHADDOCK_API __declspec(dllimport)
-		#endif
-	#else
-		#define SHADDOCK_API
-	#endif
-#else
-	#error Shaddock only support Windows!
-#endif
-
 #ifdef SD_DEBUG
 	#define SD_ENABLE_ASSERTS
 #endif

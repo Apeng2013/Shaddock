@@ -610,6 +610,7 @@
     <ClCompile Include="src\Shaddock\ImGui\ImGuiBuilder.cpp" />
     <ClCompile Include="src\Shaddock\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Shaddock\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Shaddock\Renderer\GraphicsContext.cpp" />
     <ClCompile Include="src\Shaddock\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Shaddock\Renderer\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Shaddock\Renderer\RenderCommand.cpp" />

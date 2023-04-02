@@ -1,14 +1,14 @@
 #pragma once
 
 #include "Shaddock/Core/Core.h"
-#include "Layer.h"
+#include "Shaddock/Core/Layer.h"
 
 #include <vector>
 
 
 namespace Shaddock {
 
-	class SHADDOCK_API LayerStack
+	class LayerStack
 	{
 	public:
 		LayerStack();

@@ -1,6 +1,6 @@
 #include "sdpch.h"
-#include "VertexArray.h"
-#include "Renderer.h"
+#include "Shaddock/Renderer/VertexArray.h"
+#include "Shaddock/Renderer/Renderer.h"
 #include "Platform/OpenGL/OpenGLVertexArray.h"
 
 

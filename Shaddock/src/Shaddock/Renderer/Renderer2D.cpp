@@ -1,9 +1,9 @@
 #include "sdpch.h"
 
-#include "Renderer2D.h"
-#include "Shader.h"
-#include "VertexArray.h"
-#include "RenderCommand.h"
+#include "Shaddock/Renderer/Renderer2D.h"
+#include "Shaddock/Renderer/Shader.h"
+#include "Shaddock/Renderer/VertexArray.h"
+#include "Shaddock/Renderer/RenderCommand.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 
@@ -27,8 +27,7 @@ namespace Shaddock {
 			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
 			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 		};
-		std::shared_ptr<VertexBuffer> vertexBuffer;
-		vertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
+		Ref<VertexBuffer> vertexBuffer = VertexBuffer::Create(vertices, sizeof(vertices));
 		BufferLayout layout = {
 			{ShaderDataType::Float3, "a_Position"},
 			{ShaderDataType::Float2, "a_TexCoord"}
@@ -37,8 +36,7 @@ namespace Shaddock {
 		s_Data->QuadVertexArray->AddVertexBuffer(vertexBuffer);
 
 		unsigned int indices[6] = { 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr<IndexBuffer> indexBuffer;
-		indexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+		Ref<IndexBuffer> indexBuffer = IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t));
 		s_Data->QuadVertexArray->SetIndexBuffer(indexBuffer);
 
 		s_Data->WhiteTexture = Texture2D::Create(1, 1);

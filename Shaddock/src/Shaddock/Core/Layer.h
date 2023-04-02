@@ -1,12 +1,12 @@
 #pragma once
 
 #include "Shaddock/Core/Core.h"
-#include "Shaddock/Events/Event.h"
 #include "Shaddock/Core/Timestep.h"
+#include "Shaddock/Events/Event.h"
 
 
 namespace Shaddock {
-	class SHADDOCK_API Layer
+	class Layer
 	{
 	public:
 		Layer(const std::string& name = "Layer");

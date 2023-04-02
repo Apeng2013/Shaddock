@@ -1,16 +1,13 @@
 #include "sdpch.h"
-#include "Application.h"
-
+#include "Shaddock/Core/Application.h"
 #include "Shaddock/Core/Log.h"
-#include <glad/glad.h>
-#include "Input.h"
+#include "Shaddock/Core/Input.h"
 #include "Shaddock/Renderer/Renderer.h"
 #include "Shaddock/Renderer/RenderCommand.h"
 #include "GLFW/glfw3.h"
+#include <glad/glad.h>
 
 namespace Shaddock {
-
-#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
 
 	Application* Application::s_Instance = nullptr;
 
@@ -19,18 +16,18 @@ namespace Shaddock {
 		SD_CORE_ASSERT(!s_Instance, "Application alread exits!");
 		s_Instance = this;
 
-		m_Window = std::unique_ptr<Window>(Window::Create());
-		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+		m_Window = Window::Create();
+		m_Window->SetEventCallback(SD_BIND_EVENT_FN(Application::OnEvent));
+
+		Renderer::Init();
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
-
-		Renderer::Init();
 		
 	}
 	Application::~Application()
 	{
-
+		Renderer::Shutdown();
 	}
 	void Application::Run()
 	{
@@ -68,8 +65,8 @@ namespace Shaddock {
 	void Application::OnEvent(Event& e)
 	{
 		EventDispatcher dispatcher(e);
-		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
-		dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FN(OnWindowResize));
+		dispatcher.Dispatch<WindowCloseEvent>(SD_BIND_EVENT_FN(Application::OnWindowClose));
+		dispatcher.Dispatch<WindowResizeEvent>(SD_BIND_EVENT_FN(Application::OnWindowResize));
 
 		for (auto iter = m_LayerStack.end(); iter != m_LayerStack.begin();)
 		{

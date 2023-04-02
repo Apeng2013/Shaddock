@@ -5,7 +5,7 @@
 
 namespace Shaddock {
 
-	class SHADDOCK_API KeyEvent : public Event
+	class KeyEvent : public Event
 	{
 	public:
 		inline int GetKeyCode() const { return m_KeyCode; }
@@ -20,7 +20,7 @@ namespace Shaddock {
 		}
 		int m_KeyCode;
 	};
-	class SHADDOCK_API KeyPressedEvent :public KeyEvent
+	class KeyPressedEvent : public KeyEvent
 	{
 	public:
 		KeyPressedEvent(int keycode, int repeatCount)
@@ -43,7 +43,7 @@ namespace Shaddock {
 		int m_RepeatCount;
 	};
 
-	class SHADDOCK_API KeyReleasedEvent :public KeyEvent
+	class KeyReleasedEvent : public KeyEvent
 	{
 	public:
 		KeyReleasedEvent(int keycode)
@@ -62,7 +62,7 @@ namespace Shaddock {
 		EVENT_CLASS_TYPE(KeyReleased)
 	};
 
-	class SHADDOCK_API KeyTypedEvent :public KeyEvent
+	class KeyTypedEvent : public KeyEvent
 	{
 	public:
 		KeyTypedEvent(int keycode)

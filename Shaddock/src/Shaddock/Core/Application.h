@@ -1,8 +1,10 @@
 #pragma once
 
-#include "Core.h"
-#include "Window.h"
+#include "Shaddock/Core/Core.h"
+#include "Shaddock/Core/Window.h"
 #include "Shaddock/Core/LayerStack.h"
+#include "Shaddock/Core/Timestep.h"
+
 #include "Shaddock/Events/Event.h"
 #include "Shaddock/Events/ApplicationEvent.h"
 
@@ -13,11 +15,10 @@
 #include "Shaddock/Renderer/VertexArray.h"
 #include "Shaddock/Renderer/OrthographicCamera.h"
 
-#include "Shaddock/Core/Timestep.h"
 
 namespace Shaddock {
 
-	class SHADDOCK_API Application
+	class Application
 	{
 	public:
 		Application();
