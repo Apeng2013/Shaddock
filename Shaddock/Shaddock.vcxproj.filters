@@ -1491,5 +1491,7 @@
     </ClCompile>
     <ClCompile Include="src\Shaddock\Renderer\Renderer2D.cpp" />
     <ClCompile Include="src\Shaddock\Renderer\GraphicsContext.cpp" />
+    <ClCompile Include="src\Shaddock\Core\Input.cpp" />
+    <ClCompile Include="src\Shaddock\Core\Window.cpp" />
   </ItemGroup>
 </Project>
