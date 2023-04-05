@@ -24,16 +24,19 @@ namespace Shaddock {
 
 	WindowsWindow::WindowsWindow(const WindowProps& props)
 	{
+		SD_PROFILE_FUNCTION();
 		Init(props);
 	}
 
 	WindowsWindow::~WindowsWindow()
 	{
+		SD_PROFILE_FUNCTION();
 		Shutdown();
 	}
 
 	void WindowsWindow::Init(const WindowProps& props)
 	{
+		SD_PROFILE_FUNCTION();
 		m_Data.Title = props.Title;
 		m_Data.Height = props.Height;
 		m_Data.Width = props.Width;
@@ -141,6 +144,7 @@ namespace Shaddock {
 
 	void WindowsWindow::Shutdown()
 	{
+		SD_PROFILE_FUNCTION();
 		glfwDestroyWindow(m_Window);
 		if (--s_GLFWWindowCount == 0)
 		{
@@ -151,12 +155,14 @@ namespace Shaddock {
 
 	void WindowsWindow::OnUpdate()
 	{
+		SD_PROFILE_FUNCTION();
 		glfwPollEvents();
 		m_Context->SwapBuffers();
 	}
 
 	void WindowsWindow::SetVSync(bool enabled)
 	{
+		SD_PROFILE_FUNCTION();
 		if (enabled)
 			glfwSwapInterval(1);
 		else

@@ -18,6 +18,7 @@ namespace Shaddock {
 
 	void Renderer2D::Init()
 	{
+		SD_PROFILE_FUNCTION();
 		s_Data = new Renderer2DStorage();
 		s_Data->QuadVertexArray = VertexArray::Create();
 
@@ -49,15 +50,18 @@ namespace Shaddock {
 	}
 	void Renderer2D::Shutdown()
 	{
+		SD_PROFILE_FUNCTION();
 		delete s_Data;
 	}
 	void Renderer2D::BeginScene(OrthographicCamera& camera)
 	{
+		SD_PROFILE_FUNCTION();
 		s_Data->TextureShader->Bind();
 		s_Data->TextureShader->SetMat4("u_ViewProjectionMatrix", camera.GetViewProjectionMatrix());
 	}
 	void Renderer2D::EndScene()
 	{
+		SD_PROFILE_FUNCTION();
 	}
 	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, const glm::vec4& color)
 	{
@@ -65,6 +69,7 @@ namespace Shaddock {
 	}
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color)
 	{
+		SD_PROFILE_FUNCTION();
 		s_Data->TextureShader->Bind();
 		s_Data->TextureShader->SetFloat4("u_Color", color);
 		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
@@ -79,6 +84,7 @@ namespace Shaddock {
 	}
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<Texture2D>& texture)
 	{
+		SD_PROFILE_FUNCTION();
 		texture->Bind();
 		s_Data->TextureShader->Bind();
 		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });

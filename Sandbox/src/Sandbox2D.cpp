@@ -11,20 +11,19 @@ Sandbox2D::Sandbox2D()
 
 void Sandbox2D::OnAttach()
 {
+	SD_PROFILE_FUNCTION();
 	m_Texture = Shaddock::Texture2D::Create("assets/textures/letter_p.png");
 }
 
 void Sandbox2D::OnDetach()
 {
+	SD_PROFILE_FUNCTION();
 }
 
 void Sandbox2D::OnUpdate(Shaddock::Timestep ts)
 {
 	SD_PROFILE_FUNCTION();
-	{
-		SD_PROFILE_SCOPE("Sandbox2D::CameraController");
-		m_CameraController.OnUpdate(ts);
-	}
+	m_CameraController.OnUpdate(ts);
 	{
 		SD_PROFILE_SCOPE("Sandbox2D::Renderer");
 		Shaddock::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1.0f });

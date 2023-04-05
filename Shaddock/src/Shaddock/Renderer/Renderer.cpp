@@ -11,6 +11,7 @@ namespace Shaddock {
 
 	void Renderer::Init()
 	{
+		SD_PROFILE_FUNCTION();
 		RenderCommand::Init();
 		Renderer2D::Init();
 	}

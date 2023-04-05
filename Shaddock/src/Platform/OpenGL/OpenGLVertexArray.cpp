@@ -27,26 +27,31 @@ namespace Shaddock {
 
 	OpenGLVertexArray::OpenGLVertexArray()
 	{
+		SD_PROFILE_FUNCTION();
 		glGenVertexArrays(1, &m_RendererID);
 	}
 
 	OpenGLVertexArray::~OpenGLVertexArray()
 	{
+		SD_PROFILE_FUNCTION();
 		glDeleteVertexArrays(1, &m_RendererID);
 	}
 
 	void OpenGLVertexArray::Bind() const
 	{
+		SD_PROFILE_FUNCTION();
 		glBindVertexArray(m_RendererID);
 	}
 
 	void OpenGLVertexArray::Unbind() const
 	{
+		SD_PROFILE_FUNCTION();
 		glBindVertexArray(0);
 	}
 
 	void OpenGLVertexArray::AddVertexBuffer(Ref<VertexBuffer>& vertexBuffer)
 	{
+		SD_PROFILE_FUNCTION();
 		SD_CORE_ASSERT(vertexBuffer->GetLayout().GetElements().size(), "Vertex Buffer has no layout!");
 
 		glBindVertexArray(m_RendererID);
@@ -70,6 +75,7 @@ namespace Shaddock {
 
 	void OpenGLVertexArray::SetIndexBuffer(Ref<IndexBuffer>& indexBuffer)
 	{
+		SD_PROFILE_FUNCTION();
 		glBindVertexArray(m_RendererID);
 		indexBuffer->Bind();
 		m_IndexBuffer = indexBuffer;

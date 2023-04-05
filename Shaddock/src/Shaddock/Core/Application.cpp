@@ -13,6 +13,7 @@ namespace Shaddock {
 
 	Application::Application()
 	{
+		SD_PROFILE_FUNCTION();
 		SD_CORE_ASSERT(!s_Instance, "Application alread exits!");
 		s_Instance = this;
 
@@ -27,25 +28,31 @@ namespace Shaddock {
 	}
 	Application::~Application()
 	{
+		SD_PROFILE_FUNCTION();
 		Renderer::Shutdown();
 	}
 	void Application::Run()
 	{
+		SD_PROFILE_FUNCTION();
 		while (m_Running)
 		{
-
+			SD_PROFILE_SCOPE("RunLoop");
 			float time = (float)glfwGetTime();
 			Timestep ts = time - m_LastFrameTime;
 			m_LastFrameTime = time;
 			if (!m_Minimized)
 			{
+				SD_PROFILE_SCOPE("LayerStack OnUpdate");
 				for (Layer* layer : m_LayerStack)
 					layer->OnUpdate(ts);
 			}
 
 			m_ImGuiLayer->Begin();
-			for (Layer* layer : m_LayerStack)
-				layer->OnImGuiRender();
+			{
+				SD_PROFILE_SCOPE("LayerStack OnImGuiRender");
+				for (Layer* layer : m_LayerStack)
+					layer->OnImGuiRender();
+			}
 			m_ImGuiLayer->End();
 
 			m_Window->OnUpdate();
@@ -54,16 +61,21 @@ namespace Shaddock {
 
 	void Application::PushLayer(Layer* layer)
 	{
+		SD_PROFILE_FUNCTION();
 		m_LayerStack.PushLayer(layer);
+		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(Layer* layer)
 	{
+		SD_PROFILE_FUNCTION();
 		m_LayerStack.PushOverlay(layer);
+		layer->OnAttach();
 	}
 
 	void Application::OnEvent(Event& e)
 	{
+		SD_PROFILE_FUNCTION();
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(SD_BIND_EVENT_FN(Application::OnWindowClose));
 		dispatcher.Dispatch<WindowResizeEvent>(SD_BIND_EVENT_FN(Application::OnWindowResize));
@@ -83,6 +95,7 @@ namespace Shaddock {
 	}
 	bool Application::OnWindowResize(WindowResizeEvent& e)
 	{
+		SD_PROFILE_FUNCTION();
 		if (e.GetWidth() == 0 || e.GetHeight() == 0)
 		{
 			m_Minimized = true;
