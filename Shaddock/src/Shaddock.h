@@ -7,7 +7,7 @@
 #include "Shaddock/Core/Log.h"
 #include "Shaddock/Core/Input.h"
 #include "Shaddock/Core/KeyCodes.h"
-#include "Shaddock/Core/MouseButtonCodes.h"
+#include "Shaddock/Core/MouseCodes.h"
 #include "Shaddock/Core/Timestep.h"
 
 #include "Shaddock/Renderer/Renderer.h"

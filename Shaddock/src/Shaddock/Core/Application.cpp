@@ -80,9 +80,9 @@ namespace Shaddock {
 		dispatcher.Dispatch<WindowCloseEvent>(SD_BIND_EVENT_FN(Application::OnWindowClose));
 		dispatcher.Dispatch<WindowResizeEvent>(SD_BIND_EVENT_FN(Application::OnWindowResize));
 
-		for (auto iter = m_LayerStack.end(); iter != m_LayerStack.begin();)
+		for (auto iter = m_LayerStack.rbegin(); iter != m_LayerStack.rend(); ++iter)
 		{
-			(*--iter)->OnEvent(e);
+			(*iter)->OnEvent(e);
 			if (e.Handled)
 				break;
 		}

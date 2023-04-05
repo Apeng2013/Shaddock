@@ -3,10 +3,10 @@
 #include "Shaddock/Events/ApplicationEvent.h"
 #include "Shaddock/Events/KeyEvent.h"
 #include "Shaddock/Events/MouseEvent.h"
-
 #include "Platform/Windows/WindowsWindow.h"
-
 #include "Platform/OpenGL/OpenGLContext.h"
+#include "Shaddock/Renderer/Renderer.h"
+#include "Shaddock/Core/Input.h"
 
 namespace Shaddock {
 	
@@ -49,7 +49,10 @@ namespace Shaddock {
 			glfwSetErrorCallback(GLFWErrorCallback);
 		}
 		++s_GLFWWindowCount;
-
+#ifdef SD_DEBUG
+		if (Renderer::GetAPI() == RendererAPI::API::OpenGL)
+			glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
+#endif
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		m_Context = GraphicsContext::Create(m_Window);
 		m_Context->Init();
@@ -81,18 +84,18 @@ namespace Shaddock {
 				{
 					case GLFW_PRESS:
 					{
-						KeyPressedEvent event(key, 0);
+						KeyPressedEvent event(static_cast<KeyCode>(key), 0);
 						data.EventCallback(event);
 						break;
 					}
 					case GLFW_RELEASE:
 					{
-						KeyReleasedEvent event(key);
+						KeyReleasedEvent event(static_cast<KeyCode>(key));
 						data.EventCallback(event);
 						break;
 					}
 					case GLFW_REPEAT:
-						KeyPressedEvent event(key, 1);
+						KeyPressedEvent event(static_cast<KeyCode>(key), 1);
 						data.EventCallback(event);
 						break;
 					}
@@ -102,7 +105,7 @@ namespace Shaddock {
 			{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 
-				KeyTypedEvent event(keycode);
+				KeyTypedEvent event(static_cast<KeyCode>(keycode));
 				data.EventCallback(event);
 			});
 
@@ -114,13 +117,13 @@ namespace Shaddock {
 				{
 					case GLFW_PRESS:
 					{
-						MouseButtonPressedEvent event(button);
+						MouseButtonPressedEvent event(static_cast<MouseCode>(button));
 						data.EventCallback(event);
 						break;
 					}
 					case GLFW_RELEASE:
 					{
-						MouseButtonReleasedEvent event(button);
+						MouseButtonReleasedEvent event(static_cast<MouseCode>(button));
 						data.EventCallback(event);
 						break;
 					}

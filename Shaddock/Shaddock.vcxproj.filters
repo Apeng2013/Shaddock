@@ -105,7 +105,7 @@
     <ClInclude Include="src\Shaddock\Core\Log.h">
       <Filter>src\Shaddock\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Shaddock\Core\MouseButtonCodes.h">
+    <ClInclude Include="src\Shaddock\Core\MouseCodes.h">
       <Filter>src\Shaddock\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Shaddock\Core\Timestep.h">
