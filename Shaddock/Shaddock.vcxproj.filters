@@ -1411,7 +1411,7 @@
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
     <ClInclude Include="src\Shaddock\Renderer\Renderer2D.h" />
-    <ClInclude Include="src\Shaddock\Debug\Instrumentation.h" />
+    <ClInclude Include="src\Shaddock\Debug\Instrumentor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">

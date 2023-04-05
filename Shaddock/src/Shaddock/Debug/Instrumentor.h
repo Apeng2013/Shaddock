@@ -1,17 +1,21 @@
 #pragma once
 
-#include <string>
 #include <chrono>
 #include <algorithm>
 #include <fstream>
+#include <iomanip>
+#include <string>
 #include <thread>
 
 namespace Shaddock
 {
+	using FloatingPointMicroseconds = std::chrono::duration<double, std::micro>;
+
 	struct ProfileResult
 	{
 		std::string Name;
-		long long Start, End;
+		FloatingPointMicroseconds Start;
+		std::chrono::microseconds ElapsedTime;
 		std::thread::id ThreadID;
 	};
 
@@ -67,14 +71,15 @@ namespace Shaddock
 			std::stringstream json;
 			std::string name = result.Name;
 			std::replace(name.begin(), name.end(), '"', '\'');
+			json << std::setprecision(3) << std::fixed;
 			json << ",{";
 			json << "\"cat\":\"function\",";
-			json << "\"dur\":" << (result.End - result.Start) << ',';
+			json << "\"dur\":" << (result.ElapsedTime.count()) << ',';
 			json << "\"name\":\"" << name << "\",";
 			json << "\"ph\":\"X\",";
 			json << "\"pid\":0,";
 			json << "\"tid\":" << result.ThreadID << ",";
-			json << "\"ts\":" << result.Start;
+			json << "\"ts\":" << result.Start.count();
 			json << "}";
 
 			std::lock_guard lock(m_Mutex);
@@ -120,7 +125,7 @@ namespace Shaddock
 		InstrumentationTimer(const char* name)
 			:m_Name(name), m_Stopped(false)
 		{
-			m_StartTimepoint = std::chrono::high_resolution_clock::now();
+			m_StartTimepoint = std::chrono::steady_clock::now();
 		}
 		~InstrumentationTimer()
 		{
@@ -129,16 +134,17 @@ namespace Shaddock
 		}
 		void Stop()
 		{
-			auto endTimepoint = std::chrono::high_resolution_clock::now();
-			long long start = std::chrono::time_point_cast<std::chrono::microseconds>(m_StartTimepoint).time_since_epoch().count();
-			long long end = std::chrono::time_point_cast<std::chrono::microseconds>(endTimepoint).time_since_epoch().count();
-			Instrumentor::Get().WriteProfile({ m_Name, start, end, std::this_thread::get_id() });
+			auto endTimepoint = std::chrono::steady_clock::now();
+			auto highResStart = FloatingPointMicroseconds{ m_StartTimepoint.time_since_epoch() };
+			auto elapsedTime = std::chrono::time_point_cast<std::chrono::microseconds>(endTimepoint).time_since_epoch() - 
+				std::chrono::time_point_cast<std::chrono::microseconds>(m_StartTimepoint).time_since_epoch();
+			Instrumentor::Get().WriteProfile({ m_Name, highResStart, elapsedTime, std::this_thread::get_id() });
 			m_Stopped = true;
 		}
 
 	private:
 		const char* m_Name;
-		std::chrono::time_point<std::chrono::high_resolution_clock> m_StartTimepoint;
+		std::chrono::time_point<std::chrono::steady_clock> m_StartTimepoint;
 		bool m_Stopped;
 
 	};

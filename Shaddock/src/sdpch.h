@@ -14,7 +14,7 @@
 #include <unordered_set>
 
 #include "Shaddock/Core/Log.h"
-#include "Shaddock/Debug/Instrumentation.h"
+#include "Shaddock/Debug/Instrumentor.h"
 
 #ifdef SD_PLATFORM_WINDOWS
 	#include <Windows.h>
