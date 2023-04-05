@@ -160,6 +160,7 @@
     <ClInclude Include="src\Shaddock\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\Shaddock\Core\Timestep.h" />
     <ClInclude Include="src\Shaddock\Core\Window.h" />
+    <ClInclude Include="src\Shaddock\Debug\Instrumentation.h" />
     <ClInclude Include="src\Shaddock\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Shaddock\Events\Event.h" />
     <ClInclude Include="src\Shaddock\Events\KeyEvent.h" />
