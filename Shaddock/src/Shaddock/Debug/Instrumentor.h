@@ -150,7 +150,7 @@ namespace Shaddock
 	};
 }
 
-#define SD_PROFILE 1
+#define SD_PROFILE 0
 #if SD_PROFILE
 	#if defined(__GUNC__) || (defined(__MWERKS__) && (__MWERKS__ >= 0x3000)) || (defined(__ICC) && (__ICC >= 600)) || defined(__ghs__)
 		#define SD_FUNC_SIG __PRETTY_FUNCTION__
