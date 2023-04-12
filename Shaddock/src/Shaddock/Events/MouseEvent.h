@@ -11,8 +11,8 @@ namespace Shaddock {
 		MouseMovedEvent(float x, float y)
 			:m_MouseX(x), m_MouseY(y){}
 
-		inline float GetX() const{ return m_MouseX; }
-		inline float GetY() const{ return m_MouseY; }
+		float GetX() const{ return m_MouseX; }
+		float GetY() const{ return m_MouseY; }
 
 		std::string ToString() const override
 		{
@@ -33,8 +33,8 @@ namespace Shaddock {
 		MouseScrolledEvent(float offsetx, float offsety)
 			:m_OffsetX(offsetx), m_OffsetY(offsety){}
 
-		inline float GetXOffset() const { return m_OffsetX; }
-		inline float GetYOffset() const { return m_OffsetY; }
+		float GetXOffset() const { return m_OffsetX; }
+		float GetYOffset() const { return m_OffsetY; }
 
 		std::string ToString() const override
 		{
