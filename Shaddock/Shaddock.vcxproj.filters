@@ -19,6 +19,9 @@
     <Filter Include="src\Shaddock\Core">
       <UniqueIdentifier>{753D1E52-E153-1CE8-2ACB-A7099620ED6F}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Shaddock\Debug">
+      <UniqueIdentifier>{3347F295-1F2B-B3EB-888B-AD3E748E9D6D}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Shaddock\Events">
       <UniqueIdentifier>{4180C557-ADE1-A265-364F-E917A2AFD924}</UniqueIdentifier>
     </Filter>
@@ -114,6 +117,9 @@
     <ClInclude Include="src\Shaddock\Core\Window.h">
       <Filter>src\Shaddock\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Shaddock\Debug\Instrumentor.h">
+      <Filter>src\Shaddock\Debug</Filter>
+    </ClInclude>
     <ClInclude Include="src\Shaddock\Events\ApplicationEvent.h">
       <Filter>src\Shaddock\Events</Filter>
     </ClInclude>
@@ -145,6 +151,9 @@
       <Filter>src\Shaddock\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Shaddock\Renderer\Renderer.h">
+      <Filter>src\Shaddock\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shaddock\Renderer\Renderer2D.h">
       <Filter>src\Shaddock\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Shaddock\Renderer\RendererAPI.h">
@@ -1410,8 +1419,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Shaddock\Renderer\Renderer2D.h" />
-    <ClInclude Include="src\Shaddock\Debug\Instrumentor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1441,6 +1448,9 @@
     <ClCompile Include="src\Shaddock\Core\Application.cpp">
       <Filter>src\Shaddock\Core</Filter>
     </ClCompile>
+    <ClCompile Include="src\Shaddock\Core\Input.cpp">
+      <Filter>src\Shaddock\Core</Filter>
+    </ClCompile>
     <ClCompile Include="src\Shaddock\Core\Layer.cpp">
       <Filter>src\Shaddock\Core</Filter>
     </ClCompile>
@@ -1450,6 +1460,9 @@
     <ClCompile Include="src\Shaddock\Core\Log.cpp">
       <Filter>src\Shaddock\Core</Filter>
     </ClCompile>
+    <ClCompile Include="src\Shaddock\Core\Window.cpp">
+      <Filter>src\Shaddock\Core</Filter>
+    </ClCompile>
     <ClCompile Include="src\Shaddock\ImGui\ImGuiBuilder.cpp">
       <Filter>src\Shaddock\ImGui</Filter>
     </ClCompile>
@@ -1457,6 +1470,9 @@
       <Filter>src\Shaddock\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Shaddock\Renderer\Buffer.cpp">
+      <Filter>src\Shaddock\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shaddock\Renderer\GraphicsContext.cpp">
       <Filter>src\Shaddock\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Shaddock\Renderer\OrthographicCamera.cpp">
@@ -1469,6 +1485,9 @@
       <Filter>src\Shaddock\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Shaddock\Renderer\Renderer.cpp">
+      <Filter>src\Shaddock\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shaddock\Renderer\Renderer2D.cpp">
       <Filter>src\Shaddock\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Shaddock\Renderer\RendererAPI.cpp">
@@ -1489,9 +1508,5 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Shaddock\Renderer\Renderer2D.cpp" />
-    <ClCompile Include="src\Shaddock\Renderer\GraphicsContext.cpp" />
-    <ClCompile Include="src\Shaddock\Core\Input.cpp" />
-    <ClCompile Include="src\Shaddock\Core\Window.cpp" />
   </ItemGroup>
 </Project>

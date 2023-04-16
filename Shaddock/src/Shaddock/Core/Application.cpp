@@ -4,7 +4,7 @@
 #include "Shaddock/Core/Input.h"
 #include "Shaddock/Renderer/Renderer.h"
 #include "Shaddock/Renderer/RenderCommand.h"
-#include "GLFW/glfw3.h"
+#include <GLFW/glfw3.h>
 #include <glad/glad.h>
 
 namespace Shaddock {
