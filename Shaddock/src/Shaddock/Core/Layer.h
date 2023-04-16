@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shaddock/Core/Core.h"
+#include "Shaddock/Core/Base.h"
 #include "Shaddock/Core/Timestep.h"
 #include "Shaddock/Events/Event.h"
 

@@ -87,7 +87,7 @@
     <ClInclude Include="src\Shaddock\Core\Application.h">
       <Filter>src\Shaddock\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Shaddock\Core\Core.h">
+    <ClInclude Include="src\Shaddock\Core\Base.h">
       <Filter>src\Shaddock\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Shaddock\Core\EntryPoint.h">

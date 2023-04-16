@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "Shaddock/Core/Core.h"
+#include "Shaddock/Core/Base.h"
 
 namespace Shaddock {
 	class Texture

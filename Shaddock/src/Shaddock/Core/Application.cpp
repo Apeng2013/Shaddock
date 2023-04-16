@@ -82,9 +82,9 @@ namespace Shaddock {
 
 		for (auto iter = m_LayerStack.rbegin(); iter != m_LayerStack.rend(); ++iter)
 		{
-			(*iter)->OnEvent(e);
 			if (e.Handled)
 				break;
+			(*iter)->OnEvent(e);
 		}
 	}
 

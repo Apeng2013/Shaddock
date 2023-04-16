@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shaddock/Core/Core.h"
+#include "Shaddock/Core/Base.h"
 #include "spdlog/spdlog.h"
 #include "spdlog/fmt/ostr.h"
 

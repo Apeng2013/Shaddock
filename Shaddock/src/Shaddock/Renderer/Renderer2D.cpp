@@ -98,6 +98,7 @@ namespace Shaddock {
 	void Renderer2D::Shutdown()
 	{
 		SD_PROFILE_FUNCTION();
+		delete[] s_Data.QuadVertexBufferBase;
 	}
 	void Renderer2D::BeginScene(OrthographicCamera& camera)
 	{
@@ -112,13 +113,15 @@ namespace Shaddock {
 	void Renderer2D::EndScene()
 	{
 		SD_PROFILE_FUNCTION();
-		uint32_t dataSize = (uint8_t*)s_Data.QuadVertexBufferPtr - (uint8_t*)s_Data.QuadVertexBufferBase;
+		uint32_t dataSize = (uint32_t)((uint8_t*)s_Data.QuadVertexBufferPtr - (uint8_t*)s_Data.QuadVertexBufferBase);
 		s_Data.QuadVertexBuffer->SetData(s_Data.QuadVertexBufferBase, dataSize);
 
 		Flush();
 	}
 	void Renderer2D::Flush()
 	{
+		if (s_Data.QuadIndexCount == 0)
+			return;
 		for (uint32_t i = 0; i < s_Data.TextureSlotIndex; i++)
 			s_Data.TextureSlots[i]->Bind(i);
 		s_Data.QuadVertexArray->Bind();

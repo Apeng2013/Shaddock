@@ -1,7 +1,7 @@
 #pragma once
 
 // For use by Shaddock Applications
-#include "Shaddock/Core/Core.h"
+#include "Shaddock/Core/Base.h"
 #include "Shaddock/Core/Application.h"
 #include "Shaddock/Core/Layer.h"
 #include "Shaddock/Core/Log.h"

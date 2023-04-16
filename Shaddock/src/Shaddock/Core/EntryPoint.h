@@ -1,5 +1,5 @@
 #pragma once
-#include "Shaddock/Core/Core.h"
+#include "Shaddock/Core/Base.h"
 
 #ifdef SD_PLATFORM_WINDOWS
 

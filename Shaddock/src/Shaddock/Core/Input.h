@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shaddock/Core/Core.h"
+#include "Shaddock/Core/Base.h"
 #include "Shaddock/Core/KeyCodes.h"
 #include "Shaddock/Core/MouseCodes.h"
 
