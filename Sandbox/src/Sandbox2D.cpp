@@ -13,6 +13,11 @@ void Sandbox2D::OnAttach()
 {
 	SD_PROFILE_FUNCTION();
 	m_Texture = Shaddock::Texture2D::Create("assets/textures/letter_p.png");
+
+    Shaddock::FramebufferSpecification fbSpec;
+    fbSpec.Width = 1690;
+    fbSpec.Height = 960;
+    m_Framebuffer = Shaddock::Framebuffer::Create(fbSpec);
 }
 
 void Sandbox2D::OnDetach()
@@ -27,6 +32,7 @@ void Sandbox2D::OnUpdate(Shaddock::Timestep ts)
 	Shaddock::Renderer2D::ResetStats();
 	{
 		SD_PROFILE_SCOPE("Sandbox2D::Renderer");
+        m_Framebuffer->Bind();
 		Shaddock::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1.0f });
 		Shaddock::RenderCommand::Clear();
 		Shaddock::Renderer2D::BeginScene(m_CameraController.GetCamera());
@@ -47,6 +53,7 @@ void Sandbox2D::OnUpdate(Shaddock::Timestep ts)
 			}
 		}
 		Shaddock::Renderer2D::EndScene();
+        m_Framebuffer->Unbind();
 	}
 }
 
@@ -54,7 +61,7 @@ void Sandbox2D::OnImGuiRender()
 {
 	SD_PROFILE_FUNCTION();
 
-    static bool dockingEnabled = false;
+    static bool dockingEnabled = true;
     if (dockingEnabled)
     {
         static bool dockspaceOpen = true;
@@ -131,6 +138,8 @@ void Sandbox2D::OnImGuiRender()
 	    ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
 	    ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
 	    ImGui::ColorEdit4("Color", glm::value_ptr(m_SquareColor));
+        uint32_t textureID = m_Framebuffer->GetColorAttachmentRendererID();
+        ImGui::Image((void*)textureID, ImVec2(1690.f, 960.f), ImVec2(0.0f, 1.0f), ImVec2(1.0f, 0.0f));
 	    ImGui::End();
     }
     else
