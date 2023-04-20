@@ -33,7 +33,7 @@ in vec4 v_Color;
 in float v_TexIndex;
 in float v_TilingFactor;
 
-uniform sampler2D u_Textures[10]; // TODO sampler array size limit
+uniform sampler2D u_Textures[32];
 
 void main()
 {

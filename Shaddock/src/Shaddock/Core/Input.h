@@ -24,7 +24,8 @@ namespace Shaddock {
 		virtual float GetMouseXImpl() = 0;
 		virtual float GetMouseYImpl() = 0;
 
-	private:
+	public:
+		virtual ~Input() = default;
 		Input(const Input&) = delete;
 		Input& operator=(const Input&) = delete;
 
