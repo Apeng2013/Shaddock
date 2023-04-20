@@ -128,7 +128,6 @@ namespace Shaddock {
             ImGui::EndMenuBar();
         }
         
-        ImGui::End();
         
         ImGui::Begin("Setting");
         auto stats = Renderer2D::GetStats();
@@ -140,6 +139,7 @@ namespace Shaddock {
         ImGui::ColorEdit4("Color", glm::value_ptr(m_SquareColor));
         ImGui::End();
 
+        ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
         ImGui::Begin("Viewport");
         ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
         if (m_ViewportSize != *((glm::vec2*)&viewportPanelSize) && viewportPanelSize.x > 0 && viewportPanelSize.y > 0 )
@@ -150,6 +150,9 @@ namespace Shaddock {
         }
         uint32_t textureID = m_Framebuffer->GetColorAttachmentRendererID();
         ImGui::Image((void*)textureID, viewportPanelSize, ImVec2(0.0f, 1.0f), ImVec2(1.0f, 0.0f));
+        ImGui::End();
+        ImGui::PopStyleVar();
+
         ImGui::End();
     }
 
