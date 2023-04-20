@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ImGui", "Shaddock\vendor\im
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Shaddock", "Shaddock\Shaddock.vcxproj", "{06B04244-F27C-9D4F-1B96-8BF707C2D2DD}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ShaddockEditor", "ShaddockEditor\ShaddockEditor.vcxproj", "{4D32A56D-3900-9973-2294-099A0E0175D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -48,6 +50,12 @@ Global
 		{06B04244-F27C-9D4F-1B96-8BF707C2D2DD}.Dist|x64.Build.0 = Dist|x64
 		{06B04244-F27C-9D4F-1B96-8BF707C2D2DD}.Release|x64.ActiveCfg = Release|x64
 		{06B04244-F27C-9D4F-1B96-8BF707C2D2DD}.Release|x64.Build.0 = Release|x64
+		{4D32A56D-3900-9973-2294-099A0E0175D8}.Debug|x64.ActiveCfg = Debug|x64
+		{4D32A56D-3900-9973-2294-099A0E0175D8}.Debug|x64.Build.0 = Debug|x64
+		{4D32A56D-3900-9973-2294-099A0E0175D8}.Dist|x64.ActiveCfg = Dist|x64
+		{4D32A56D-3900-9973-2294-099A0E0175D8}.Dist|x64.Build.0 = Dist|x64
+		{4D32A56D-3900-9973-2294-099A0E0175D8}.Release|x64.ActiveCfg = Release|x64
+		{4D32A56D-3900-9973-2294-099A0E0175D8}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

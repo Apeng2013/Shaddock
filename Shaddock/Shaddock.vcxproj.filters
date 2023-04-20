@@ -63,6 +63,9 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLFramebuffer.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
@@ -136,6 +139,9 @@
       <Filter>src\Shaddock\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="src\Shaddock\Renderer\Buffer.h">
+      <Filter>src\Shaddock\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shaddock\Renderer\Framebuffer.h">
       <Filter>src\Shaddock\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Shaddock\Renderer\GraphicsContext.h">
@@ -1419,14 +1425,15 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Shaddock\Renderer\Framebuffer.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLFramebuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLFramebuffer.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
@@ -1474,6 +1481,9 @@
     <ClCompile Include="src\Shaddock\Renderer\Buffer.cpp">
       <Filter>src\Shaddock\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Shaddock\Renderer\Framebuffer.cpp">
+      <Filter>src\Shaddock\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Shaddock\Renderer\GraphicsContext.cpp">
       <Filter>src\Shaddock\Renderer</Filter>
     </ClCompile>
@@ -1510,7 +1520,5 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Shaddock\Renderer\Framebuffer.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLFramebuffer.cpp" />
   </ItemGroup>
 </Project>

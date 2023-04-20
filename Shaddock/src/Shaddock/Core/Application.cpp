@@ -11,13 +11,13 @@ namespace Shaddock {
 
 	Application* Application::s_Instance = nullptr;
 
-	Application::Application()
+	Application::Application(const std::string& name)
 	{
 		SD_PROFILE_FUNCTION();
 		SD_CORE_ASSERT(!s_Instance, "Application alread exits!");
 		s_Instance = this;
 
-		m_Window = Window::Create();
+		m_Window = Window::Create(WindowProps(name));
 		m_Window->SetEventCallback(SD_BIND_EVENT_FN(Application::OnEvent));
 
 		Renderer::Init();

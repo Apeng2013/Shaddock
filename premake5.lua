@@ -96,6 +96,55 @@ project "Shaddock"
 		runtime "Release"
 		optimize "On"
 
+project "ShaddockEditor"
+	location "ShaddockEditor"
+	kind "ConsoleApp"
+	language "C++"
+	staticruntime "Off"
+	cppdialect "C++17"
+	
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	files
+	{
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp"
+	}
+
+	includedirs
+	{
+		"%{IncludeDir.spdlog}",
+		"%{IncludeDir.glm}",
+		"Shaddock/src",
+		"Shaddock/vendor"
+	}
+
+	links
+	{
+		"Shaddock"
+	}
+
+	filter "system:windows"
+		systemversion "latest"
+
+	filter "configurations:Debug"
+		defines "SD_DEBUG"
+		runtime "Debug"
+		symbols "On"
+
+	filter "configurations:Release"
+		defines "SD_RELEASE"
+		runtime "Release"
+		optimize "On"
+
+	filter "configurations:Dist"
+		defines "SD_DIST"
+		runtime "Release"
+		optimize "On"
+
+
+
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"

@@ -22,7 +22,7 @@ namespace Shaddock {
 	class Application
 	{
 	public:
-		Application();
+		Application(const std::string& name = "Shaddock Engine");
 		virtual ~Application();
 
 		void OnEvent(Event& e);
