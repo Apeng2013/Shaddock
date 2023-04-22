@@ -147,6 +147,7 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Shaddock.h" />
     <ClInclude Include="src\Shaddock\Core\Application.h" />
     <ClInclude Include="src\Shaddock\Core\Base.h" />
