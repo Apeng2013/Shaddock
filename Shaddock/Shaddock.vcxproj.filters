@@ -78,12 +78,6 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="src\Platform\Windows\WindowsInput.h">
-      <Filter>src\Platform\Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
-      <Filter>src\Platform\Windows</Filter>
-    </ClInclude>
     <ClInclude Include="src\Shaddock.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -1455,9 +1449,6 @@
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Shaddock\Core\Application.cpp">
-      <Filter>src\Shaddock\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Shaddock\Core\Input.cpp">
       <Filter>src\Shaddock\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Shaddock\Core\Layer.cpp">

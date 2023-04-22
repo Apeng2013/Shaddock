@@ -147,8 +147,6 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
-    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
-    <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Shaddock.h" />
     <ClInclude Include="src\Shaddock\Core\Application.h" />
     <ClInclude Include="src\Shaddock\Core\Base.h" />
@@ -608,7 +606,6 @@
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Shaddock\Core\Application.cpp" />
-    <ClCompile Include="src\Shaddock\Core\Input.cpp" />
     <ClCompile Include="src\Shaddock\Core\Layer.cpp" />
     <ClCompile Include="src\Shaddock\Core\LayerStack.cpp" />
     <ClCompile Include="src\Shaddock\Core\Log.cpp" />
