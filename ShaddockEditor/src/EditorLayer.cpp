@@ -19,6 +19,13 @@ namespace Shaddock {
         fbSpec.Width = 1280;
         fbSpec.Height = 720;
         m_Framebuffer = Framebuffer::Create(fbSpec);
+
+        m_ActiveScene = CreateRef<Scene>();
+        auto square = m_ActiveScene->CreateEntity();
+        m_ActiveScene->Reg().emplace<TransformComponent>(square);
+        m_ActiveScene->Reg().emplace<SpriteRendererComponent>(square, glm::vec4(0.0f, 1.0f, 1.0f, 1.0f));
+
+        m_SquareEntity = square;
     }
 
     void EditorLayer::OnDetach()
@@ -40,31 +47,14 @@ namespace Shaddock {
         if (m_ViewportFocused)
             m_CameraController.OnUpdate(ts);
         Renderer2D::ResetStats();
-        {
-            SD_PROFILE_SCOPE("EditorLayer::Renderer prepare");
-            m_Framebuffer->Bind();
-            RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1.0f });
-            RenderCommand::Clear();
-        }
+        m_Framebuffer->Bind();
+        RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1.0f });
+        RenderCommand::Clear();
+
         {
             SD_PROFILE_SCOPE("EditorLayer::Renderer draw");
             Renderer2D::BeginScene(m_CameraController.GetCamera());
-            Renderer2D::DrawQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, { 0.8f, 0.2f, 0.3f, 1.0f });
-            Renderer2D::DrawQuad({ 0.5f, 0.5f }, { 0.5f, 0.75f }, m_SquareColor);
-            Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 10.0f, 10.0f }, m_Texture); //°ëÍ¸Ã÷ ×¢ÒâäÖÈ¾Ë³Ðò
-            Renderer2D::DrawRotatedQuad({ 0.0f, 0.0f, 0.2f }, { 1.0f, 1.0f }, 45.0f, { 0.2f, 0.8f, 0.2f, 1.0f });
-            Renderer2D::DrawRotatedQuad({ 1.0f, 0.0f, 0.2f }, { 1.0f, 1.0f }, 45.0f, { 0.2f, 0.8f, 0.2f, 1.0f });
-            Renderer2D::EndScene();
-
-            Renderer2D::BeginScene(m_CameraController.GetCamera());
-            for (float y = -5.0f; y < 5.0f; y += 0.5f)
-            {
-                for (float x = -5.0f; x < 5.0f; x += 0.5f)
-                {
-                    glm::vec4 color = { (x + 0.5f) / 10.0f, 0.4f, (y + 0.5f) / 10.0f, 0.7f }; //°ëÍ¸Ã÷ ×¢ÒâäÖÈ¾Ë³Ðò
-                    Renderer2D::DrawQuad({ x, y }, { 0.45, 0.45 }, color);
-                }
-            }
+            m_ActiveScene->OnUpdate(ts);
             Renderer2D::EndScene();
             m_Framebuffer->Unbind();
         }
@@ -145,7 +135,8 @@ namespace Shaddock {
         ImGui::Text("Quads: %d", stats.QuadCount);
         ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
         ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
-        ImGui::ColorEdit4("Color", glm::value_ptr(m_SquareColor));
+        auto& spriteColor = m_ActiveScene->Reg().get<SpriteRendererComponent>(m_SquareEntity).Color;
+        ImGui::ColorEdit4("Color", glm::value_ptr(spriteColor));
         ImGui::End();
 
         ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));

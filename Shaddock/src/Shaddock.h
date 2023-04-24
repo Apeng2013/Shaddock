@@ -21,5 +21,8 @@
 #include "Shaddock/Renderer/OrthographicCamera.h"
 #include "Shaddock/Renderer/OrthographicCameraController.h"
 
+#include "Shaddock/Scene/Scene.h"
+#include "Shaddock/Scene/Component.h"
+
 #include "Shaddock/ImGui/ImGuiLayer.h"
 

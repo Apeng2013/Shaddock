@@ -20,6 +20,7 @@ IncludeDir["ImGui"] = "Shaddock/vendor/imgui"
 IncludeDir["glm"] = "Shaddock/vendor/glm"
 IncludeDir["spdlog"] = "Shaddock/vendor/spdlog/include"
 IncludeDir["stb_image"] = "Shaddock/vendor/stb_image"
+IncludeDir["entt"] = "Shaddock/vendor/entt/include"
 
 -- Copy the GLFW premake file content to here
 include "Shaddock/vendor/GLFW"
@@ -63,7 +64,8 @@ project "Shaddock"
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.stb_image}"
+		"%{IncludeDir.stb_image}",
+		"%{IncludeDir.entt}",
 	}
 
 	links
@@ -116,6 +118,7 @@ project "ShaddockEditor"
 	{
 		"%{IncludeDir.spdlog}",
 		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}",
 		"Shaddock/src",
 		"Shaddock/vendor"
 	}
@@ -165,6 +168,7 @@ project "Sandbox"
 	{
 		"%{IncludeDir.spdlog}",
 		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}",
 		"Shaddock/src",
 		"Shaddock/vendor"
 	}
