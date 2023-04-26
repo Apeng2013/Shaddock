@@ -179,6 +179,7 @@
     <ClInclude Include="src\Shaddock\Renderer\Texture.h" />
     <ClInclude Include="src\Shaddock\Renderer\VertexArray.h" />
     <ClInclude Include="src\Shaddock\Scene\Component.h" />
+    <ClInclude Include="src\Shaddock\Scene\Entity.h" />
     <ClInclude Include="src\Shaddock\Scene\Scene.h" />
     <ClInclude Include="src\sdpch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
@@ -627,6 +628,7 @@
     <ClCompile Include="src\Shaddock\Renderer\Shader.cpp" />
     <ClCompile Include="src\Shaddock\Renderer\Texture.cpp" />
     <ClCompile Include="src\Shaddock\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\Shaddock\Scene\Entity.cpp" />
     <ClCompile Include="src\Shaddock\Scene\Scene.cpp" />
     <ClCompile Include="src\sdpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>

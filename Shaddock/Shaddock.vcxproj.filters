@@ -1429,6 +1429,7 @@
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
     <ClInclude Include="src\Shaddock\Scene\Component.h" />
+    <ClInclude Include="src\Shaddock\Scene\Entity.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1524,5 +1525,6 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
+    <ClCompile Include="src\Shaddock\Scene\Entity.cpp" />
   </ItemGroup>
 </Project>
