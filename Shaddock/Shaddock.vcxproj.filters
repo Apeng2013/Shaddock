@@ -1431,6 +1431,7 @@
     <ClInclude Include="src\Shaddock\Scene\Component.h" />
     <ClInclude Include="src\Shaddock\Scene\Entity.h" />
     <ClInclude Include="src\Shaddock\Renderer\Camera.h" />
+    <ClInclude Include="src\Shaddock\Scene\SceneCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1527,5 +1528,6 @@
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
     <ClCompile Include="src\Shaddock\Scene\Entity.cpp" />
+    <ClCompile Include="src\Shaddock\Scene\SceneCamera.cpp" />
   </ItemGroup>
 </Project>

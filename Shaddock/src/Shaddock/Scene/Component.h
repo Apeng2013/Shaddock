@@ -1,6 +1,6 @@
 #pragma once
 #include <glm/glm.hpp>
-#include "Shaddock/Renderer/Camera.h"
+#include "Shaddock/Scene/SceneCamera.h"
 
 namespace Shaddock {
 	struct TagComponent
@@ -33,13 +33,11 @@ namespace Shaddock {
 
 	struct CameraComponent
 	{
-		Shaddock::Camera Camera;
+		Shaddock::SceneCamera Camera;
 		bool Primary = true;
+		bool FixedAspectRatio = false;
 
 		CameraComponent() = default;
 		CameraComponent(const CameraComponent&) = default;
-		CameraComponent(const glm::mat4& projection)
-			: Camera(projection)
-		{}
 	};
 }
