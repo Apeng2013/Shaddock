@@ -31,11 +31,9 @@ namespace Shaddock
 		InstrumentationSession* m_CurrentSession;
 		std::ofstream m_OutputStream;
 	public:
-		Instrumentor()
-			:m_CurrentSession(nullptr)
-		{
+		Instrumentor(const Instrumentor&) = delete;
+		Instrumentor(Instrumentor&&) = delete;
 
-		}
 		void BeginSession(const std::string& name, const std::string& filepath = "result.json")
 		{
 			std::lock_guard lock(m_Mutex);
@@ -94,6 +92,15 @@ namespace Shaddock
 		}
 
 	private:
+		Instrumentor()
+			:m_CurrentSession(nullptr)
+		{
+
+		}
+		~Instrumentor()
+		{
+			EndSession();
+		}
 		void WriteHeader()
 		{
 			m_OutputStream << "{\"otherData\": {}, \"traceEvents\":[{}";
@@ -195,8 +202,10 @@ namespace Shaddock
 	#endif
 	#define SD_PROFILE_BEGIN_SESSION(name, filepath) ::Shaddock::Instrumentor::Get().BeginSession(name, filepath)
 	#define SD_PROFILE_END_SESSION() ::Shaddock::Instrumentor::Get().EndSession()
-	#define SD_PROFILE_SCOPE(name) constexpr auto fixedName = ::Shaddock::InstrumentorUtils::CleanupOutputString(name, "__cdecl ");\
-															::Shaddock::InstrumentationTimer timer##__LINE__(fixedName.Data)
+	#define SD_PROFILE_SCOPE_LINE2(name, line) constexpr auto fixedName##line = ::Shaddock::InstrumentorUtils::CleanupOutputString(name, "__cdecl ");\
+															::Shaddock::InstrumentationTimer timer##__LINE__(fixedName##line.Data)
+	#define SD_PROFILE_SCOPE_LINE(name, line) SD_PROFILE_SCOPE_LINE2(name, line)
+	#define SD_PROFILE_SCOPE(name) SD_PROFILE_SCOPE_LINE(name, __LINE__)
 	#define SD_PROFILE_FUNCTION() SD_PROFILE_SCOPE(SD_FUNC_SIG)
 #else
 	#define SD_PROFILE_BEGIN_SESSION(name, filepath)
