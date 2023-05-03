@@ -1,5 +1,6 @@
 #pragma once
 #include <glm/glm.hpp>
+#include "Shaddock/Renderer/Camera.h"
 
 namespace Shaddock {
 	struct TagComponent
@@ -28,5 +29,17 @@ namespace Shaddock {
 		SpriteRendererComponent(const SpriteRendererComponent&) = default;
 		SpriteRendererComponent(const glm::vec4& color)
 			: Color(color) {}
+	};
+
+	struct CameraComponent
+	{
+		Shaddock::Camera Camera;
+		bool Primary = true;
+
+		CameraComponent() = default;
+		CameraComponent(const CameraComponent&) = default;
+		CameraComponent(const glm::mat4& projection)
+			: Camera(projection)
+		{}
 	};
 }

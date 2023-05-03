@@ -1430,6 +1430,7 @@
     </ClInclude>
     <ClInclude Include="src\Shaddock\Scene\Component.h" />
     <ClInclude Include="src\Shaddock\Scene\Entity.h" />
+    <ClInclude Include="src\Shaddock\Renderer\Camera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
