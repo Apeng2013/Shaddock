@@ -135,12 +135,15 @@ namespace Shaddock {
         ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
         ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
 
-        ImGui::Separator();
-        auto& tag = m_SquareEntity.GetComponent<TagComponent>().Tag;
-        ImGui::Text("%s", tag.c_str());
-        auto& spriteColor = m_SquareEntity.GetComponent<SpriteRendererComponent>().Color;
-        ImGui::ColorEdit4("Color", glm::value_ptr(spriteColor));
-        ImGui::Separator();
+        if (m_SquareEntity)
+        {
+            ImGui::Separator();
+            auto& tag = m_SquareEntity.GetComponent<TagComponent>().Tag;
+            ImGui::Text("%s", tag.c_str());
+            auto& spriteColor = m_SquareEntity.GetComponent<SpriteRendererComponent>().Color;
+            ImGui::ColorEdit4("Color", glm::value_ptr(spriteColor));
+            ImGui::Separator();
+        }
 
         ImGui::End();
 

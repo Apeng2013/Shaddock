@@ -27,8 +27,8 @@ namespace Shaddock {
 		template<typename T>
 		bool HasComponent()
 		{
-			return false
-			//return m_Scene->m_Registry.has<T>(m_EntityHandle);
+			return false;
+			//return m_Scene->m_Registry.get
 		}
 		template<typename T>
 		void RemoveComponent()
@@ -37,10 +37,10 @@ namespace Shaddock {
 			m_Scene->m_Registry.remove<T>(m_EntityHandle);
 		}
 
-		//operator bool() const { return static_cast<uint32_t>(m_EntityHandle) != 0; }
+		operator bool() const { return m_EntityHandle != entt::null; }
 
 	private:
 		Scene* m_Scene = nullptr;
-		entt::entity m_EntityHandle{ 0 };
+		entt::entity m_EntityHandle{ entt::null };
 	};
 }
