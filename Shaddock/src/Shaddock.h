@@ -24,6 +24,7 @@
 #include "Shaddock/Scene/Scene.h"
 #include "Shaddock/Scene/Component.h"
 #include "Shaddock/Scene/Entity.h"
+#include "Shaddock/Scene/ScriptableEntity.h"
 
 #include "Shaddock/ImGui/ImGuiLayer.h"
 

@@ -23,6 +23,24 @@ namespace Shaddock {
 	}
 	void Scene::OnUpdate(Timestep ts)
 	{
+
+		{
+			m_Registry.view<NativeScriptComponent>().each([=](auto entity, auto& nsc)
+				{
+					if (!nsc.Instance)
+					{
+						nsc.InstanciateFunction();
+						nsc.Instance->m_Entity = Entity{ entity, this };
+						if (nsc.OnCreateFunction)
+							nsc.OnCreateFunction(nsc.Instance);
+					}
+					if (nsc.OnUpdateFunction)
+						nsc.OnUpdateFunction(nsc.Instance, ts);
+				}
+
+			);
+		}
+
 		Camera* mainCamera = nullptr;
 		glm::mat4* cameraTransform = nullptr;
 

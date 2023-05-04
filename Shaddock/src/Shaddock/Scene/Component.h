@@ -1,6 +1,7 @@
 #pragma once
 #include <glm/glm.hpp>
 #include "Shaddock/Scene/SceneCamera.h"
+#include "Shaddock/Scene/ScriptableEntity.h"
 
 namespace Shaddock {
 	struct TagComponent
@@ -39,5 +40,28 @@ namespace Shaddock {
 
 		CameraComponent() = default;
 		CameraComponent(const CameraComponent&) = default;
+	};
+
+	struct NativeScriptComponent
+	{
+		ScriptableEntity* Instance = nullptr;
+
+		std::function<void()> InstanciateFunction;
+		std::function<void()> DestroyInstanceFunction;
+
+		std::function<void(ScriptableEntity*)> OnCreateFunction;
+		std::function<void(ScriptableEntity*)> OnDestroyFunction;
+		std::function<void(ScriptableEntity*, Timestep)> OnUpdateFunction;
+
+		template<typename T>
+		void Bind()
+		{
+			InstanciateFunction = [&]() {Instance = new T(); };
+			DestroyInstanceFunction = [&]() {delete (T*)Instance; Instance = nullptr; };
+
+			OnCreateFunction = [](ScriptableEntity* instance) {((T*)instance)->OnCreate(); };
+			OnDestroyFunction = [](ScriptableEntity* instance) {((T*)instance)->OnDestroy(); };
+			OnUpdateFunction = [](ScriptableEntity* instance, Timestep ts) {((T*)instance)->OnUpdate(ts); };
+		}
 	};
 }

@@ -184,6 +184,7 @@
     <ClInclude Include="src\Shaddock\Scene\Scene.h" />
     <ClInclude Include="src\sdpch.h" />
     <ClInclude Include="src\Shaddock\Scene\SceneCamera.h" />
+    <ClInclude Include="src\Shaddock\Scene\ScriptableEntity.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_fixes.hpp" />
