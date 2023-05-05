@@ -1,5 +1,5 @@
 #pragma once
-#include "sdpch.h"
+#include <functional>
 #include "Shaddock/Core/Base.h"
 
 namespace Shaddock {

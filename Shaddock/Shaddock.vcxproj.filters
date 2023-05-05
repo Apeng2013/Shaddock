@@ -1433,6 +1433,7 @@
     <ClInclude Include="src\Shaddock\Renderer\Camera.h" />
     <ClInclude Include="src\Shaddock\Scene\SceneCamera.h" />
     <ClInclude Include="src\Shaddock\Scene\ScriptableEntity.h" />
+    <ClInclude Include="src\Shaddock\Core\PlatformDetection.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">

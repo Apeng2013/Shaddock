@@ -1,8 +1,5 @@
 #pragma once
 
-
-#include "sdpch.h"
-
 #include "Shaddock/Core/Base.h"
 #include "Shaddock/Events/Event.h"
 

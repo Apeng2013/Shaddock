@@ -1,6 +1,7 @@
 #pragma once
 
 
+#include <sstream>
 #include "Shaddock/Events/Event.h"
 
 namespace Shaddock {

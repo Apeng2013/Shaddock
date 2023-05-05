@@ -18,7 +18,7 @@ namespace Shaddock {
 		auto state = glfwGetMouseButton(window, static_cast<int32_t>(button));
 		return state == GLFW_PRESS;
 	}
-	std::pair<float, float> Input::GetMousePosition()
+	glm::vec2 Input::GetMousePosition()
 	{
 		auto window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
 		double xpos, ypos;
@@ -27,12 +27,12 @@ namespace Shaddock {
 	}
 	float Input::GetMouseX()
 	{
-		auto [x, y] = GetMousePosition();
-		return x;
+		glm::vec2 pos = GetMousePosition();
+		return pos.x;
 	}
 	float Input::GetMouseY()
 	{
-		auto [x, y] = GetMousePosition();
-		return y;
+		glm::vec2 pos = GetMousePosition();
+		return pos.y;
 	}
 }

@@ -6,6 +6,9 @@
 #include <iomanip>
 #include <string>
 #include <thread>
+#include <mutex>
+#include <sstream>
+#include "Shaddock/Core/Log.h"
 
 namespace Shaddock
 {

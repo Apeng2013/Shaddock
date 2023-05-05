@@ -158,6 +158,7 @@
     <ClInclude Include="src\Shaddock\Core\LayerStack.h" />
     <ClInclude Include="src\Shaddock\Core\Log.h" />
     <ClInclude Include="src\Shaddock\Core\MouseCodes.h" />
+    <ClInclude Include="src\Shaddock\Core\PlatformDetection.h" />
     <ClInclude Include="src\Shaddock\Core\Timestep.h" />
     <ClInclude Include="src\Shaddock\Core\Window.h" />
     <ClInclude Include="src\Shaddock\Debug\Instrumentor.h" />

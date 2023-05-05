@@ -28,3 +28,5 @@
 
 #include "Shaddock/ImGui/ImGuiLayer.h"
 
+#include "Shaddock/Debug/Instrumentor.h"
+

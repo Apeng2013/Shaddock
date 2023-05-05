@@ -1,5 +1,7 @@
 #pragma once
 
+#include <sstream>
+
 namespace Shaddock
 {
 	typedef enum class MouseCode : uint16_t

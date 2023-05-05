@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Shaddock/Core/Log.h"
+
 namespace Shaddock {
 
 	enum class ShaderDataType
