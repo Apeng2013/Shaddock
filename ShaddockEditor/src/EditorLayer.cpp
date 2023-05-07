@@ -26,10 +26,10 @@ namespace Shaddock {
 
         m_SquareEntity = square;
 
-        m_CameraEntity = m_ActiveScene->CreateEntity("CameraEntity");
+        m_CameraEntity = m_ActiveScene->CreateEntity("Camera A");
         m_CameraEntity.AddComponent<CameraComponent>();
 
-        m_SecondCamera = m_ActiveScene->CreateEntity("CameraEntity");
+        m_SecondCamera = m_ActiveScene->CreateEntity("Camera B");
         auto& cc = m_SecondCamera.AddComponent<CameraComponent>();
         cc.Primary = false;
 
@@ -61,6 +61,8 @@ namespace Shaddock {
         };
         m_CameraEntity.AddComponent<NativeScriptComponent>().Bind<CameraController>();
         m_SecondCamera.AddComponent<NativeScriptComponent>().Bind<CameraController>();
+
+        m_SceneHierarchyPanel.SetContext(m_ActiveScene);
     }
 
     void EditorLayer::OnDetach()
@@ -161,6 +163,7 @@ namespace Shaddock {
             ImGui::EndMenuBar();
         }
         
+        m_SceneHierarchyPanel.OnImGuiRender();
         
         ImGui::Begin("Setting");
         auto stats = Renderer2D::GetStats();
