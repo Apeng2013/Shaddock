@@ -21,10 +21,13 @@ namespace Shaddock {
         m_Framebuffer = Framebuffer::Create(fbSpec);
 
         m_ActiveScene = CreateRef<Scene>();
-        auto square = m_ActiveScene->CreateEntity("SquareEntity");
-        square.AddComponent<SpriteRendererComponent>(glm::vec4(0.0f, 1.0f, 1.0f, 1.0f));
+        auto square = m_ActiveScene->CreateEntity("SquareEntity A");
+        square.AddComponent<SpriteRendererComponent>(glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
 
         m_SquareEntity = square;
+
+        auto squareB = m_ActiveScene->CreateEntity("SquareEntity B");
+        squareB.AddComponent<SpriteRendererComponent>(glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
 
         m_CameraEntity = m_ActiveScene->CreateEntity("Camera A");
         m_CameraEntity.AddComponent<CameraComponent>();
