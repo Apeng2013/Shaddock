@@ -1,5 +1,6 @@
 #pragma once
 
+#include <functional>
 #include "Shaddock/Core/Base.h"
 #include "Shaddock/Events/Event.h"
 

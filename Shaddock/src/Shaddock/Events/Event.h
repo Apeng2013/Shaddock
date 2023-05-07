@@ -1,5 +1,6 @@
 #pragma once
-#include <functional>
+
+#include <string>
 #include "Shaddock/Core/Base.h"
 
 namespace Shaddock {
