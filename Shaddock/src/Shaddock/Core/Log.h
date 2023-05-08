@@ -33,4 +33,4 @@ namespace Shaddock {
 #define SD_TRACE(...)			::Shaddock::Log().GetClientLogger()->trace(__VA_ARGS__)
 #define SD_WARN(...)			::Shaddock::Log().GetClientLogger()->warn(__VA_ARGS__)
 #define SD_ERROR(...)			::Shaddock::Log().GetClientLogger()->error(__VA_ARGS__)
-#define SD_CRITICAL(...)			::Shaddock::Log().GetClientLogger()->critical(__VA_ARGS__)
+#define SD_CRITICAL(...)		::Shaddock::Log().GetClientLogger()->critical(__VA_ARGS__)

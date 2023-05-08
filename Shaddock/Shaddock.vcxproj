@@ -150,6 +150,7 @@
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Shaddock.h" />
     <ClInclude Include="src\Shaddock\Core\Application.h" />
+    <ClInclude Include="src\Shaddock\Core\Assert.h" />
     <ClInclude Include="src\Shaddock\Core\Base.h" />
     <ClInclude Include="src\Shaddock\Core\EntryPoint.h" />
     <ClInclude Include="src\Shaddock\Core\Input.h" />

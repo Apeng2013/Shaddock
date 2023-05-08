@@ -56,7 +56,7 @@ namespace Shaddock {
 
 		MouseCode GetMouseButton() const { return m_Button; }
 
-		EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryMouseButton)
+		EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryMouseButton | EventCategoryMouse)
 
 	protected:
 		MouseButtonEvent(MouseCode button)

@@ -4,6 +4,9 @@
 
 #include "Shaddock/Core/PlatformDetection.h"
 
+#define SD_EXPAND_MACRO(x) x
+#define SD_STRINGIFY_MACRO(x) #x
+
 #ifdef SD_DEBUG
 	#if defined(SD_PLATFORM_WINDOWS)
 		#define SD_DEBUGBREAK() __debugbreak();
@@ -16,13 +19,7 @@
 	#define SD_ENABLE_ASSERTS
 #endif
 
-#ifdef SD_ENABLE_ASSERTS
-	#define SD_ASSERT(x, ...) { if(!(x)) {SD_ERROR("Assertion Failed: {0}", __VA_ARGS__); SD_DEBUGBREAK();}}
-	#define SD_CORE_ASSERT(x, ...) { if(!(x)) {SD_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); SD_DEBUGBREAK();}}
-#else
-	#define SD_ASSERT(x, ...)
-	#define SD_CORE_ASSERT(x, ...)
-#endif
+#include "Shaddock/Core/Assert.h"
 
 #define BIT(x) (1 << x)
 
@@ -44,5 +41,4 @@ namespace Shaddock {
 	{
 		return std::make_shared<T>(std::forward<Args>(args)...);
 	}
-
 }

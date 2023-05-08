@@ -22,9 +22,9 @@
 #include <unordered_map>
 #include <unordered_set>
 
+#include "Shaddock/Core/Base.h"
 #include "Shaddock/Core/Log.h"
 #include "Shaddock/Debug/Instrumentor.h"
-#include "Shaddock/Core/Base.h"
 
 #ifdef SD_PLATFORM_WINDOWS
 	#include <Windows.h>
