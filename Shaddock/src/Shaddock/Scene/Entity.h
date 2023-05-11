@@ -18,7 +18,9 @@ namespace Shaddock {
 		T& AddComponent(Args&&... args)
 		{
 			SD_CORE_ASSERT(!HasComponent<T>(), "Entity already has component!");
-			return m_Scene->m_Registry.emplace<T>(m_EntityHandle, std::forward<Args>(args)...);
+			T& component = m_Scene->m_Registry.emplace<T>(m_EntityHandle, std::forward<Args>(args)...);
+			m_Scene->OnComponentAdded<T>(*this, component);
+			return component;
 		}
 		template<typename T>
 		T& GetComponent()
@@ -40,6 +42,7 @@ namespace Shaddock {
 
 		operator bool() { return m_EntityHandle != entt::null; }
 		operator uint32_t() { return (uint32_t)m_EntityHandle; }
+		operator entt::entity() { return m_EntityHandle; }
 		bool operator==(const Entity& other) { return m_EntityHandle == other.m_EntityHandle && m_Scene == other.m_Scene; }
 		bool operator!=(const Entity& other) { return !(*this == other); }
 
