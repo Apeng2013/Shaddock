@@ -21,11 +21,16 @@ IncludeDir["glm"] = "Shaddock/vendor/glm"
 IncludeDir["spdlog"] = "Shaddock/vendor/spdlog/include"
 IncludeDir["stb_image"] = "Shaddock/vendor/stb_image"
 IncludeDir["entt"] = "Shaddock/vendor/entt/include"
+IncludeDir["yaml_cpp"] = "Shaddock/vendor/yaml-cpp/include"
 
--- Copy the GLFW premake file content to here
-include "Shaddock/vendor/GLFW"
-include "Shaddock/vendor/Glad"
-include "Shaddock/vendor/imgui"
+group "Dependencies"
+	-- Copy the GLFW premake file content to here
+	include "Shaddock/vendor/GLFW"
+	include "Shaddock/vendor/Glad"
+	include "Shaddock/vendor/imgui"
+	include "Shaddock/vendor/yaml-cpp"
+
+group ""
 
 project "Shaddock"
 	location "Shaddock"
@@ -54,6 +59,7 @@ project "Shaddock"
 	{
 		"_CRT_SECURE_NO_WARNINGS",
 		"GLFW_INCLUDE_NONE",
+		"YAML_CPP_STATIC_DEFINE"
 	}
 
 	includedirs
@@ -66,6 +72,7 @@ project "Shaddock"
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.stb_image}",
 		"%{IncludeDir.entt}",
+		"%{IncludeDir.yaml_cpp}",
 	}
 
 	links
@@ -73,7 +80,8 @@ project "Shaddock"
 		"GLFW",
 		"Glad",
 		"ImGui",
-		"opengl32.lib"
+		"opengl32.lib",
+		"yaml-cpp"
 	}
 
 	filter "system:windows"
@@ -177,7 +185,6 @@ project "Sandbox"
 	{
 		"Shaddock"
 	}
-
 	filter "system:windows"
 		systemversion "latest"
 

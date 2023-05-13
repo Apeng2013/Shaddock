@@ -7,6 +7,7 @@ namespace Shaddock {
 
 	class Entity;
 	class SceneHierarchyPanel;
+	class SceneSerializer;
 
 	class Scene
 	{
@@ -31,5 +32,6 @@ namespace Shaddock {
 
 		friend class Entity;
 		friend class SceneHierarchyPanel;
+		friend class SceneSerializer;
 	};
 }

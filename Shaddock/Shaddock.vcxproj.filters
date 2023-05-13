@@ -90,6 +90,9 @@
     <ClInclude Include="src\Shaddock\Core\Application.h">
       <Filter>src\Shaddock\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Shaddock\Core\Assert.h">
+      <Filter>src\Shaddock\Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\Shaddock\Core\Base.h">
       <Filter>src\Shaddock\Core</Filter>
     </ClInclude>
@@ -112,6 +115,9 @@
       <Filter>src\Shaddock\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Shaddock\Core\MouseCodes.h">
+      <Filter>src\Shaddock\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shaddock\Core\PlatformDetection.h">
       <Filter>src\Shaddock\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Shaddock\Core\Timestep.h">
@@ -139,6 +145,9 @@
       <Filter>src\Shaddock\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="src\Shaddock\Renderer\Buffer.h">
+      <Filter>src\Shaddock\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shaddock\Renderer\Camera.h">
       <Filter>src\Shaddock\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Shaddock\Renderer\Framebuffer.h">
@@ -174,7 +183,22 @@
     <ClInclude Include="src\Shaddock\Renderer\VertexArray.h">
       <Filter>src\Shaddock\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Shaddock\Scene\Component.h">
+      <Filter>src\Shaddock\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shaddock\Scene\Entity.h">
+      <Filter>src\Shaddock\Scene</Filter>
+    </ClInclude>
     <ClInclude Include="src\Shaddock\Scene\Scene.h">
+      <Filter>src\Shaddock\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shaddock\Scene\SceneCamera.h">
+      <Filter>src\Shaddock\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shaddock\Scene\SceneSerializer.h">
+      <Filter>src\Shaddock\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shaddock\Scene\ScriptableEntity.h">
       <Filter>src\Shaddock\Scene</Filter>
     </ClInclude>
     <ClInclude Include="src\sdpch.h">
@@ -1428,13 +1452,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Shaddock\Scene\Component.h" />
-    <ClInclude Include="src\Shaddock\Scene\Entity.h" />
-    <ClInclude Include="src\Shaddock\Renderer\Camera.h" />
-    <ClInclude Include="src\Shaddock\Scene\SceneCamera.h" />
-    <ClInclude Include="src\Shaddock\Scene\ScriptableEntity.h" />
-    <ClInclude Include="src\Shaddock\Core\PlatformDetection.h" />
-    <ClInclude Include="src\Shaddock\Core\Assert.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1521,7 +1538,16 @@
     <ClCompile Include="src\Shaddock\Renderer\VertexArray.cpp">
       <Filter>src\Shaddock\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Shaddock\Scene\Entity.cpp">
+      <Filter>src\Shaddock\Scene</Filter>
+    </ClCompile>
     <ClCompile Include="src\Shaddock\Scene\Scene.cpp">
+      <Filter>src\Shaddock\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shaddock\Scene\SceneCamera.cpp">
+      <Filter>src\Shaddock\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shaddock\Scene\SceneSerializer.cpp">
       <Filter>src\Shaddock\Scene</Filter>
     </ClCompile>
     <ClCompile Include="src\sdpch.cpp">
@@ -1530,7 +1556,5 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Shaddock\Scene\Entity.cpp" />
-    <ClCompile Include="src\Shaddock\Scene\SceneCamera.cpp" />
   </ItemGroup>
 </Project>
