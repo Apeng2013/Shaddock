@@ -21,8 +21,8 @@ namespace YAML {
 			if (!node.IsSequence() || node.size() != 3)
 				return false;
 			rhs.x = node[0].as<float>();
-			rhs.x = node[1].as<float>();
-			rhs.x = node[2].as<float>();
+			rhs.y = node[1].as<float>();
+			rhs.z = node[2].as<float>();
 			return true;
 		}
 	};
@@ -44,9 +44,9 @@ namespace YAML {
 			if (!node.IsSequence() || node.size() != 4)
 				return false;
 			rhs.x = node[0].as<float>();
-			rhs.x = node[1].as<float>();
-			rhs.x = node[2].as<float>();
-			rhs.x = node[3].as<float>();
+			rhs.y = node[1].as<float>();
+			rhs.z = node[2].as<float>();
+			rhs.w = node[3].as<float>();
 			return true;
 		}
 	};
@@ -63,7 +63,7 @@ namespace Shaddock {
 	YAML::Emitter& operator<<(YAML::Emitter& out, const glm::vec4& v)
 	{
 		out << YAML::Flow;
-		out << YAML::BeginSeq << v.x << v.y << v.z << v.z << YAML::EndSeq;
+		out << YAML::BeginSeq << v.x << v.y << v.z << v.w << YAML::EndSeq;
 		return out;
 	}
 

@@ -188,6 +188,7 @@
     <ClInclude Include="src\Shaddock\Scene\SceneSerializer.h" />
     <ClInclude Include="src\Shaddock\Scene\ScriptableEntity.h" />
     <ClInclude Include="src\sdpch.h" />
+    <ClInclude Include="src\Shaddock\Utils\PlatformUtils.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_fixes.hpp" />
@@ -614,6 +615,7 @@
     <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsPlatformUtils.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Shaddock\Core\Application.cpp" />
     <ClCompile Include="src\Shaddock\Core\Layer.cpp" />
