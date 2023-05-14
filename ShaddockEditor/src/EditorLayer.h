@@ -41,5 +41,7 @@ namespace Shaddock {
 
 		SceneHierarchyPanel m_SceneHierarchyPanel;
 
+		int m_GizmoType = -1;
+
 	};
 }

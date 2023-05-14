@@ -3,7 +3,8 @@
 #include <glm/gtc/type_ptr.hpp>
 #include "Shaddock/Scene/SceneSerializer.h"
 #include "Shaddock/Utils/PlatformUtils.h"
-
+#include "Shaddock/Math/Math.h"
+#include "ImGuizmo.h"
 #include <chrono>
 
 namespace Shaddock {
@@ -23,6 +24,8 @@ namespace Shaddock {
         m_Framebuffer = Framebuffer::Create(fbSpec);
 
         m_ActiveScene = CreateRef<Scene>();
+
+#if 0
         auto square = m_ActiveScene->CreateEntity("SquareEntity A");
         square.AddComponent<SpriteRendererComponent>(glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
 
@@ -66,7 +69,7 @@ namespace Shaddock {
         };
         m_CameraEntity.AddComponent<NativeScriptComponent>().Bind<CameraController>();
         m_SecondCamera.AddComponent<NativeScriptComponent>().Bind<CameraController>();
-
+#endif
         m_SceneHierarchyPanel.SetContext(m_ActiveScene);
     }
 
@@ -162,7 +165,7 @@ namespace Shaddock {
         
         if (ImGui::BeginMenuBar())
         {
-            if (ImGui::BeginMenu("Options"))
+            if (ImGui::BeginMenu("Files"))
             {
                 // Disabling fullscreen would allow the window to be moved to the front of other windows,
                 // which we can't undo at the moment without finer window depth/z control.
@@ -180,28 +183,72 @@ namespace Shaddock {
         
         m_SceneHierarchyPanel.OnImGuiRender();
         
-        ImGui::Begin("Statistic");
-        auto stats = Renderer2D::GetStats();
-        ImGui::Text("Renderer2D Stats:");
-        ImGui::Text("Draw Calls: %d", stats.DrawCalls);
-        ImGui::Text("Quads: %d", stats.QuadCount);
-        ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
-        ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
-        static bool open = true;
-        ImGui::ShowDemoWindow(&open);
-        ImGui::End();
+        // Render Statistic
+        {
+            ImGui::Begin("Statistic");
+            auto stats = Renderer2D::GetStats();
+            ImGui::Text("Renderer2D Stats:");
+            ImGui::Text("Draw Calls: %d", stats.DrawCalls);
+            ImGui::Text("Quads: %d", stats.QuadCount);
+            ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
+            ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
+            static bool open = true;
+            ImGui::ShowDemoWindow(&open);
+            ImGui::End();
+        }
 
         ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
         ImGui::Begin("Viewport");
 
         m_ViewportFocused = ImGui::IsWindowFocused();
         m_ViewportHovered = ImGui::IsWindowHovered();
-        Application::Get().GetImGuiLayer()->BlockEvents(!m_ViewportFocused || !m_ViewportHovered);
+        Application::Get().GetImGuiLayer()->BlockEvents(!m_ViewportFocused && !m_ViewportHovered);
 
         ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
         m_ViewportSize = { viewportPanelSize.x, viewportPanelSize.y };
         uint64_t textureID = m_Framebuffer->GetColorAttachmentRendererID();
         ImGui::Image(reinterpret_cast<void*>(textureID), viewportPanelSize, ImVec2(0.0f, 1.0f), ImVec2(1.0f, 0.0f));
+
+        // Gizmos
+        {
+            Entity& selectedEntity = m_SceneHierarchyPanel.GetSelectedEntity();
+            if (selectedEntity && m_GizmoType != -1)
+            {
+                ImGuizmo::SetOrthographic(false);
+                ImGuizmo::SetDrawlist();
+
+                float windowWidth = (float)ImGui::GetWindowWidth();
+                float windowHeight = (float)ImGui::GetWindowHeight();
+
+                ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, windowWidth, windowHeight);
+                
+                auto cameraEntity = m_ActiveScene->GetPrimaryCameraEntity();
+                const auto& camera = cameraEntity.GetComponent<CameraComponent>().Camera;
+                const glm::mat4& cameraProjection = camera.GetProjection();
+                glm::mat4 cameraView = glm::inverse(cameraEntity.GetComponent<TransformComponent>().GetTransform());
+
+                auto& tc = selectedEntity.GetComponent<TransformComponent>();
+                glm::mat4 transform = tc.GetTransform();
+
+                bool snap = Input::IsKeyPressed(Key::LeftControl);
+                float snapValue = m_GizmoType != ImGuizmo::OPERATION::ROTATE ? 0.5f : 45.0f;
+                float snapValues[3] = { snapValue, snapValue, snapValue };
+
+                ImGuizmo::Manipulate(glm::value_ptr(cameraView), glm::value_ptr(cameraProjection), (ImGuizmo::OPERATION)m_GizmoType, 
+                    ImGuizmo::LOCAL, glm::value_ptr(transform), nullptr, snap ? snapValues : nullptr);
+                if (ImGuizmo::IsUsing())
+                {
+                    glm::vec3 translation, rotation, scale;
+                    Math::DecomposeTransform(transform, translation, rotation, scale);
+                    glm::vec3 deltaRotation = rotation - tc.Rotation;
+                    tc.Translation = translation;
+                    tc.Rotation += deltaRotation;
+                    tc.Scale = scale;
+                }
+
+            }
+        }
+
         ImGui::End();
         ImGui::PopStyleVar();
 
@@ -235,6 +282,18 @@ namespace Shaddock {
             if (control && shift)
                 SaveSceneAs();
             break;
+        case Key::Q:
+            m_GizmoType = -1;
+            break;
+        case Key::W:
+            m_GizmoType = ImGuizmo::OPERATION::TRANSLATE;
+            break;
+        case Key::E:
+            m_GizmoType = ImGuizmo::OPERATION::ROTATE;
+            break;
+        case Key::R:
+            m_GizmoType = ImGuizmo::OPERATION::SCALE;
+            break;
         }
         return false;
     }
@@ -246,23 +305,23 @@ namespace Shaddock {
     }
     void EditorLayer::OpenScene()
     {
-        std::string filepath = FileDialogs::OpenFile("Shaddock Scene (*.scene)\0*.scene\0");
-        if (!filepath.empty())
+        std::optional<std::string> filepath = FileDialogs::OpenFile("Shaddock Scene (*.scene)\0*.scene\0");
+        if (filepath)
         {
             m_ActiveScene = CreateRef<Scene>();
             m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
             m_SceneHierarchyPanel.SetContext(m_ActiveScene);
             SceneSerializer serializer(m_ActiveScene);
-            serializer.Deserialize(filepath);
+            serializer.Deserialize(*filepath);
         }
     }
     void EditorLayer::SaveSceneAs()
     {
-        std::string filepath = FileDialogs::SaveFile("Shaddock Scene (*.scene)\0*.scene\0");
-        if (!filepath.empty())
+        std::optional<std::string> filepath = FileDialogs::SaveFile("Shaddock Scene (*.scene)\0*.scene\0");
+        if (filepath)
         {
             SceneSerializer serializer(m_ActiveScene);
-            serializer.Serialize(filepath);
+            serializer.Serialize(*filepath);
         }
     }
 }

@@ -14,3 +14,6 @@
 [submodule "Shaddock/vendor/yaml-cpp"]
 	path = Shaddock/vendor/yaml-cpp
 	url = https://github.com/Apeng2013/yaml-cpp.git
+[submodule "Shaddock/vendor/ImGuizmo"]
+	path = Shaddock/vendor/ImGuizmo
+	url = https://github.com/Apeng2013/ImGuizmo.git

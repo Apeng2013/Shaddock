@@ -215,12 +215,18 @@ namespace Shaddock {
 		{
 			if (ImGui::MenuItem("Camera"))
 			{
-				entity.AddComponent<CameraComponent>();
+				if (!entity.HasComponent<CameraComponent>())
+					entity.AddComponent<CameraComponent>();
+				else
+					SD_CORE_WARN("Entity already has CameraComponent");
 				ImGui::CloseCurrentPopup();
 			}
 			if (ImGui::MenuItem("Sprite Renderer"))
 			{
-				entity.AddComponent<SpriteRendererComponent>();
+				if (!entity.HasComponent<SpriteRendererComponent>())
+					entity.AddComponent<SpriteRendererComponent>();
+				else
+					SD_CORE_WARN("Entity already has SpriteRendererComponent");
 				ImGui::CloseCurrentPopup();
 			}
 			ImGui::EndPopup();

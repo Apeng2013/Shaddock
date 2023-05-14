@@ -77,7 +77,7 @@
       <PrecompiledHeaderFile>sdpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;YAML_CPP_STATIC_DEFINE;SD_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb_image;vendor\entt\include;vendor\yaml-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb_image;vendor\entt\include;vendor\yaml-cpp\include;vendor\ImGuizmo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -97,7 +97,7 @@
       <PrecompiledHeaderFile>sdpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;YAML_CPP_STATIC_DEFINE;SD_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb_image;vendor\entt\include;vendor\yaml-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb_image;vendor\entt\include;vendor\yaml-cpp\include;vendor\ImGuizmo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -121,7 +121,7 @@
       <PrecompiledHeaderFile>sdpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;YAML_CPP_STATIC_DEFINE;SD_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb_image;vendor\entt\include;vendor\yaml-cpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb_image;vendor\entt\include;vendor\yaml-cpp\include;vendor\ImGuizmo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -168,6 +168,7 @@
     <ClInclude Include="src\Shaddock\Events\KeyEvent.h" />
     <ClInclude Include="src\Shaddock\Events\MouseEvent.h" />
     <ClInclude Include="src\Shaddock\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Shaddock\Math\Math.h" />
     <ClInclude Include="src\Shaddock\Renderer\Buffer.h" />
     <ClInclude Include="src\Shaddock\Renderer\Camera.h" />
     <ClInclude Include="src\Shaddock\Renderer\Framebuffer.h" />
@@ -187,8 +188,9 @@
     <ClInclude Include="src\Shaddock\Scene\SceneCamera.h" />
     <ClInclude Include="src\Shaddock\Scene\SceneSerializer.h" />
     <ClInclude Include="src\Shaddock\Scene\ScriptableEntity.h" />
-    <ClInclude Include="src\sdpch.h" />
     <ClInclude Include="src\Shaddock\Utils\PlatformUtils.h" />
+    <ClInclude Include="src\sdpch.h" />
+    <ClInclude Include="vendor\ImGuizmo\ImGuizmo.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_fixes.hpp" />
@@ -624,6 +626,7 @@
     <ClCompile Include="src\Shaddock\Core\Window.cpp" />
     <ClCompile Include="src\Shaddock\ImGui\ImGuiBuilder.cpp" />
     <ClCompile Include="src\Shaddock\ImGui\ImGuiLayer.cpp" />
+    <ClCompile Include="src\Shaddock\Math\Math.cpp" />
     <ClCompile Include="src\Shaddock\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Shaddock\Renderer\Framebuffer.cpp" />
     <ClCompile Include="src\Shaddock\Renderer\GraphicsContext.cpp" />
@@ -642,6 +645,9 @@
     <ClCompile Include="src\Shaddock\Scene\SceneSerializer.cpp" />
     <ClCompile Include="src\sdpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="vendor\ImGuizmo\ImGuizmo.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="vendor\stb_image\stb_image.cpp" />
   </ItemGroup>

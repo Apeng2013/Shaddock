@@ -8,7 +8,7 @@
 #include "Shaddock/Core/Application.h"
 
 namespace Shaddock {
-	std::string FileDialogs::OpenFile(const char* filter)
+	std::optional<std::string> FileDialogs::OpenFile(const char* filter)
 	{
 		OPENFILENAMEA ofn;
 		CHAR szfile[260] = { 0 };
@@ -22,10 +22,10 @@ namespace Shaddock {
 		ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST | OFN_NOCHANGEDIR;
 		if (GetOpenFileNameA(&ofn) == true)
 			return ofn.lpstrFile;
-		return std::string();
+		return std::nullopt;
 	}
 
-	std::string FileDialogs::SaveFile(const char* filter)
+	std::optional<std::string> FileDialogs::SaveFile(const char* filter)
 	{
 		OPENFILENAMEA ofn;
 		CHAR szfile[260] = { 0 };
@@ -36,9 +36,10 @@ namespace Shaddock {
 		ofn.nMaxFile = sizeof(szfile);
 		ofn.lpstrFilter = filter;
 		ofn.nFilterIndex = 1;
+		ofn.lpstrDefExt = std::strchr(filter, '\0') + 1;
 		ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST | OFN_NOCHANGEDIR;
 		if (GetSaveFileNameA(&ofn) == true)
 			return ofn.lpstrFile;
-		return std::string();
+		return std::nullopt;
 	}
 }
