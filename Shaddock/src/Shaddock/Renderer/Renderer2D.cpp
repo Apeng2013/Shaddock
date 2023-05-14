@@ -108,6 +108,14 @@ namespace Shaddock {
 		s_Data.TextureShader->SetMat4("u_ViewProjectionMatrix", viewProjection);
 		StartBatch();
 	}
+	void Renderer2D::BeginScene(EditorCamera& camera)
+	{
+		SD_PROFILE_FUNCTION();
+		s_Data.TextureShader->Bind();
+		glm::mat4 viewProjection = camera.GetViewProjection();
+		s_Data.TextureShader->SetMat4("u_ViewProjectionMatrix", viewProjection);
+		StartBatch();
+	}
 	void Renderer2D::BeginScene(OrthographicCamera& camera)
 	{
 		SD_PROFILE_FUNCTION();

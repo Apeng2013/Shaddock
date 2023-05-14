@@ -171,6 +171,7 @@
     <ClInclude Include="src\Shaddock\Math\Math.h" />
     <ClInclude Include="src\Shaddock\Renderer\Buffer.h" />
     <ClInclude Include="src\Shaddock\Renderer\Camera.h" />
+    <ClInclude Include="src\Shaddock\Renderer\EditorCamera.h" />
     <ClInclude Include="src\Shaddock\Renderer\Framebuffer.h" />
     <ClInclude Include="src\Shaddock\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Shaddock\Renderer\OrthographicCamera.h" />
@@ -628,6 +629,7 @@
     <ClCompile Include="src\Shaddock\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Shaddock\Math\Math.cpp" />
     <ClCompile Include="src\Shaddock\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Shaddock\Renderer\EditorCamera.cpp" />
     <ClCompile Include="src\Shaddock\Renderer\Framebuffer.cpp" />
     <ClCompile Include="src\Shaddock\Renderer\GraphicsContext.cpp" />
     <ClCompile Include="src\Shaddock\Renderer\OrthographicCamera.cpp" />

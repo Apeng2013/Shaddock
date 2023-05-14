@@ -1,6 +1,7 @@
 #pragma once
 #include "Shaddock.h"
 #include "Panels/SceneHierarchyPanel.h"
+#include "Shaddock/Renderer/EditorCamera.h"
 
 namespace Shaddock {
 	class EditorLayer : public Layer
@@ -42,6 +43,8 @@ namespace Shaddock {
 		SceneHierarchyPanel m_SceneHierarchyPanel;
 
 		int m_GizmoType = -1;
+
+		EditorCamera m_EditorCamera;
 
 	};
 }

@@ -2,6 +2,7 @@
 
 #include "Shaddock/Renderer/OrthographicCamera.h"
 #include "Shaddock/Renderer/Camera.h"
+#include "Shaddock/Renderer/EditorCamera.h"
 #include "Shaddock/Renderer/Texture.h"
 
 namespace Shaddock {
@@ -12,6 +13,7 @@ namespace Shaddock {
 		static void Shutdown();
 
 		static void BeginScene(const Camera& camera, const glm::mat4& transform);
+		static void BeginScene(EditorCamera& camera);
 		static void BeginScene(OrthographicCamera& camera);
 		static void EndScene();
 		static void Flush();
