@@ -106,7 +106,7 @@ namespace Shaddock {
         m_Framebuffer->Bind();
         RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1.0f });
         RenderCommand::Clear();
-        m_Framebuffer->ClearAttachment(1, 1);
+        m_Framebuffer->ClearAttachment(1, -1);
 
         m_ActiveScene->OnUpdateEditor(ts, m_EditorCamera);
 
@@ -119,7 +119,7 @@ namespace Shaddock {
         if (mouseX >= 0 && mouseY >= my && mouseX < (int)m_ViewportSize.x && mouseY < (int)m_ViewportSize.y)
         {
             int pixelData = m_Framebuffer->ReadPixel(1, mouseX, mouseY);
-            SD_CORE_WARN("PixelData = {0}", pixelData);
+            m_HoverEntity = (pixelData == -1) ? Entity() : Entity((entt::entity)pixelData, m_ActiveScene.get());
         }
 
         m_Framebuffer->Unbind();
@@ -207,6 +207,10 @@ namespace Shaddock {
         // Render Statistic
         {
             ImGui::Begin("Statistic");
+            std::string name = "None";
+            if (m_HoverEntity)
+                name = m_HoverEntity.GetComponent<TagComponent>().Tag;
+            ImGui::Text("Hover Entity: %s", name.c_str());
             auto stats = Renderer2D::GetStats();
             ImGui::Text("Renderer2D Stats:");
             ImGui::Text("Draw Calls: %d", stats.DrawCalls);
@@ -310,16 +314,20 @@ namespace Shaddock {
                 SaveSceneAs();
             break;
         case Key::Q:
-            m_GizmoType = -1;
+            if (!ImGuizmo::IsUsing())
+                m_GizmoType = -1;
             break;
         case Key::W:
-            m_GizmoType = ImGuizmo::OPERATION::TRANSLATE;
+            if (!ImGuizmo::IsUsing())
+                m_GizmoType = ImGuizmo::OPERATION::TRANSLATE;
             break;
         case Key::E:
-            m_GizmoType = ImGuizmo::OPERATION::ROTATE;
+            if (!ImGuizmo::IsUsing())
+                m_GizmoType = ImGuizmo::OPERATION::ROTATE;
             break;
         case Key::R:
-            m_GizmoType = ImGuizmo::OPERATION::SCALE;
+            if (!ImGuizmo::IsUsing())
+                m_GizmoType = ImGuizmo::OPERATION::SCALE;
             break;
         }
         return false;

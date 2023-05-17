@@ -4,6 +4,7 @@
 #include "Shaddock/Renderer/Camera.h"
 #include "Shaddock/Renderer/EditorCamera.h"
 #include "Shaddock/Renderer/Texture.h"
+#include "Shaddock/Scene/Component.h"
 
 namespace Shaddock {
 	class Renderer2D
@@ -33,9 +34,11 @@ namespace Shaddock {
 		static void DrawRotatedQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const Ref<Texture2D>& texture,
 			float tilingFactor = 1.0f, const glm::vec4& tintColor = glm::vec4(1.0f));
 
-		static void DrawQuad(const glm::mat4& transform, const glm::vec4& color);
+		static void DrawSprite(const glm::mat4& transform, SpriteRendererComponent& src, int entityID);
+
+		static void DrawQuad(const glm::mat4& transform, const glm::vec4& color, int entityID = -1);
 		static void DrawQuad(const glm::mat4& transform, const Ref<Texture2D>& texture,
-			float tilingFactor = 1.0f, const glm::vec4& tintColor = glm::vec4(1.0f));
+			float tilingFactor = 1.0f, const glm::vec4& tintColor = glm::vec4(1.0f), int entityID = -1);
 
 		struct Statistics
 		{
