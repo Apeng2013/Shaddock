@@ -21,7 +21,11 @@ namespace Shaddock {
         FramebufferSpecification fbSpec;
         fbSpec.Width = 1280;
         fbSpec.Height = 720;
-        fbSpec.Attachments = { FramebufferTextureFormat::RGBA8, FramebufferTextureFormat::DEPTH24STENCIL8 };
+        fbSpec.Attachments = { 
+            FramebufferTextureFormat::RGBA8, 
+            FramebufferTextureFormat::RED_INTEGER, 
+            FramebufferTextureFormat::DEPTH24STENCIL8 
+        };
         m_Framebuffer = Framebuffer::Create(fbSpec);
 
         m_ActiveScene = CreateRef<Scene>();
@@ -105,8 +109,19 @@ namespace Shaddock {
 
         m_ActiveScene->OnUpdateEditor(ts, m_EditorCamera);
 
-        m_Framebuffer->Unbind();
+        auto [mx, my] = ImGui::GetMousePos();
+        mx -= m_ViewportBounds[0].x;
+        my -= m_ViewportBounds[0].y;
+        my = m_ViewportSize.y - my;
+        int mouseX = (int)mx;
+        int mouseY = (int)my;
+        if (mouseX >= 0 && mouseY >= my && mouseX < (int)m_ViewportSize.x && mouseY < (int)m_ViewportSize.y)
+        {
+            int pixelData = m_Framebuffer->ReadPixel(1, mouseX, mouseY);
+            SD_CORE_WARN("PixelData = {0}", pixelData);
+        }
 
+        m_Framebuffer->Unbind();
     }
 
     void EditorLayer::OnImGuiRender()
@@ -204,7 +219,7 @@ namespace Shaddock {
 
         ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
         ImGui::Begin("Viewport");
-
+        auto viewportOffset = ImGui::GetCursorPos();
         m_ViewportFocused = ImGui::IsWindowFocused();
         m_ViewportHovered = ImGui::IsWindowHovered();
         Application::Get().GetImGuiLayer()->BlockEvents(!m_ViewportFocused && !m_ViewportHovered);
@@ -213,6 +228,13 @@ namespace Shaddock {
         m_ViewportSize = { viewportPanelSize.x, viewportPanelSize.y };
         uint64_t textureID = m_Framebuffer->GetColorAttachmentRendererID();
         ImGui::Image(reinterpret_cast<void*>(textureID), viewportPanelSize, ImVec2(0.0f, 1.0f), ImVec2(1.0f, 0.0f));
+
+        ImVec2 minBound = ImGui::GetWindowPos();
+        minBound.x += viewportOffset.x;
+        minBound.y += viewportOffset.y;
+        ImVec2 maxBound = { minBound.x + m_ViewportSize.x, minBound.y + m_ViewportSize.y };
+        m_ViewportBounds[0] = { minBound.x, minBound.y };
+        m_ViewportBounds[1] = { maxBound.x, maxBound.y };
 
         // Gizmos
         {

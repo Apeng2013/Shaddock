@@ -23,6 +23,7 @@ namespace Shaddock {
 		}
 
 		virtual const FramebufferSpecification& GetSpecification() const override { return m_Specification; }
+		virtual int ReadPixel(uint32_t attachmentIndex, int x, int y) override;
 
 	private:
 		uint32_t m_RendererID = 0;

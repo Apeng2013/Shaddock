@@ -46,5 +46,7 @@ namespace Shaddock {
 
 		EditorCamera m_EditorCamera;
 
+		glm::vec2 m_ViewportBounds[2];
+
 	};
 }

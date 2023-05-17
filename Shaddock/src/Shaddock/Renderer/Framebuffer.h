@@ -9,6 +9,7 @@ namespace Shaddock {
 		None = 0,
 		//color
 		RGBA8,
+		RED_INTEGER,
 		// depth/stencil
 		DEPTH24STENCIL8,
 
@@ -50,6 +51,7 @@ namespace Shaddock {
 		virtual uint32_t GetColorAttachmentRendererID(uint32_t index=0) const = 0;
 
 		virtual const FramebufferSpecification& GetSpecification() const = 0;
+		virtual int ReadPixel(uint32_t attachmentIndex, int x, int y) = 0;
 
 		static Ref<Framebuffer> Create(const FramebufferSpecification& spec);
 
