@@ -21,6 +21,8 @@ namespace Shaddock {
 			SD_CORE_ASSERT(index < m_ColorAttachments.size(), "");
 			return m_ColorAttachments[index];
 		}
+		virtual void ClearAttachment(uint32_t attachmentIndex, int value = 0) override;
+
 
 		virtual const FramebufferSpecification& GetSpecification() const override { return m_Specification; }
 		virtual int ReadPixel(uint32_t attachmentIndex, int x, int y) override;
