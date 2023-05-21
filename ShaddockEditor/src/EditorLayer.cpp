@@ -287,6 +287,7 @@ namespace Shaddock {
         m_EditorCamera.OnEvent(e);
         EventDispatcher dispatcher(e);
         dispatcher.Dispatch<KeyPressedEvent>(SD_BIND_EVENT_FN(EditorLayer::OnKeyPressed));
+        dispatcher.Dispatch<MouseButtonPressedEvent>(SD_BIND_EVENT_FN(EditorLayer::OnMouseButtonPressed));
     }
     bool EditorLayer::OnKeyPressed(KeyPressedEvent& e)
     {
@@ -325,6 +326,15 @@ namespace Shaddock {
             if (!ImGuizmo::IsUsing())
                 m_GizmoType = ImGuizmo::OPERATION::SCALE;
             break;
+        }
+        return false;
+    }
+    bool EditorLayer::OnMouseButtonPressed(MouseButtonPressedEvent& e)
+    {
+        if (e.GetMouseButton() == Mouse::ButtonLeft)
+        {
+            if (m_ViewportHovered && !ImGuizmo::IsOver() && !Input::IsKeyPressed(Key::LeftAlt))
+                m_SceneHierarchyPanel.SetSelectedEntity(m_HoverEntity);
         }
         return false;
     }
