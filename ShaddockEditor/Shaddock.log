@@ -1,9 +1,8 @@
-[23:26:21] [info] Shaddock: Creating window Shaddock Editor (1280, 720)
-[23:26:22] [info] Shaddock: OpenGL Information:
-[23:26:22] [info] Shaddock: Vendor: NVIDIA Corporation
-[23:26:22] [info] Shaddock: Renderer: GeForce 710M/PCIe/SSE2
-[23:26:22] [info] Shaddock: Version: 4.5.0 NVIDIA 362.09
-[23:26:22] [info] Shaddock: Major Version: 4
-[23:26:22] [info] Shaddock: Minor Version: 5
-[23:26:29] [trace] Shaddock: Deserialize Scene Untitled
-[23:27:12] [trace] Shaddock: Deserialize Scene Untitled
+[00:10:15] [info] Shaddock: Creating window Shaddock Editor (1280, 720)
+[00:10:16] [info] Shaddock: OpenGL Information:
+[00:10:16] [info] Shaddock: Vendor: NVIDIA Corporation
+[00:10:16] [info] Shaddock: Renderer: GeForce 710M/PCIe/SSE2
+[00:10:16] [info] Shaddock: Version: 4.5.0 NVIDIA 362.09
+[00:10:16] [info] Shaddock: Major Version: 4
+[00:10:16] [info] Shaddock: Minor Version: 5
+[00:10:34] [trace] Shaddock: Deserialize Scene Untitled

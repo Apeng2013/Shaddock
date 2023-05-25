@@ -142,7 +142,7 @@ namespace Shaddock {
 		}
 		if (m_ColorAttachments.size() > 1)
 		{
-			SD_CORE_ASSERT(m_ColorAttachments.size() <= 4, "");
+			SD_CORE_ASSERT(m_ColorAttachments.size() <= 4);
 			GLenum buffers[4] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1 , GL_COLOR_ATTACHMENT2 , GL_COLOR_ATTACHMENT3 };
 			glDrawBuffers(4, buffers);
 		}
@@ -177,13 +177,13 @@ namespace Shaddock {
 	}
 	void OpenGLFramebuffer::ClearAttachment(uint32_t attachmentIndex, int value)
 	{
-		SD_CORE_ASSERT(attachmentIndex < m_ColorAttachments.size(), "");
+		SD_CORE_ASSERT(attachmentIndex < m_ColorAttachments.size());
 		auto& spec = m_ColorAttachmentSpecifications[attachmentIndex];
 		glClearTexImage(m_ColorAttachments[attachmentIndex], 0, Utils::SDTextureFormatToGL(spec.TextureFormat), GL_INT, &value);
 	}
 	int OpenGLFramebuffer::ReadPixel(uint32_t attachmentIndex, int x, int y)
 	{
-		SD_CORE_ASSERT(attachmentIndex < m_ColorAttachments.size(), "");
+		SD_CORE_ASSERT(attachmentIndex < m_ColorAttachments.size());
 		glReadBuffer(GL_COLOR_ATTACHMENT0 + attachmentIndex);
 		int pixelData;
 		glReadPixels(x, y, 1, 1, GL_RED_INTEGER, GL_INT, &pixelData);
