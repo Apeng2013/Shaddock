@@ -22,7 +22,7 @@ Entities:
     TagComponent:
       Tag: SquareEntity B
     TransformComponent:
-      Translation: [0.726869583, 0.827739716, -4.4000001]
+      Translation: [0.743287921, -0.254310697, -4.4000001]
       Rotation: [0, 0, 0]
       Scale: [1, 1, 1]
     SpriteRendererComponent:
@@ -31,8 +31,8 @@ Entities:
     TagComponent:
       Tag: SquareEntity A
     TransformComponent:
-      Translation: [-1.2098608, 0.3891927, -4.29344082]
-      Rotation: [-2.78546023, 1.00880897, -1.94909227]
-      Scale: [1.00000131, 0.999999881, 1.0000025]
+      Translation: [-0.724931359, -0.0201793555, -0.993905306]
+      Rotation: [-2.954036, -0.0851044357, -2.27018619]
+      Scale: [0.999986947, 0.999996126, 0.999981344]
     SpriteRendererComponent:
       Color: [0, 1, 0, 1]

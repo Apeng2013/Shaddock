@@ -11,7 +11,8 @@ namespace Shaddock {
 
 	Application* Application::s_Instance = nullptr;
 
-	Application::Application(const std::string& name)
+	Application::Application(const std::string& name, ApplicationCommandLineArgs args)
+		: m_CommandLineArgs(args)
 	{
 		SD_PROFILE_FUNCTION();
 		SD_CORE_ASSERT(!s_Instance, "Application alread exits!");

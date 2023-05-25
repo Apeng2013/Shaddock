@@ -1466,6 +1466,7 @@
     </ClInclude>
     <ClInclude Include="src\Shaddock\Math\Math.h" />
     <ClInclude Include="src\Shaddock\Renderer\EditorCamera.h" />
+    <ClInclude Include="src\Shaddock\Core\Timer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
