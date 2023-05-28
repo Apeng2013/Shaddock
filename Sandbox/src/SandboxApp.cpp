@@ -7,7 +7,7 @@
 class Sandbox : public Shaddock::Application
 {
 public:
-	Sandbox()
+	Sandbox(Shaddock::ApplicationCommandLineArgs args)
 	{
 		//PushLayer(new ExampleLayer());
 		PushLayer(new Sandbox2D());
@@ -18,7 +18,7 @@ public:
 	}
 };
 
-Shaddock::Application* Shaddock::CreateApplication()
+Shaddock::Application* Shaddock::CreateApplication(Shaddock::ApplicationCommandLineArgs args)
 {
-	return new Sandbox();
+	return new Sandbox(args);
 }
