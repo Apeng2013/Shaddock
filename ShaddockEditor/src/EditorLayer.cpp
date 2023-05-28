@@ -124,7 +124,7 @@ namespace Shaddock {
         my = m_ViewportSize.y - my;
         int mouseX = (int)mx;
         int mouseY = (int)my;
-        if (mouseX >= 0 && mouseY >= my && mouseX < (int)m_ViewportSize.x && mouseY < (int)m_ViewportSize.y)
+        if (mouseX >= 0 && mouseY >= 0 && mouseX < (int)m_ViewportSize.x && mouseY < (int)m_ViewportSize.y)
         {
             int pixelData = m_Framebuffer->ReadPixel(1, mouseX, mouseY);
             m_HoverEntity = (pixelData == -1) ? Entity() : Entity((entt::entity)pixelData, m_ActiveScene.get());
@@ -211,6 +211,7 @@ namespace Shaddock {
         }
         
         m_SceneHierarchyPanel.OnImGuiRender();
+        m_ContentBrowserPanel.OnImGuiRender();
         
         // Render Statistic
         {

@@ -1,6 +1,7 @@
 #pragma once
 #include "Shaddock.h"
 #include "Panels/SceneHierarchyPanel.h"
+#include "Panels/ContentBrowserPanel.h"
 #include "Shaddock/Renderer/EditorCamera.h"
 
 namespace Shaddock {
@@ -41,14 +42,16 @@ namespace Shaddock {
 
 		glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
 
-		SceneHierarchyPanel m_SceneHierarchyPanel;
-
 		int m_GizmoType = -1;
 
 		EditorCamera m_EditorCamera;
 
 		glm::vec2 m_ViewportBounds[2];
 		Entity m_HoverEntity;
+
+		// panels
+		SceneHierarchyPanel m_SceneHierarchyPanel;
+		ContentBrowserPanel m_ContentBrowserPanel;
 
 	};
 }
