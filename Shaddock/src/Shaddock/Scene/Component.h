@@ -1,6 +1,7 @@
 #pragma once
 #include <glm/glm.hpp>
 #include "Shaddock/Scene/SceneCamera.h"
+#include "Shaddock/Renderer/Texture.h"
 #include "Shaddock/Scene/ScriptableEntity.h"
 #include <glm/gtc/matrix_transform.hpp>
 #define GLM_ENABLE_EXPERIMENTAL
@@ -35,6 +36,8 @@ namespace Shaddock {
 	struct SpriteRendererComponent
 	{
 		glm::vec4 Color{ 1.0f, 1.0f, 1.0f, 1.0f };
+		Ref<Texture2D> Texture;
+		float TilingFactor = 1.0f;
 		SpriteRendererComponent() = default;
 		SpriteRendererComponent(const SpriteRendererComponent&) = default;
 		SpriteRendererComponent(const glm::vec4& color)
