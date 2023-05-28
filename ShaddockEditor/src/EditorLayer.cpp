@@ -354,23 +354,23 @@ namespace Shaddock {
     }
     void EditorLayer::OpenScene()
     {
-        std::optional<std::string> filepath = FileDialogs::OpenFile("Shaddock Scene (*.scene)\0*.scene\0");
-        if (filepath)
+        std::string filepath = FileDialogs::OpenFile("Shaddock Scene (*.scene)\0*.scene\0");
+        if (!filepath.empty())
         {
             m_ActiveScene = CreateRef<Scene>();
             m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
             m_SceneHierarchyPanel.SetContext(m_ActiveScene);
             SceneSerializer serializer(m_ActiveScene);
-            serializer.Deserialize(*filepath);
+            serializer.Deserialize(filepath);
         }
     }
     void EditorLayer::SaveSceneAs()
     {
-        std::optional<std::string> filepath = FileDialogs::SaveFile("Shaddock Scene (*.scene)\0*.scene\0");
-        if (filepath)
+        std::string filepath = FileDialogs::SaveFile("Shaddock Scene (*.scene)\0*.scene\0");
+        if (!filepath.empty())
         {
             SceneSerializer serializer(m_ActiveScene);
-            serializer.Serialize(*filepath);
+            serializer.Serialize(filepath);
         }
     }
 }
