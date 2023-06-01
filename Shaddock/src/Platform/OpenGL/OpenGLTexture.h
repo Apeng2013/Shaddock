@@ -16,6 +16,8 @@ namespace Shaddock {
 		virtual void Bind(uint32_t slot = 0) const override;
 		virtual void SetData(void* data, uint32_t size) override;
 
+		virtual bool IsLoaded() const override { return m_IsLoaded; }
+
 		virtual bool operator==(const Texture& other) override
 		{
 			return m_RendererID == ((OpenGLTexture2D&)other).m_RendererID;
@@ -25,5 +27,6 @@ namespace Shaddock {
 		uint32_t m_RendererID;
 		std::string m_Path;
 		GLenum m_InternalFormat, m_DataFormat;
+		bool m_IsLoaded = false;
 	};
 }
