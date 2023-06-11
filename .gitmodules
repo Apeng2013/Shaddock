@@ -13,3 +13,7 @@
 [submodule "Shaddock/vendor/ImGuizmo"]
 	path = Shaddock/vendor/ImGuizmo
 	url = https://github.com/Apeng2013/ImGuizmo.git
+[submodule "Shaddock/vendor/imgui"]
+	path = Shaddock/vendor/imgui
+	url = https://github.com/Apeng2013/imgui
+	branch = docking
