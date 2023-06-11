@@ -28,6 +28,9 @@
     <Filter Include="src\Shaddock\ImGui">
       <UniqueIdentifier>{E7B15096-D395-11EC-3CF6-0B3F28F9FB6D}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Shaddock\Math">
+      <UniqueIdentifier>{F67D2352-6294-21E8-AB0B-AD091761F26F}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Shaddock\Renderer">
       <UniqueIdentifier>{43A32156-AF0F-DD50-7803-75AEE42EFFB8}</UniqueIdentifier>
     </Filter>
@@ -126,6 +129,9 @@
     <ClInclude Include="src\Shaddock\Core\PlatformDetection.h">
       <Filter>src\Shaddock\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Shaddock\Core\Timer.h">
+      <Filter>src\Shaddock\Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\Shaddock\Core\Timestep.h">
       <Filter>src\Shaddock\Core</Filter>
     </ClInclude>
@@ -150,10 +156,16 @@
     <ClInclude Include="src\Shaddock\ImGui\ImGuiLayer.h">
       <Filter>src\Shaddock\ImGui</Filter>
     </ClInclude>
+    <ClInclude Include="src\Shaddock\Math\Math.h">
+      <Filter>src\Shaddock\Math</Filter>
+    </ClInclude>
     <ClInclude Include="src\Shaddock\Renderer\Buffer.h">
       <Filter>src\Shaddock\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Shaddock\Renderer\Camera.h">
+      <Filter>src\Shaddock\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shaddock\Renderer\EditorCamera.h">
       <Filter>src\Shaddock\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Shaddock\Renderer\Framebuffer.h">
@@ -1464,9 +1476,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Shaddock\Math\Math.h" />
-    <ClInclude Include="src\Shaddock\Renderer\EditorCamera.h" />
-    <ClInclude Include="src\Shaddock\Core\Timer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1520,7 +1529,13 @@
     <ClCompile Include="src\Shaddock\ImGui\ImGuiLayer.cpp">
       <Filter>src\Shaddock\ImGui</Filter>
     </ClCompile>
+    <ClCompile Include="src\Shaddock\Math\Math.cpp">
+      <Filter>src\Shaddock\Math</Filter>
+    </ClCompile>
     <ClCompile Include="src\Shaddock\Renderer\Buffer.cpp">
+      <Filter>src\Shaddock\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shaddock\Renderer\EditorCamera.cpp">
       <Filter>src\Shaddock\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Shaddock\Renderer\Framebuffer.cpp">
@@ -1577,7 +1592,5 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Shaddock\Math\Math.cpp" />
-    <ClCompile Include="src\Shaddock\Renderer\EditorCamera.cpp" />
   </ItemGroup>
 </Project>
