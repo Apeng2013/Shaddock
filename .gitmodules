@@ -7,10 +7,6 @@
 [submodule "Shaddock/vendor/glm"]
 	path = Shaddock/vendor/glm
 	url = https://github.com/g-truc/glm
-[submodule "imgui"]
-	path = Shaddock/vendor/imgui
-	url = https://github.com/Apeng2013/imgui.git
-	branch = docking
 [submodule "Shaddock/vendor/yaml-cpp"]
 	path = Shaddock/vendor/yaml-cpp
 	url = https://github.com/Apeng2013/yaml-cpp.git
