@@ -1,9 +1,12 @@
-[12:04:17] [info] Shaddock: Creating window Shaddock Editor (1280, 720)
-[12:04:18] [info] Shaddock: OpenGL Information:
-[12:04:18] [info] Shaddock: Vendor: Intel
-[12:04:18] [info] Shaddock: Renderer: Intel(R) Iris(R) Xe Graphics
-[12:04:18] [info] Shaddock: Version: 4.6.0 - Build 30.0.101.1692
-[12:04:18] [info] Shaddock: Major Version: 4
-[12:04:18] [info] Shaddock: Minor Version: 6
-[12:04:33] [warning] APP: Could not load Texture.glsl - not a scene file
-[12:04:41] [trace] Shaddock: Deserialize Scene Untitled
+[17:29:57] [info] Shaddock: Creating window Shaddock Editor (1280, 720)
+[17:29:57] [info] Shaddock: OpenGL Information:
+[17:29:57] [info] Shaddock: Vendor: Intel
+[17:29:57] [info] Shaddock: Renderer: Intel(R) Iris(R) Xe Graphics
+[17:29:57] [info] Shaddock: Version: 4.6.0 - Build 31.0.101.3302
+[17:29:57] [info] Shaddock: Major Version: 4
+[17:29:57] [info] Shaddock: Minor Version: 6
+[17:30:05] [trace] Shaddock: Deserialize Scene Untitled
+[17:30:05] [error] Shaddock: API_ID_RECOMPILE_FRAGMENT_SHADER performance warning has been generated. Fragment shader recompiled due to state change.
+[17:32:22] [trace] Shaddock: Deserialize Scene Untitled
+[17:32:24] [trace] Shaddock: Deserialize Scene Untitled
+[17:36:53] [info] Shaddock: Terminating GLFW

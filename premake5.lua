@@ -23,6 +23,7 @@ IncludeDir["stb_image"] = "Shaddock/vendor/stb_image"
 IncludeDir["entt"] = "Shaddock/vendor/entt/include"
 IncludeDir["yaml_cpp"] = "Shaddock/vendor/yaml-cpp/include"
 IncludeDir["ImGuizmo"] = "Shaddock/vendor/ImGuizmo"
+IncludeDir["Box2D"] = "Shaddock/vendor/Box2D/include"
 
 group "Dependencies"
 	-- Copy the GLFW premake file content to here
@@ -30,6 +31,7 @@ group "Dependencies"
 	include "Shaddock/vendor/Glad"
 	include "Shaddock/vendor/imgui"
 	include "Shaddock/vendor/yaml-cpp"
+	include "Shaddock/vendor/Box2D"
 
 group ""
 
@@ -77,6 +79,7 @@ project "Shaddock"
 		"%{IncludeDir.entt}",
 		"%{IncludeDir.yaml_cpp}",
 		"%{IncludeDir.ImGuizmo}",
+		"%{IncludeDir.Box2D}"
 	}
 
 	links
@@ -85,7 +88,8 @@ project "Shaddock"
 		"Glad",
 		"ImGui",
 		"opengl32.lib",
-		"yaml-cpp"
+		"yaml-cpp",
+		"Box2D"
 	}
 	
 	filter "files:Shaddock/vendor/ImGuizmo/**.cpp"

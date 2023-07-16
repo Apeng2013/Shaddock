@@ -17,3 +17,6 @@
 	path = Shaddock/vendor/imgui
 	url = https://github.com/Apeng2013/imgui
 	branch = docking
+[submodule "Shaddock/vendor/Box2D"]
+	path = Shaddock/vendor/Box2D
+	url = https://github.com/Apeng2013/box2d

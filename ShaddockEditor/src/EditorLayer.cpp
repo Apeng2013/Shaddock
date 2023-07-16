@@ -44,7 +44,7 @@ namespace Shaddock {
         m_EditorCamera = EditorCamera(30.0f, 1.778f, 0.1f, 1000.0f);
 
         m_IconPlay = Texture2D::Create("Resources/Icons/PlayButton.jpg");
-        m_IconStop = Texture2D::Create("Resources/Icons/StopButton.jpg");
+        m_IconStop = Texture2D::Create("Resources/Icons/StopButton.png");
 
 #if 0
         auto square = m_ActiveScene->CreateEntity("SquareEntity A");
@@ -111,8 +111,6 @@ namespace Shaddock {
             m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
             m_EditorCamera.SetViewportSize(m_ViewportSize.x, m_ViewportSize.y);
         }
-
-        
 
         Renderer2D::ResetStats();
         m_Framebuffer->Bind();
@@ -420,10 +418,12 @@ namespace Shaddock {
     void EditorLayer::OnScenePlay()
     {
         m_SceneState = SceneState::Play;
+        m_ActiveScene->OnRuntimeStart();
     }
     void EditorLayer::OnSceneStop()
     {
         m_SceneState = SceneState::Edit;
+        m_ActiveScene->OnRuntimeStop();
     }
     void EditorLayer::UI_Toolbar()
     {

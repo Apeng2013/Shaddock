@@ -37,7 +37,7 @@ Entities:
     CameraComponent:
       Camera:
         ProjectionType: 0
-        PerspectiveFov: 0.785398185
+        PerspectiveFOV: 0.785398185
         PerspectiveNear: 1
         PerspectiveFar: 1000
         OrthographicSize: 10
