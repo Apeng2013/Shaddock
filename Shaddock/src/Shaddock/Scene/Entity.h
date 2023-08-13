@@ -2,6 +2,8 @@
 #include "Shaddock/Scene/Scene.h"
 #include "Shaddock/Core/Base.h"
 #include "Shaddock/Core/Log.h"
+#include "Shaddock/Core/UUID.h"
+#include "Shaddock/Scene/Component.h"
 #include "entt/entity/registry.hpp"
 
 namespace Shaddock {
@@ -45,6 +47,8 @@ namespace Shaddock {
 		operator entt::entity() { return m_EntityHandle; }
 		bool operator==(const Entity& other) { return m_EntityHandle == other.m_EntityHandle && m_Scene == other.m_Scene; }
 		bool operator!=(const Entity& other) { return !(*this == other); }
+
+		UUID GetUUID() { return GetComponent<IDComponent>().ID; };
 
 	private:
 		Scene* m_Scene = nullptr;

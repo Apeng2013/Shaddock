@@ -1,6 +1,7 @@
 #include "sdpch.h"
 #include "Shaddock/Scene/SceneSerializer.h"
 #include "Shaddock/Scene/Component.h"
+#include "Shaddock/Scene/Entity.h"
 #include <yaml-cpp/yaml.h>
 #include <glm/glm.hpp>
 
@@ -131,8 +132,10 @@ namespace Shaddock {
 
 	static void SerializeEntity(YAML::Emitter& out, Entity& entity)
 	{
+		SD_CORE_ASSERT(entity.HasComponent<IDComponent>());
+
 		out << YAML::BeginMap;
-		out << YAML::Key << "Entity" << YAML::Value << "12837192831273"; //todo: unique id
+		out << YAML::Key << "Entity" << YAML::Value << entity.GetUUID();
 
 		if (entity.HasComponent<TagComponent>())
 		{
@@ -279,7 +282,7 @@ namespace Shaddock {
 				if (tagComponent)
 					name = tagComponent["Tag"].as<std::string>();
 
-				Entity& deserializeEntity = m_Scene->CreateEntity(name);
+				Entity& deserializeEntity = m_Scene->CreateEntityWithUUID(uuid, name);
 
 				auto transformComponent = entity["TransformComponent"];
 				if (transformComponent)

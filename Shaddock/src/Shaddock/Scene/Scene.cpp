@@ -2,6 +2,7 @@
 
 #include "Shaddock/Scene/Scene.h"
 #include "Shaddock/Scene/Component.h"
+#include "Shaddock/Scene/ScriptableEntity.h"
 #include "Shaddock/Scene/Entity.h"
 #include "Shaddock/Renderer/Renderer2D.h"
 
@@ -33,8 +34,13 @@ namespace Shaddock {
 	}
 	Entity Scene::CreateEntity(const std::string& name)
 	{
+		return CreateEntityWithUUID(UUID(), name);
+	}
+	Entity Scene::CreateEntityWithUUID(UUID uuid, const std::string& name)
+	{
 		Entity entity{ m_Registry.create(), this };
 		entity.AddComponent<TransformComponent>();
+		entity.AddComponent<IDComponent>(uuid);
 		auto& tag = entity.AddComponent<TagComponent>();
 		tag.Tag = name.empty() ? "Entity" : name;
 		return entity;
@@ -198,6 +204,11 @@ namespace Shaddock {
 	void Scene::OnComponentAdded(Entity entity, T& component)
 	{
 		static_assert(false);
+	}
+
+	template<>
+	void Scene::OnComponentAdded(Entity entity, IDComponent& component)
+	{
 	}
 
 	template<>

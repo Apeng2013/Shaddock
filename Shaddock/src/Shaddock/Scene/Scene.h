@@ -2,6 +2,7 @@
 
 #include "entt/entity/registry.hpp"
 #include "Shaddock/Core/Timestep.h"
+#include "Shaddock/Core/UUID.h"
 #include "Shaddock/Renderer/EditorCamera.h"
 
 class b2World;
@@ -19,6 +20,7 @@ namespace Shaddock {
 		~Scene();
 
 		Entity CreateEntity(const std::string& name = std::string());
+		Entity CreateEntityWithUUID(UUID uuid, const std::string& name = std::string());
 		void DestroyEntity(Entity entity);
 
 		void OnRuntimeStart();

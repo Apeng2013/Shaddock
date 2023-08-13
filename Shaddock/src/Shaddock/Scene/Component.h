@@ -1,13 +1,22 @@
 #pragma once
 #include <glm/glm.hpp>
+#include "Shaddock/Core/UUID.h"
 #include "Shaddock/Scene/SceneCamera.h"
 #include "Shaddock/Renderer/Texture.h"
-#include "Shaddock/Scene/ScriptableEntity.h"
 #include <glm/gtc/matrix_transform.hpp>
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/quaternion.hpp>
 
 namespace Shaddock {
+
+	struct IDComponent 
+	{
+		UUID ID;
+		IDComponent() = default;
+		IDComponent(const IDComponent&) = default;
+	};
+
+
 	struct TagComponent
 	{
 		std::string Tag;
@@ -53,6 +62,8 @@ namespace Shaddock {
 		CameraComponent() = default;
 		CameraComponent(const CameraComponent&) = default;
 	};
+
+	class ScriptableEntity;
 
 	struct NativeScriptComponent
 	{

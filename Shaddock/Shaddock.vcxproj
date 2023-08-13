@@ -162,6 +162,7 @@
     <ClInclude Include="src\Shaddock\Core\PlatformDetection.h" />
     <ClInclude Include="src\Shaddock\Core\Timer.h" />
     <ClInclude Include="src\Shaddock\Core\Timestep.h" />
+    <ClInclude Include="src\Shaddock\Core\UUID.h" />
     <ClInclude Include="src\Shaddock\Core\Window.h" />
     <ClInclude Include="src\Shaddock\Debug\Instrumentor.h" />
     <ClInclude Include="src\Shaddock\Events\ApplicationEvent.h" />
@@ -625,6 +626,7 @@
     <ClCompile Include="src\Shaddock\Core\Layer.cpp" />
     <ClCompile Include="src\Shaddock\Core\LayerStack.cpp" />
     <ClCompile Include="src\Shaddock\Core\Log.cpp" />
+    <ClCompile Include="src\Shaddock\Core\UUID.cpp" />
     <ClCompile Include="src\Shaddock\Core\Window.cpp" />
     <ClCompile Include="src\Shaddock\ImGui\ImGuiBuilder.cpp" />
     <ClCompile Include="src\Shaddock\ImGui\ImGuiLayer.cpp" />
