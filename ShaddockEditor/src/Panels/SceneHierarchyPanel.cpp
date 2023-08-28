@@ -125,24 +125,28 @@ namespace Shaddock {
 	{
 		ImGui::Begin("Scene Hierarchy");
 
-		m_Context->m_Registry.each([&](entt::entity entityID)
-			{
-				Entity entity{ entityID, m_Context.get() };
-				DrawEntityNode(entity);
-			}
-		);
-		if (ImGui::IsMouseDown(0) && ImGui::IsWindowHovered())
+		if (m_Context)
 		{
-			m_SelectionContext = {};
-		}
+			m_Context->m_Registry.each([&](entt::entity entityID)
+				{
+					Entity entity{ entityID, m_Context.get() };
+					DrawEntityNode(entity);
+				}
+			);
 
-		if (ImGui::BeginPopupContextWindow(0, ImGuiPopupFlags_MouseButtonRight | ImGuiPopupFlags_NoOpenOverItems))
-		{
-			if (ImGui::MenuItem("Create Empty Entity"))
+			if (ImGui::IsMouseDown(0) && ImGui::IsWindowHovered())
 			{
-				m_Context->CreateEntity("EmptyEntity");
+				m_SelectionContext = {};
 			}
-			ImGui::EndPopup();
+
+			if (ImGui::BeginPopupContextWindow(0, ImGuiPopupFlags_MouseButtonRight | ImGuiPopupFlags_NoOpenOverItems))
+			{
+				if (ImGui::MenuItem("Create Empty Entity"))
+				{
+					m_Context->CreateEntity("EmptyEntity");
+				}
+				ImGui::EndPopup();
+			}
 		}
 
 		ImGui::End();

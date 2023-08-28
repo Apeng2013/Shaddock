@@ -6,6 +6,7 @@
 #include "Shaddock/Scene/Component.h"
 #include "entt/entity/registry.hpp"
 
+
 namespace Shaddock {
 
 	class Entity
@@ -21,6 +22,13 @@ namespace Shaddock {
 		{
 			SD_CORE_ASSERT(!HasComponent<T>(), "Entity already has component!");
 			T& component = m_Scene->m_Registry.emplace<T>(m_EntityHandle, std::forward<Args>(args)...);
+			m_Scene->OnComponentAdded<T>(*this, component);
+			return component;
+		}
+		template<typename T, typename... Args>
+		T& AddOrReplaceComponent(Args&&... args)
+		{
+			T& component = m_Scene->m_Registry.emplace_or_replace<T>(m_EntityHandle, std::forward<Args>(args)...);
 			m_Scene->OnComponentAdded<T>(*this, component);
 			return component;
 		}
@@ -48,7 +56,8 @@ namespace Shaddock {
 		bool operator==(const Entity& other) { return m_EntityHandle == other.m_EntityHandle && m_Scene == other.m_Scene; }
 		bool operator!=(const Entity& other) { return !(*this == other); }
 
-		UUID GetUUID() { return GetComponent<IDComponent>().ID; };
+		UUID GetUUID() { return GetComponent<IDComponent>().ID; }
+		const std::string& GetName() { return GetComponent<TagComponent>().Tag; }
 
 	private:
 		Scene* m_Scene = nullptr;
