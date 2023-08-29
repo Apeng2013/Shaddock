@@ -193,6 +193,17 @@ namespace Shaddock {
 			out << YAML::EndMap;
 		}
 
+		if (entity.HasComponent<CircleRendererComponent>())
+		{
+			out << YAML::Key << "CircleRendererComponent";
+			out << YAML::BeginMap;
+			auto& crc = entity.GetComponent<CircleRendererComponent>();
+			out << YAML::Key << "Color" << YAML::Value << crc.Color;
+			out << YAML::Key << "Thickness" << YAML::Value << crc.Thickness;
+			out << YAML::Key << "Fade" << YAML::Value << crc.Fade;
+			out << YAML::EndMap;
+		}
+
 		if (entity.HasComponent<Rigibody2DComponent>())
 		{
 			out << YAML::Key << "Rigibody2DComponent";
@@ -316,6 +327,15 @@ namespace Shaddock {
 				{
 					auto& src = deserializeEntity.AddComponent<SpriteRendererComponent>();
 					src.Color = spriteRendererComponent["Color"].as<glm::vec4>();
+				}
+
+				auto circleRendererComponent = entity["CircleRendererComponent"];
+				if (circleRendererComponent)
+				{
+					auto& crc = deserializeEntity.AddComponent<CircleRendererComponent>();
+					crc.Color = circleRendererComponent["Color"].as<glm::vec4>();
+					crc.Thickness = circleRendererComponent["Thickness"].as<float>();
+					crc.Fade = circleRendererComponent["Fade"].as<float>();
 				}
 
 				auto rigibody2DComponent = entity["Rigibody2DComponent"];

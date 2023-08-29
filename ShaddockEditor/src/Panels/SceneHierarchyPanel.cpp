@@ -239,6 +239,14 @@ namespace Shaddock {
 					ImGui::CloseCurrentPopup();
 				}
 			}
+			if (!entity.HasComponent<CircleRendererComponent>())
+			{
+				if (ImGui::MenuItem("Circle Renderer"))
+				{
+					entity.AddComponent<CircleRendererComponent>();
+					ImGui::CloseCurrentPopup();
+				}
+			}
 			if (!entity.HasComponent<Rigibody2DComponent>())
 			{
 				if (ImGui::MenuItem("Rigibody 2D"))
@@ -347,6 +355,14 @@ namespace Shaddock {
 					ImGui::EndDragDropTarget();
 				}
 				ImGui::DragFloat("Tiling Factor", &component.TilingFactor, 0.1f, 0.0f, 100.0f);
+			}
+		);
+
+		DrawComponent<CircleRendererComponent>("Circle Renderer", entity, [](auto& component)
+			{
+				ImGui::ColorEdit4("Color", glm::value_ptr(component.Color));
+				ImGui::DragFloat("Thickness", &component.Thickness);
+				ImGui::DragFloat("Fade", &component.Fade);
 			}
 		);
 
