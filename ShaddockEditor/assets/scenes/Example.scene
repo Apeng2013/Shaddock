@@ -34,8 +34,10 @@ Entities:
       Translation: [0, 0, -4.4000001]
       Rotation: [0, 0, 0]
       Scale: [1, 1, 1]
-    SpriteRendererComponent:
-      Color: [0, 0, 1, 1]
+    CircleRendererComponent:
+      Color: [0.861003876, 0.132973582, 0.132973582, 1]
+      Thickness: 1
+      Fade: 0.00499999989
   - Entity: 3263328598497060330
     TagComponent:
       Tag: EmptyEntity
@@ -44,26 +46,4 @@ Entities:
       Rotation: [0, 0, 0]
       Scale: [1, 1, 1]
     SpriteRendererComponent:
-      Color: [1, 0.31764707, 1, 1]
-  - Entity: 10384253839822123945
-    TagComponent:
-      Tag: SquareEntity A
-    TransformComponent:
-      Translation: [-0.724931359, 3.38000011, -1.88999999]
-      Rotation: [-2.954036, -0.0851044357, -2.27018619]
-      Scale: [0.999986947, 0.999996126, 0.999981344]
-    SpriteRendererComponent:
       Color: [1, 1, 1, 1]
-  - Entity: 6096970574968556713
-    TagComponent:
-      Tag: SquareEntity A
-    TransformComponent:
-      Translation: [1.98000002, -0.0201793555, -0.993905306]
-      Rotation: [-2.954036, -0.0851044357, -2.27018619]
-      Scale: [0.999986947, 0.999996126, 0.999981344]
-    SpriteRendererComponent:
-      Color: [0.895752907, 0.759656012, 0.176383793, 1]
-    CircleRendererComponent:
-      Color: [0.938223958, 0.159249514, 0.0796947181, 1]
-      Thickness: 53
-      Fade: 0.00499999989

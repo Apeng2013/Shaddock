@@ -55,6 +55,9 @@ namespace Shaddock {
 		glm::vec4 QuadVertexPositions[4];
 
 		Renderer2D::Statistics Stats;
+
+		//temp
+		glm::mat4 ViewProjectionMatrix;
 	};
 
 	static Renderer2DData s_Data;
@@ -114,13 +117,8 @@ namespace Shaddock {
 		uint32_t whiteTextureData = 0xffffffff;
 		s_Data.WhiteTexture->SetData(&whiteTextureData, sizeof(uint32_t));
 
-		int32_t samplers[s_Data.MaxTextureSlots];
-		for (uint32_t i = 0; i < s_Data.MaxTextureSlots; i++)
-			samplers[i] = i;
-
 		s_Data.QuadShader = Shader::Create("assets/shaders/Render2D_Quad.glsl");
 		s_Data.QuadShader->Bind();
-		s_Data.QuadShader->SetIntArray("u_Textures", samplers, s_Data.MaxTextureSlots);
 
 		s_Data.CircleShader = Shader::Create("assets/shaders/Render2D_Circle.glsl");
 		s_Data.CircleShader->Bind();
@@ -141,29 +139,20 @@ namespace Shaddock {
 	{
 		SD_PROFILE_FUNCTION();
 		glm::mat4 viewProjection = camera.GetProjection() * glm::inverse(transform);
-		s_Data.QuadShader->Bind();
-		s_Data.QuadShader->SetMat4("u_ViewProjectionMatrix", viewProjection);
-		s_Data.CircleShader->Bind();
-		s_Data.CircleShader->SetMat4("u_ViewProjectionMatrix", viewProjection);
+		s_Data.ViewProjectionMatrix = viewProjection;
 		StartBatch();
 	}
 	void Renderer2D::BeginScene(EditorCamera& camera)
 	{
 		SD_PROFILE_FUNCTION();
 		glm::mat4 viewProjection = camera.GetViewProjection();
-		s_Data.QuadShader->Bind();
-		s_Data.QuadShader->SetMat4("u_ViewProjectionMatrix", viewProjection);
-		s_Data.CircleShader->Bind();
-		s_Data.CircleShader->SetMat4("u_ViewProjectionMatrix", viewProjection);
+		s_Data.ViewProjectionMatrix = viewProjection;
 		StartBatch();
 	}
 	void Renderer2D::BeginScene(OrthographicCamera& camera)
 	{
 		SD_PROFILE_FUNCTION();
-		s_Data.QuadShader->Bind();
-		s_Data.QuadShader->SetMat4("u_ViewProjectionMatrix", camera.GetViewProjectionMatrix());
-		s_Data.CircleShader->Bind();
-		s_Data.CircleShader->SetMat4("u_ViewProjectionMatrix", camera.GetViewProjectionMatrix());
+		s_Data.ViewProjectionMatrix = camera.GetViewProjectionMatrix();
 		StartBatch();
 	}
 	void Renderer2D::EndScene()
@@ -180,7 +169,14 @@ namespace Shaddock {
 
 			for (uint32_t i = 0; i < s_Data.TextureSlotIndex; i++)
 				s_Data.TextureSlots[i]->Bind(i);
+
 			s_Data.QuadShader->Bind();
+			s_Data.QuadShader->SetMat4("u_ViewProjectionMatrix", s_Data.ViewProjectionMatrix);
+			int32_t samplers[s_Data.MaxTextureSlots];
+			for (uint32_t i = 0; i < s_Data.MaxTextureSlots; i++)
+				samplers[i] = i;
+			s_Data.QuadShader->SetIntArray("u_Textures", samplers, s_Data.MaxTextureSlots);
+
 			RenderCommand::DrawIndexed(s_Data.QuadVertexArray, s_Data.QuadIndexCount);
 			s_Data.Stats.DrawCalls++;
 		}
@@ -189,6 +185,7 @@ namespace Shaddock {
 			uint32_t dataSize = (uint32_t)((uint8_t*)s_Data.CircleVertexBufferPtr - (uint8_t*)s_Data.CircleVertexBufferBase);
 			s_Data.CircleVertexBuffer->SetData(s_Data.CircleVertexBufferBase, dataSize);
 			s_Data.CircleShader->Bind();
+			s_Data.CircleShader->SetMat4("u_ViewProjectionMatrix", s_Data.ViewProjectionMatrix);
 			RenderCommand::DrawIndexed(s_Data.CircleVertexArray, s_Data.CircleIndexCount);
 			s_Data.Stats.DrawCalls++;
 		}

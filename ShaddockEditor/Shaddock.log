@@ -1,10 +1,11 @@
-[23:47:46] [info] Shaddock: Creating window Shaddock Editor (1280, 720)
-[23:47:46] [info] Shaddock: OpenGL Information:
-[23:47:46] [info] Shaddock: Vendor: Intel
-[23:47:46] [info] Shaddock: Renderer: Intel(R) Iris(R) Xe Graphics
-[23:47:46] [info] Shaddock: Version: 4.6.0 - Build 31.0.101.3302
-[23:47:46] [info] Shaddock: Major Version: 4
-[23:47:46] [info] Shaddock: Minor Version: 6
-[23:47:52] [trace] Shaddock: Deserialize Scene Untitled
-[23:47:52] [error] Shaddock: API_ID_RECOMPILE_FRAGMENT_SHADER performance warning has been generated. Fragment shader recompiled due to state change.
-[23:54:40] [info] Shaddock: Terminating GLFW
+[23:10:16] [info] Shaddock: Creating window Shaddock Editor (1280, 720)
+[23:10:16] [info] Shaddock: OpenGL Information:
+[23:10:16] [info] Shaddock: Vendor: Intel
+[23:10:16] [info] Shaddock: Renderer: Intel(R) Iris(R) Xe Graphics
+[23:10:16] [info] Shaddock: Version: 4.6.0 - Build 31.0.101.3302
+[23:10:16] [info] Shaddock: Major Version: 4
+[23:10:16] [info] Shaddock: Minor Version: 6
+[23:10:24] [trace] Shaddock: Deserialize Scene Untitled
+[23:10:24] [error] Shaddock: API_ID_RECOMPILE_FRAGMENT_SHADER performance warning has been generated. Fragment shader recompiled due to state change.
+[23:10:24] [error] Shaddock: API_ID_RECOMPILE_FRAGMENT_SHADER performance warning has been generated. Fragment shader recompiled due to state change.
+[23:11:30] [info] Shaddock: Terminating GLFW
