@@ -263,6 +263,14 @@ namespace Shaddock {
 					ImGui::CloseCurrentPopup();
 				}
 			}
+			if (!entity.HasComponent<CircleCollider2DComponent>())
+			{
+				if (ImGui::MenuItem("Circle Collider 2D"))
+				{
+					entity.AddComponent<CircleCollider2DComponent>();
+					ImGui::CloseCurrentPopup();
+				}
+			}
 			ImGui::EndPopup();
 		}
 		ImGui::PopItemWidth();
@@ -396,7 +404,17 @@ namespace Shaddock {
 				ImGui::DragFloat2("Size", glm::value_ptr(component.Size));
 				ImGui::DragFloat("Density", &component.Density);
 				ImGui::DragFloat("Restitution", &component.Restitution);
-				ImGui::DragFloat("RestitutionThreshold", &component.RestitutionThreshold);
+				ImGui::DragFloat("Restitution Threshold", &component.RestitutionThreshold);
+			}
+		);
+
+		DrawComponent<CircleCollider2DComponent>("Circle Collider 2D", entity, [](CircleCollider2DComponent& component)
+			{
+				ImGui::DragFloat2("Offset", glm::value_ptr(component.Offset));
+				ImGui::DragFloat("Radius", &component.Radius);
+				ImGui::DragFloat("Density", &component.Density);
+				ImGui::DragFloat("Restitution", &component.Restitution);
+				ImGui::DragFloat("Restitution Threshold", &component.RestitutionThreshold);
 			}
 		);
 	}
