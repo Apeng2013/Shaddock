@@ -61,7 +61,7 @@ namespace Shaddock {
 		uint32_t LineVertexCount = 0;
 		LineVertex* LineVertexBufferBase = nullptr;
 		LineVertex* LineVertexBufferPtr = nullptr;
-		float LineWidth = 2.0f;
+		float LineWidth = 1.0f;
 
 
 		std::array<Ref<Texture2D>, MaxTextureSlots> TextureSlots;
@@ -217,7 +217,7 @@ namespace Shaddock {
 
 		if (s_Data.LineVertexCount)
 		{
-			uint32_t dataSize = (uint8_t)((uint8_t*)s_Data.LineVertexBufferPtr - (uint8_t*)s_Data.LineVertexBufferBase);
+			uint32_t dataSize = (uint32_t)((uint8_t*)s_Data.LineVertexBufferPtr - (uint8_t*)s_Data.LineVertexBufferBase);
 			s_Data.LineVertexBuffer->SetData(s_Data.LineVertexBufferBase, dataSize);
 			s_Data.LineShader->Bind();
 			s_Data.LineShader->SetMat4("u_ViewProjectionMatrix", s_Data.ViewProjectionMatrix);
