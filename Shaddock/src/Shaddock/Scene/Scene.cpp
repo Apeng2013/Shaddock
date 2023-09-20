@@ -85,6 +85,7 @@ namespace Shaddock {
 	}
 	Scene::~Scene()
 	{
+		delete m_PhysicsWorld;
 	}
 	Entity Scene::CreateEntity(const std::string& name)
 	{
@@ -105,6 +106,16 @@ namespace Shaddock {
 	}
 
 	void Scene::OnRuntimeStart()
+	{
+		OnPhysics2DStart();
+	}
+
+	void Scene::OnRuntimeStop()
+	{
+		OnPhysics2DStop();
+	}
+
+	void Scene::OnPhysics2DStart()
 	{
 		m_PhysicsWorld = new b2World({ 0.0f, -9.8f });
 		auto view = m_Registry.view<Rigibody2DComponent>();
@@ -157,10 +168,20 @@ namespace Shaddock {
 		}
 	}
 
-	void Scene::OnRuntimeStop()
+	void Scene::OnPhysics2DStop()
 	{
 		delete m_PhysicsWorld;
 		m_PhysicsWorld = nullptr;
+	}
+
+	void Scene::OnSimulationStart()
+	{
+		OnPhysics2DStart();
+	}
+
+	void Scene::OnSimulationStop()
+	{
+		OnPhysics2DStop();
 	}
 
 	void Scene::OnUpdateRuntime(Timestep& ts)
@@ -242,7 +263,37 @@ namespace Shaddock {
 			Renderer2D::EndScene();
 		}
 	}
+
+	void Scene::OnUpdateSimulate(Timestep& ts, EditorCamera& camera)
+	{
+		{
+			const int32_t velocityIterations = 6;
+			const int32_t positionIterations = 7;
+			m_PhysicsWorld->Step(ts, velocityIterations, positionIterations);
+			auto view = m_Registry.view<Rigibody2DComponent>();
+			for (auto e : view)
+			{
+				Entity entity = { e, this };
+				auto& transform = entity.GetComponent<TransformComponent>();
+				auto& rb2d = entity.GetComponent<Rigibody2DComponent>();
+
+				b2Body* body = (b2Body*)rb2d.RuntimeBody;
+				const auto& position = body->GetPosition();
+				transform.Translation.x = position.x;
+				transform.Translation.y = position.y;
+				transform.Rotation.z = body->GetAngle();
+			}
+		}
+
+		RenderScene(camera);
+	}
+
 	void Scene::OnUpdateEditor(Timestep& ts, EditorCamera& camera)
+	{
+		RenderScene(camera);
+	}
+
+	void Scene::RenderScene(EditorCamera& camera)
 	{
 		Renderer2D::BeginScene(camera);
 		{
@@ -263,6 +314,7 @@ namespace Shaddock {
 		}
 		Renderer2D::EndScene();
 	}
+
 	void Scene::OnViewportResize(uint32_t width, uint32_t height)
 	{
 		m_ViewportWidth = width;
