@@ -288,6 +288,7 @@ namespace Shaddock {
 		}
 		catch (YAML::ParserException e)
 		{
+			SD_CORE_ERROR("Failed to load scene file: {0}, {1}", filepath, e.what());
 			return false;
 		}
 
