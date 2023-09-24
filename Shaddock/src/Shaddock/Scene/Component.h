@@ -136,4 +136,11 @@ namespace Shaddock {
 
 	};
 
+	template<typename... Component>
+	struct ComponentGroup
+	{};
+	using AllComponents = ComponentGroup < TransformComponent, SpriteRendererComponent, CircleRendererComponent, CameraComponent,
+		NativeScriptComponent, Rigibody2DComponent, BoxCollider2DComponent, CircleCollider2DComponent>;
+
+
 }

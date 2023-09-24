@@ -343,7 +343,7 @@ namespace Shaddock {
 
     bool EditorLayer::OnKeyPressed(KeyPressedEvent& e)
     {
-        if (e.GetRepeatCount() > 0)
+        if (e.IsRepeat())
             return false;
 
         bool control = Input::IsKeyPressed(Key::LeftControl) || Input::IsKeyPressed(Key::RightControl);

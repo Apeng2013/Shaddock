@@ -26,25 +26,43 @@ namespace Shaddock {
 		return b2_staticBody;
 	}
 
-	template<typename Component>
-	static void CopyComponent(entt::registry& dst, entt::registry& src, const std::unordered_map<UUID, entt::entity>& entMap)
+	template<typename... Component>
+	static void CopyComponent(entt::registry& dst, entt::registry& src, const std::unordered_map<UUID, entt::entity>& enttMap)
 	{
-		auto view = src.view<Component>();
-		for (auto e : view)
-		{
-			UUID uuid = src.get<IDComponent>(e).ID;
-			SD_CORE_ASSERT(entMap.find(uuid) != entMap.end());
-			entt::entity dstEnttID = entMap.at(uuid);
-			auto& component = src.get<Component>(e);
-			dst.emplace_or_replace<Component>(dstEnttID, component);
-		}
+		([&]()
+			{
+				auto view = src.view<Component>();
+				for (auto e : view)
+				{
+					entt::entity dstEntity = enttMap.at(src.get<IDComponent>(e).ID);
+					auto& component = src.get<Component>(e);
+					dst.emplace_or_replace<Component>(dstEntity, component);
+				}
+			}(), ...
+		);
 	}
 
-	template<typename Component>
-	static void CopyComponentIfExits(Entity& dst, Entity& src)
+	template<typename... Component>
+	static void CopyComponent(ComponentGroup<Component...>, entt::registry& dst, entt::registry& src, const std::unordered_map<UUID, entt::entity>& enttMap)
 	{
-		if (src.HasComponent<Component>())
-			dst.AddOrReplaceComponent<Component>(src.GetComponent<Component>());
+		CopyComponent<Component...>(dst, src, enttMap);
+	}
+
+	template<typename... Component>
+	static void CopyComponentIfExists(Entity& dst, Entity& src)
+	{
+		([&]() 
+			{
+				if (src.HasComponent<Component>())
+					dst.AddOrReplaceComponent<Component>(src.GetComponent<Component>());
+			}(), ...
+		);
+	}
+
+	template<typename... Component>
+	static void CopyComponentIfExists(ComponentGroup<Component...>, Entity dst, Entity src)
+	{
+		CopyComponentIfExists<Component...>(dst, src);
 	}
 
 	Ref<Scene> Scene::Copy(Ref<Scene> other)
@@ -66,15 +84,7 @@ namespace Shaddock {
 			Entity newEntity = newScene->CreateEntityWithUUID(uuid, name);
 			enttMap[uuid] = (entt::entity)newEntity;
 		}
-
-		CopyComponent<TransformComponent>(dstSceneRegistry, srcSceneRegistry, enttMap);
-		CopyComponent<SpriteRendererComponent>(dstSceneRegistry, srcSceneRegistry, enttMap);
-		CopyComponent<CircleRendererComponent>(dstSceneRegistry, srcSceneRegistry, enttMap);
-		CopyComponent<CameraComponent>(dstSceneRegistry, srcSceneRegistry, enttMap);
-		CopyComponent<NativeScriptComponent>(dstSceneRegistry, srcSceneRegistry, enttMap);
-		CopyComponent<Rigibody2DComponent>(dstSceneRegistry, srcSceneRegistry, enttMap);
-		CopyComponent<BoxCollider2DComponent>(dstSceneRegistry, srcSceneRegistry, enttMap);
-		CopyComponent<CircleCollider2DComponent>(dstSceneRegistry, srcSceneRegistry, enttMap);
+		CopyComponent(AllComponents{}, dstSceneRegistry, srcSceneRegistry, enttMap);
 
 		return newScene;
 	}
@@ -336,14 +346,7 @@ namespace Shaddock {
 		std::string name = entity.GetName();
 		Entity newEntity = CreateEntity(name);
 
-		CopyComponentIfExits<TransformComponent>(newEntity, entity);
-		CopyComponentIfExits<CircleRendererComponent>(newEntity, entity);
-		CopyComponentIfExits<SpriteRendererComponent>(newEntity, entity);
-		CopyComponentIfExits<CameraComponent>(newEntity, entity);
-		CopyComponentIfExits<NativeScriptComponent>(newEntity, entity);
-		CopyComponentIfExits<Rigibody2DComponent>(newEntity, entity);
-		CopyComponentIfExits<BoxCollider2DComponent>(newEntity, entity);
-		CopyComponentIfExits<CircleCollider2DComponent>(newEntity, entity);
+		CopyComponentIfExists(AllComponents{}, newEntity, entity);
 	}
 
 	Entity Scene::GetPrimaryCameraEntity()
