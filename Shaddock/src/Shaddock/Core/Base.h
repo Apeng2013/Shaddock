@@ -1,8 +1,8 @@
 #pragma once
 
-#include <memory>
-
 #include "Shaddock/Core/PlatformDetection.h"
+
+#include <memory>
 
 #define SD_EXPAND_MACRO(x) x
 #define SD_STRINGIFY_MACRO(x) #x

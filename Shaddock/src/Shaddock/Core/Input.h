@@ -1,8 +1,9 @@
 #pragma once
 
-#include <glm/glm.hpp>
 #include "Shaddock/Core/KeyCodes.h"
 #include "Shaddock/Core/MouseCodes.h"
+
+#include <glm/glm.hpp>
 
 namespace Shaddock {
 	class Input

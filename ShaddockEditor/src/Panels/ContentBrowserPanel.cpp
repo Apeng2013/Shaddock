@@ -2,6 +2,7 @@
 #include "ContentBrowserPanel.h"
 #include <imgui/imgui.h>
 
+
 namespace Shaddock {
 	extern const std::filesystem::path g_AssetPath = "assets";
 
@@ -33,8 +34,7 @@ namespace Shaddock {
 		for (auto& directoryEntry : std::filesystem::directory_iterator(m_CurrentDirectory))
 		{
 			const auto& path = directoryEntry.path();
-			auto relativePath = std::filesystem::relative(path, g_AssetPath);
-			std::string filenameString = relativePath.filename().string();
+			std::string filenameString = path.filename().string();
 
 			ImGui::PushID(filenameString.c_str());
 
@@ -43,6 +43,7 @@ namespace Shaddock {
 			ImGui::ImageButton((ImTextureID)icon->GetRendererID(), ImVec2{ thumbnailSize, thumbnailSize }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
 			if (ImGui::BeginDragDropSource())
 			{
+				auto relativePath = std::filesystem::relative(path, g_AssetPath);
 				const wchar_t* itemPath = relativePath.c_str();
 				ImGui::SetDragDropPayload("CONTENT_BROWSER_ITEM", itemPath, (wcslen(itemPath) + 1) * sizeof(wchar_t));
 				ImGui::EndDragDropSource();
