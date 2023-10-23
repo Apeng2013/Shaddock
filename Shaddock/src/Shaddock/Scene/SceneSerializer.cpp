@@ -190,6 +190,9 @@ namespace Shaddock {
 			out << YAML::BeginMap;
 			auto& src = entity.GetComponent<SpriteRendererComponent>();
 			out << YAML::Key << "Color" << YAML::Value << src.Color;
+			if (src.Texture)
+				out << YAML::Key << "TexturePath" << YAML::Value << src.Texture->GetPath();
+			out << YAML::Key << "TilingFactor" << YAML::Value << src.TilingFactor;
 			out << YAML::EndMap;
 		}
 
@@ -344,6 +347,10 @@ namespace Shaddock {
 				{
 					auto& src = deserializeEntity.AddComponent<SpriteRendererComponent>();
 					src.Color = spriteRendererComponent["Color"].as<glm::vec4>();
+					if (spriteRendererComponent["TexturePath"])
+						src.Texture = Texture2D::Create(spriteRendererComponent["TexturePath"].as<std::string>());
+					if (spriteRendererComponent["TilingFactor"])
+						src.TilingFactor = spriteRendererComponent["TilingFactor"].as<float>();
 				}
 
 				auto circleRendererComponent = entity["CircleRendererComponent"];
