@@ -34,7 +34,7 @@ namespace Shaddock {
         m_EditorScene = CreateRef<Scene>();
         m_ActiveScene = m_EditorScene;
 
-        auto commandLineArgs = Application::Get().GetCommandLineArgs();
+        auto commandLineArgs = Application::Get().GetSpecification().CommandLineArgs;
         if (commandLineArgs.Count > 1)
         {
             auto sceneFilePath = commandLineArgs[1];
@@ -48,51 +48,7 @@ namespace Shaddock {
         m_IconStop = Texture2D::Create("Resources/Icons/StopButton.png");
         m_IconSimulate = Texture2D::Create("Resources/Icons/SimulateButton.png");
 
-#if 0
-        auto square = m_ActiveScene->CreateEntity("SquareEntity A");
-        square.AddComponent<SpriteRendererComponent>(glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
-
-        m_SquareEntity = square;
-
-        auto squareB = m_ActiveScene->CreateEntity("SquareEntity B");
-        squareB.AddComponent<SpriteRendererComponent>(glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
-
-        m_CameraEntity = m_ActiveScene->CreateEntity("Camera A");
-        m_CameraEntity.AddComponent<CameraComponent>();
-
-        m_SecondCamera = m_ActiveScene->CreateEntity("Camera B");
-        auto& cc = m_SecondCamera.AddComponent<CameraComponent>();
-        cc.Primary = false;
-
-        class CameraController : public ScriptableEntity
-        {
-        public:
-            virtual void OnCreate() override
-            {
-
-            }
-            virtual void OnDestroy() override
-            {
-
-            }
-            virtual void OnUpdate(Timestep ts) override
-            {
-                auto& translation = GetComponent<TransformComponent>().Translation;
-                float speed = 5.0f;
-
-                if (Input::IsKeyPressed(Key::A))
-                    translation.x -= speed * ts;
-                if (Input::IsKeyPressed(Key::D))
-                    translation.x += speed * ts;
-                if (Input::IsKeyPressed(Key::W))
-                    translation.y += speed * ts;
-                if (Input::IsKeyPressed(Key::S))
-                    translation.y -= speed * ts;
-            }
-        };
-        m_CameraEntity.AddComponent<NativeScriptComponent>().Bind<CameraController>();
-        m_SecondCamera.AddComponent<NativeScriptComponent>().Bind<CameraController>();
-#endif
+        Renderer2D::SetLineWidth(4.0f);
     }
 
     void EditorLayer::OnDetach()
@@ -449,7 +405,7 @@ namespace Shaddock {
         if (Entity selectEntity = m_SceneHierarchyPanel.GetSelectedEntity())
         {
             TransformComponent transform = selectEntity.GetComponent<TransformComponent>();
-            Renderer2D::DrawRect(transform.GetTransform(), glm::vec4(1, 0, 0, 1));
+            Renderer2D::DrawRect(transform.GetTransform(), glm::vec4(1.0f, 0.5f, 0.0f, 1.0f));
         }
         Renderer2D::EndScene();
     }

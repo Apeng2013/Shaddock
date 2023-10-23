@@ -7,8 +7,8 @@ namespace Shaddock {
 	class ShaddockEditor : public Application
 	{
 	public:
-		ShaddockEditor(ApplicationCommandLineArgs args):
-			Application("Shaddock Editor", args)
+		ShaddockEditor(const ApplicationSpecification& specification):
+			Application(specification)
 		{
 			PushLayer(new EditorLayer());
 		}
@@ -20,6 +20,9 @@ namespace Shaddock {
 
 	Application* CreateApplication(ApplicationCommandLineArgs args)
 	{
-		return new ShaddockEditor(args);
+		ApplicationSpecification spec;
+		spec.Name = "ShaddockEditor";
+		spec.CommandLineArgs = args;
+		return new ShaddockEditor(spec);
 	}
 }

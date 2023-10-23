@@ -7,7 +7,8 @@
 class Sandbox : public Shaddock::Application
 {
 public:
-	Sandbox(Shaddock::ApplicationCommandLineArgs args)
+	Sandbox(const Shaddock::ApplicationSpecification& specification)
+		: Shaddock::Application(specification)
 	{
 		//PushLayer(new ExampleLayer());
 		PushLayer(new Sandbox2D());
@@ -20,5 +21,9 @@ public:
 
 Shaddock::Application* Shaddock::CreateApplication(Shaddock::ApplicationCommandLineArgs args)
 {
-	return new Sandbox(args);
+	ApplicationSpecification spec;
+	spec.Name = "Sandbox";
+	spec.WorkingDirectory = "../ShaddockEditor";
+	spec.CommandLineArgs = args;
+	return new Sandbox(spec);
 }
