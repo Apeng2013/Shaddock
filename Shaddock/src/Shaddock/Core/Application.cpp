@@ -4,7 +4,7 @@
 #include "Shaddock/Core/Input.h"
 #include "Shaddock/Renderer/Renderer.h"
 #include "Shaddock/Renderer/RenderCommand.h"
-#include <GLFW/glfw3.h>
+#include "Shaddock/Utils/PlatformUtils.h"
 #include <glad/glad.h>
 
 namespace Shaddock {
@@ -38,7 +38,7 @@ namespace Shaddock {
 		while (m_Running)
 		{
 			SD_PROFILE_SCOPE("RunLoop");
-			float time = (float)glfwGetTime();
+			float time = Time::GetTime();
 			Timestep ts = time - m_LastFrameTime;
 			m_LastFrameTime = time;
 			if (!m_Minimized)

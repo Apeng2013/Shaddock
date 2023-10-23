@@ -20,7 +20,7 @@ namespace Shaddock {
 
 		virtual bool operator==(const Texture& other) override
 		{
-			return m_RendererID == ((OpenGLTexture2D&)other).m_RendererID;
+			return m_RendererID == other.GetRendererID();
 		}
 	private:
 		uint32_t m_Width, m_Height;

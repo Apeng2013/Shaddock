@@ -446,6 +446,11 @@ namespace Shaddock {
                 }
             }
         }
+        if (Entity selectEntity = m_SceneHierarchyPanel.GetSelectedEntity())
+        {
+            TransformComponent transform = selectEntity.GetComponent<TransformComponent>();
+            Renderer2D::DrawRect(transform.GetTransform(), glm::vec4(1, 0, 0, 1));
+        }
         Renderer2D::EndScene();
     }
 
