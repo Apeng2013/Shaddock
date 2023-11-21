@@ -184,6 +184,8 @@ namespace Shaddock {
                     NewScene();
                 if (ImGui::MenuItem("Open...", "Ctrl+O"))
                     OpenScene();
+                if (ImGui::MenuItem("Save", "Ctrl+S"))
+                    SaveScene();
                 if (ImGui::MenuItem("Save As...", "Ctrl+Shift+S"))
                     SaveSceneAs();
                 if (ImGui::MenuItem("Exit")) Application::Get().Close();

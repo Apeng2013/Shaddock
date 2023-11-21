@@ -9,6 +9,7 @@ Entities:
       Scale: [1, 1, 1]
     SpriteRendererComponent:
       Color: [0.934362948, 0.857057691, 0.133480415, 1]
+      TilingFactor: 1
   - Entity: 3503638098362915787
     TagComponent:
       Tag: SquareEntity B
@@ -28,7 +29,9 @@ Entities:
       Rotation: [-2.954036, -0.0851044357, -2.27018619]
       Scale: [0.999986947, 0.999996126, 0.999981344]
     SpriteRendererComponent:
-      Color: [0.104783788, 0.115866579, 0.822393835, 1]
+      Color: [0.807843149, 1, 0.200000003, 1]
+      TexturePath: assets\textures\letter_p.png
+      TilingFactor: 1
   - Entity: 6645248621277955267
     TagComponent:
       Tag: Camera A
