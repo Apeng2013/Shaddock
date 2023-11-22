@@ -24,7 +24,4 @@
     </ClCompile>
     <ClCompile Include="src\ShaddockEditorApp.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="assets\shaders\Render2D_Line.glsl" />
-  </ItemGroup>
 </Project>

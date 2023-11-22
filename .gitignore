@@ -2,6 +2,13 @@
 .vs/
 bin/
 bin-int/
+Intermediates/
 
 # Files
 *.user
+**.vcxproj.filters
+**.vcxproj.user
+**.csproj
+
+
+scripts/__pycache__

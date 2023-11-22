@@ -11,3 +11,15 @@ IncludeDir["entt"] = "%{wks.location}/Shaddock/vendor/entt/include"
 IncludeDir["yaml_cpp"] = "%{wks.location}/Shaddock/vendor/yaml-cpp/include"
 IncludeDir["ImGuizmo"] = "%{wks.location}/Shaddock/vendor/ImGuizmo"
 IncludeDir["Box2D"] = "%{wks.location}/Shaddock/vendor/Box2D/include"
+IncludeDir["mono"] = "%{wks.location}/Shaddock/vendor/mono/include"
+
+LibraryDir = {}
+LibraryDir["mono"] = "%{wks.location}/Shaddock/vendor/mono/lib/%{cfg.buildcfg}"
+
+Library = {}
+Library["mono"] = "%{LibraryDir.mono}/libmono-static-sgen.lib"
+
+Library["WinSock"] = "Ws2_32.lib"
+Library["WinMM"] = "Winmm.lib"
+Library["WinVersion"] = "Version.lib"
+Library["BCrypt"] = "Bcrypt.lib"

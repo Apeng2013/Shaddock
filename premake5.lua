@@ -23,8 +23,16 @@ group "Dependencies"
 	include "Shaddock/vendor/Box2D"
 group ""
 
-include "Shaddock"
+group "Core"
+	include "Shaddock"
+	include "Shaddock-ScriptCore"
+group ""
 
-include "Sandbox"
+group "Tools"
+	include "ShaddockEditor"
+group ""
 
-include "ShaddockEditor"
+group "Misc"
+	include "Sandbox"
+group ""
+

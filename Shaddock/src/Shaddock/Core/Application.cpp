@@ -2,6 +2,7 @@
 #include "Shaddock/Core/Application.h"
 #include "Shaddock/Core/Log.h"
 #include "Shaddock/Core/Input.h"
+#include "Shaddock/Scripting/ScriptEngine.h"
 #include "Shaddock/Renderer/Renderer.h"
 #include "Shaddock/Renderer/RenderCommand.h"
 #include "Shaddock/Utils/PlatformUtils.h"
@@ -25,6 +26,7 @@ namespace Shaddock {
 		m_Window->SetEventCallback(SD_BIND_EVENT_FN(Application::OnEvent));
 
 		Renderer::Init();
+		ScriptEngine::Init();
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
@@ -34,6 +36,7 @@ namespace Shaddock {
 	{
 		SD_PROFILE_FUNCTION();
 		Renderer::Shutdown();
+		ScriptEngine::Shutdown();
 	}
 	void Application::Run()
 	{

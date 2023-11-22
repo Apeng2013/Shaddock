@@ -42,6 +42,7 @@ project "Shaddock"
 		"%{IncludeDir.yaml_cpp}",
 		"%{IncludeDir.ImGuizmo}",
 		"%{IncludeDir.Box2D}",
+		"%{IncludeDir.mono}",
 	}
 
 	links
@@ -51,7 +52,8 @@ project "Shaddock"
 		"ImGui",
 		"opengl32.lib",
 		"yaml-cpp",
-		"Box2D"
+		"Box2D",
+		"%{Library.mono}"
 	}
 	
 	filter "files:vendor/ImGuizmo/**.cpp"
@@ -62,6 +64,13 @@ project "Shaddock"
 
 		defines
 		{
+		}
+		links
+		{
+			"%{Library.WinSock}",
+			"%{Library.WinMM}",
+			"%{Library.WinVersion}",
+			"%{Library.BCrypt}",
 		}
 
 	filter "configurations:Debug"

@@ -37,6 +37,9 @@
     <Filter Include="src\Shaddock\Scene">
       <UniqueIdentifier>{DAA90097-C68D-C1EC-2FEE-BB3F1BF1AB6E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Shaddock\Scripting">
+      <UniqueIdentifier>{3FC8A9F6-2BC2-D248-142F-695900C838B5}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Shaddock\Utils">
       <UniqueIdentifier>{1D3E2E97-0922-EFEC-7282-E93F5E85D96E}</UniqueIdentifier>
     </Filter>
@@ -135,6 +138,9 @@
     <ClInclude Include="src\Shaddock\Core\Timestep.h">
       <Filter>src\Shaddock\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Shaddock\Core\UUID.h">
+      <Filter>src\Shaddock\Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\Shaddock\Core\Window.h">
       <Filter>src\Shaddock\Core</Filter>
     </ClInclude>
@@ -218,6 +224,9 @@
     </ClInclude>
     <ClInclude Include="src\Shaddock\Scene\ScriptableEntity.h">
       <Filter>src\Shaddock\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shaddock\Scripting\ScriptEngine.h">
+      <Filter>src\Shaddock\Scripting</Filter>
     </ClInclude>
     <ClInclude Include="src\Shaddock\Utils\PlatformUtils.h">
       <Filter>src\Shaddock\Utils</Filter>
@@ -1476,7 +1485,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Shaddock\Core\UUID.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1519,6 +1527,9 @@
       <Filter>src\Shaddock\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Shaddock\Core\Log.cpp">
+      <Filter>src\Shaddock\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shaddock\Core\UUID.cpp">
       <Filter>src\Shaddock\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Shaddock\Core\Window.cpp">
@@ -1584,6 +1595,9 @@
     <ClCompile Include="src\Shaddock\Scene\SceneSerializer.cpp">
       <Filter>src\Shaddock\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="src\Shaddock\Scripting\ScriptEngine.cpp">
+      <Filter>src\Shaddock\Scripting</Filter>
+    </ClCompile>
     <ClCompile Include="src\sdpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -1593,6 +1607,5 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Shaddock\Core\UUID.cpp" />
   </ItemGroup>
 </Project>
