@@ -1,9 +1,10 @@
-[22:49:13] [info] Shaddock: Creating window ShaddockEditor (1280, 720)
-[22:49:14] [info] Shaddock: OpenGL Information:
-[22:49:14] [info] Shaddock: Vendor: Intel
-[22:49:14] [info] Shaddock: Renderer: Intel(R) Iris(R) Xe Graphics
-[22:49:14] [info] Shaddock: Version: 4.6.0 - Build 31.0.101.3302
-[22:49:14] [info] Shaddock: Major Version: 4
-[22:49:14] [info] Shaddock: Minor Version: 6
-[22:49:14] [trace] Shaddock: .<Module>
-[22:49:14] [trace] Shaddock: Shaddock.Main
+[22:55:46] [info] Shaddock: Creating window ShaddockEditor (1280, 720)
+[22:55:46] [info] Shaddock: OpenGL Information:
+[22:55:46] [info] Shaddock: Vendor: Intel
+[22:55:46] [info] Shaddock: Renderer: Intel(R) Iris(R) Xe Graphics
+[22:55:46] [info] Shaddock: Version: 4.6.0 - Build 31.0.101.3302
+[22:55:46] [info] Shaddock: Major Version: 4
+[22:55:46] [info] Shaddock: Minor Version: 6
+[22:55:46] [warning] Shaddock: Value: 5
+[22:55:46] [warning] Shaddock: Value: 5
+[22:56:01] [info] Shaddock: Terminating GLFW

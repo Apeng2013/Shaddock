@@ -192,6 +192,7 @@
     <ClInclude Include="src\Shaddock\Scene\SceneSerializer.h" />
     <ClInclude Include="src\Shaddock\Scene\ScriptableEntity.h" />
     <ClInclude Include="src\Shaddock\Scripting\ScriptEngine.h" />
+    <ClInclude Include="src\Shaddock\Scripting\ScriptGlue.h" />
     <ClInclude Include="src\Shaddock\Utils\PlatformUtils.h" />
     <ClInclude Include="src\sdpch.h" />
     <ClInclude Include="vendor\ImGuizmo\ImGuizmo.h" />
@@ -653,6 +654,7 @@
     <ClCompile Include="src\sdpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Shaddock\Scripting\ScriptGlue.cpp" />
     <ClCompile Include="vendor\ImGuizmo\ImGuizmo.cpp">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
